@@ -47,7 +47,15 @@ O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comerc
 
 **Fluxogramas:** 
  ### Requisitos do Sistema   
-
+**Requisitos Funcionais**
+- RF01 — O sistema só pode cadastrar clientes com CNPJ válido e único.
+- RF02 —O sistema deve bloquear vendas a prazo (boleto) para clientes com restrição cadastral ativa (Serasa) e suspender qualquer modalidade de venda para inadimplentes diretos com a Rafimex.  
+- RF03: Todo pedido de venda deve ser obrigatoriamente associado a um cliente e a um colaborador 
+- RF04 — Descontos acima de 4% exigem aprovação registrada da diretoria.
+- RF05 — O valor cobrado em cada item do pedido deve ficar registrado permanentemente, sem mudar depois.
+- RF06 — O sistema deve registrar a modalidade de entrega (retirada na empresa ou transportadora).
+- RF07 — Cada item do pedido deve indicar se está disponível em estoque ou é entrega programada (com data estimada de chegada).
+- 
 
 
 
