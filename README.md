@@ -107,8 +107,6 @@ Este modelo representa um sistema corporativo de vendas B2B e controle de estoqu
 | **PEDIDO** | ITEM_PEDIDO | **1:N** - Um pedido possui um ou vários itens de pedido; cada item pertence a um único pedido. |
 | **PRODUTO** | ITEM_PEDIDO | **1:N** - Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
 | **CATEGORIA** | PRODUTO | **1:N** - Uma categoria agrupa vários produtos; cada produto pertence a uma única categoria. |
-| **FORNECEDORES** | ENTRADA_NOTA_FISCAL | **1:N** - Um fornecedor envia várias notas de entrada/importação. |
-| **ENTRADA_NOTA_FISCAL** | PRODUTO | **1:N** - Uma entrada registra a movimentação de um produto no estoque. |
 
 Definições das Entidades:
 CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
@@ -117,10 +115,10 @@ PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações f
 PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
 CATEGORIA: Classificação hierárquica para agrupamento de produtos.
 FORNECEDORES: Entidade externa emissora de notas de compra/importação.
-ENTRADA_NOTA_FISCAL: Registro de entrada de mercadorias que alimenta o saldo físico do estoque.
 
 2. Fluxo de Dados (Visão Geral)
-O CLIENTE cadastrado faz a solicitação de compra. O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. Caso o desconto aplicado exceda a margem, o pedido passa por aprovação gerencial e análise de limite de crédito. Sendo aprovado, o PEDIDO altera o status para faturamento. Do lado de compras, os FORNECEDORES emitem mercadorias registradas via ENTRADA_NOTA_FISCAL, que atualiza diretamente a quantidade_estoque do PRODUTO.]
+
+FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de compra.  O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. Caso o desconto aplicado exceda a margem, o pedido passa por aprovação gerencial e análise crédito. Sendo aprovado, o PEDIDO altera para faturado.
 
 3. Convenções do Dicionário de Dados
 
