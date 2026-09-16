@@ -98,6 +98,17 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
 
+1. Modelo Conceitual
+Este modelo representa um sistema corporativo de vendas B2B e controle de estoque, mapeando as interações desde o cadastro de clientes e parceiros até o faturamento e a movimentação física de produtos.
+
+| Entidade | Relaciona-se com | Cardinalidade |
+| **CLIENTES** | PEDIDO | **1:N** - Um cliente pode realizar vários pedidos, mas um pedido pertence a apenas um cliente. |
+| **COLABORADORES** | PEDIDO | **1:N** - Um colaborador/vendedor pode emitir vários pedidos, mas um pedido tem apenas um vendedor responsável. |
+| **PEDIDO** | ITEM_PEDIDO | **1:N** - Um pedido possui um ou vários itens de pedido; cada item pertence a um único pedido. |
+| **PRODUTO** | ITEM_PEDIDO | **1:N** - Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
+| **CATEGORIA** | PRODUTO | **1:N** - Uma categoria agrupa vários produtos; cada produto pertence a uma única categoria. |
+| **FORNECEDORES** | ENTRADA_NOTA_FISCAL | **1:N** - Um fornecedor envia várias notas de entrada/importação. |
+| **ENTRADA_NOTA_FISCAL** | PRODUTO | **1:N** - Uma entrada registra a movimentação de um produto no estoque. |
 
 Definições das Entidades:
 CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
