@@ -35,7 +35,7 @@ O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comerc
  - **Evidências da organização:** 
   - *Localização:* [Visualizar Rafimex no Google Maps](https://share.google/HcLa1pSVyl08VBVME)
   - *Endereço e Contato:* [R. Barra do Tibagi, 537 - Bom Retiro, São Paulo - SP, 01128-000 | Tel: (11) 99471-1531- Gabriel Gedanken- DIRETOR COMERCIAL]
-    -**Registro visual:** [FOTO] (https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
+    -**Registro visual:** [FOTOS DE VISITAÇÃO](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
 ## 2. Processos de Negócio
 - **Cadastro de clientes:** só empresas (CNPJ) podem se cadastrar como clientes, e o cadastro deveria passar por revalidação periódica.
 
