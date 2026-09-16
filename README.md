@@ -31,12 +31,12 @@ O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comerc
  
  - **Problemas e necessidades identificados:** Na visita, vimos que o principal ponto de melhoria não está nas regras comerciais da empresa ,que já são claras e bem aplicadas (crédito, desconto, estoque futuro) ,**mas no processo de manutenção do cadastro dos clientes. Como esse cadastro é atualizado manualmente pelo representante, só quando ele lembra de perguntar, clientes que compram com pouca frequência correm o risco de ficar com dados de contato desatualizados. Isso já causou boleto não entregue por telefone/e-mail errado, causando em casos mais graves até cnpj indo para cartório e cobrança de taxa de reentrega por mudança de endereço não avisada. E o pior: a empresa só descobre isso depois que já deu problema, porque não existe hoje nenhum aviso prévio de quais cadastros estão desatualizados.**
    
-Soluções para o problema previsto 
+**Soluções para o problema previsto**
  
-Portal de Confirmação Ativa:
+-Portal de Confirmação Ativa:
 Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permitindo que o cliente confirme previamente seus dados de contato e o endereço de entrega antes da emissão da nota fiscal.
 
-Alertas e Travas Sistemáticas: Implementar uma consulta ou visualização que sinalize clientes com dados desatualizados há mais de X meses ou sem compras recentes, exigindo que o representante realize a validação das informações antes de prosseguir com o lançamento de um novo pedido.
+-Alertas e Travas Sistemáticas: Implementar uma consulta ou visualização que sinalize clientes com dados desatualizados há mais de X meses ou sem compras recentes, exigindo que o representante realize a validação das informações antes de prosseguir com o lançamento de um novo pedido.
    
 
  - **Justificativa da escolha:** Escolhemos a Rafimex por ser uma empresa real, de porte médio-grande, com volume de dados suficiente para justificar uma modelagem robusta, mas ainda viável de mapear no prazo da disciplina. Além disso, uma das integrantes do grupo, Letícia, trabalha na Rafimex e tem acesso direto ao dia a dia da empresa, o que ajudou a entender os problemas reais descritos aqui.
