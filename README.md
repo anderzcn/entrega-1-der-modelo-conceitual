@@ -120,6 +120,38 @@ FORNECEDORES: Entidade externa emissora de notas de compra/importação.
 ENTRADA_NOTA_FISCAL: Registro de entrada de mercadorias que alimenta o saldo físico do estoque.
 
 2. Fluxo de Dados (Visão Geral)
-O CLIENTE cadastrado faz a solicitação de compra. O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. Caso o desconto aplicado exceda a margem, o pedido passa por aprovação gerencial e análise de limite de crédito. Sendo aprovado, o PEDIDO altera o status para faturamento. Do lado de compras, os FORNECEDORES emitem mercadorias registradas via ENTRADA_NOTA_FISCAL, que atualiza diretamente a quantidade_estoque do PRODUTO.
+O CLIENTE cadastrado faz a solicitação de compra. O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. Caso o desconto aplicado exceda a margem, o pedido passa por aprovação gerencial e análise de limite de crédito. Sendo aprovado, o PEDIDO altera o status para faturamento. Do lado de compras, os FORNECEDORES emitem mercadorias registradas via ENTRADA_NOTA_FISCAL, que atualiza diretamente a quantidade_estoque do PRODUTO.]
+
+3. Convenções do Dicionário de Dados
+
+### Configurações do Banco de Dados
+| Parâmetro | Configuração / Descrição |
+| **SGBD** | MySQL 8, mecanismo de armazenamento InnoDB |
+| **Codificação / Collation** | `utf8mb4` com collation `utf8mb4_0900_ai_ci` |
+
+---
+
+### Padronização de Prefixos
+| Prefixo | Significado | Exemplo de Aplicação |
+| `@ID_` | Identificador / Chave Primária (PK) | `@ID_CLIENTE` |
+| `$NM_$` | Nome | `NM_RAZAO_SOCIAL` |
+| `$DT_$` | Data / Hora | `DT_PEDIDO` |
+| `$CD_$` | Código (identificador fiscal, barras ou SKU) | `CD_SKU`, `CD_NCM` |
+| `$QT_$` | Quantidade | `QT_ESTOQUE` |
+| `$VL_$` | Valor Monetário / Numérico Calculado | `VL_PRECO_VENDA` |
+| `$IN_$` | Indicador Booleano / Flag | `IN_APROVACAO_GERENCIAL` |
+| `$DS_$` | Descrição ou Texto Livre | `DS_ENDERECO` |
+| `$NR_$` | Número (documento, nota fiscal ou telefone) | `NR_CNPJ`, `NR_NOTA_FISCAL` |
+
+---
+
+### Notação Formal
+| Símbolo | Significado e Aplicação |
+| `=` | **é composto de** (define a estrutura da entidade) |
+| `+` | **e** (conecta elementos obrigatórios) |
+| `()` | **opcional** (campos que podem ser nulos) |
+| `[]` | **escolha obrigatória** entre alternativas exclusivas (`[A \| B]`) |
+| `{}` | **iteração** / grupo repetitivo (`n{ /ITEM/ }m`) |
+| `@` | **identificador** (chave primária) |
 
 
