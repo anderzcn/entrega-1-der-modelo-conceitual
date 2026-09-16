@@ -113,7 +113,6 @@ CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inad
 COLABORADORES: Vendedores e representantes comerciais responsáveis pelo faturamento e comissão.
 PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações financeiras e entregas.
 PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
-CATEGORIA: Classificação hierárquica para agrupamento de produtos.
 FORNECEDORES: Entidade externa emissora de notas de compra/importação.
 
 2. Fluxo de Dados (Visão Geral)
