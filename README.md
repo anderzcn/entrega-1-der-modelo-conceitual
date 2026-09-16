@@ -86,6 +86,6 @@ O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comerc
 
 **Tabela: PEDIDO**
 
-
+## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
 
 
