@@ -99,3 +99,16 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
 
 
+Definições das Entidades:
+CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
+COLABORADORES: Vendedores e representantes comerciais responsáveis pelo faturamento e comissão.
+PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações financeiras e entregas.
+PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
+CATEGORIA: Classificação hierárquica para agrupamento de produtos.
+FORNECEDORES: Entidade externa emissora de notas de compra/importação.
+ENTRADA_NOTA_FISCAL: Registro de entrada de mercadorias que alimenta o saldo físico do estoque.
+
+2. Fluxo de Dados (Visão Geral)
+O CLIENTE cadastrado faz a solicitação de compra. O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. Caso o desconto aplicado exceda a margem, o pedido passa por aprovação gerencial e análise de limite de crédito. Sendo aprovado, o PEDIDO altera o status para faturamento. Do lado de compras, os FORNECEDORES emitem mercadorias registradas via ENTRADA_NOTA_FISCAL, que atualiza diretamente a quantidade_estoque do PRODUTO.
+
+
