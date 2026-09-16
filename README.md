@@ -55,7 +55,23 @@ O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comerc
 - RF05 — O valor cobrado em cada item do pedido deve ficar registrado permanentemente, sem mudar depois.
 - RF06 — O sistema deve registrar a modalidade de entrega (retirada na empresa ou transportadora).
 - RF07 — Cada item do pedido deve indicar se está disponível em estoque ou é entrega programada (com data estimada de chegada).
-- 
+- RF08 — O sistema deve monitorar o ponto de pedido dos produtos para emissão de alertas preventivos de reposição de estoque.
+- RF09 — O sistema deve sinalizar e bloquear para novas emissões de Pedidos, os cadastros de clientes com data de atualização superior a 90 dias
 
+**Requisitos Não Funcionais**
+- RNF01 — O sistema deve manter controle da data de atualização cadastral, ajudando a manter os dados em dia e em conformidade com a LGPD.
+- RNF02 —O sistema deve aplicar restrições estritas de integridade (chaves estrangeiras - FK), impedindo a existência de itens sem pedido ou pedidos sem cliente vinculado, além de bloquear a exclusão de cadastros que possuam histórico de vendas.
+- RNF03 — O sistema precisa funcionar bem mesmo com o volume atual (10.000 clientes, 1.550 produtos), sem travar ou ficar lento.
+## 4. Regras de Negócio
+
+- RN01 — Só empresas com CNPJ regular podem comprar da Rafimex.
+- RN02 — Toda venda no boleto passa por análise de crédito antes de ser aprovada.
+- RN03 — Cliente com pendência no Serasa só pode comprar à vista ou no cartão de crédito.
+- RN04 — Cliente com pendência direta com a Rafimex não tem nenhuma venda liberada.
+- RN05 — Todo pedido precisa ter um cliente e um representante comercial vinculados.
+- RN06 — Representante aplica até 4% de desconto sozinho; acima disso, precisa de aprovação da diretoria.
+- RN07 — O preço cobrado numa venda fica registrado daquele jeito para sempre, mesmo que o preço de tabela mude depois.
+- RN08 — Produtos com chegada programada (importação) podem ser vendidos, desde que a data prevista de chegada apareça no orçamento.
+- RN09 — É proibida a emissão ou faturamento de pedidos para clientes cujos dados cadastrais (endereço, telefone e contato financeiro) não tenham sido confirmados nos últimos 90 dias, visando prevenir devoluções de mercadoria e extravio de cobranças (essa é a regra que resolve o problema real de desatualização identificado na Rafimex.)
 
 
