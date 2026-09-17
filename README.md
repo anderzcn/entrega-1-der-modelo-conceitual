@@ -6,12 +6,12 @@
 ## Metadados
 
 | NOME | RGM |
-
-| **Anderson Rafael da Silva** [ **49031937**] 
-|**Leticia Souza Santos**     [**49439286**]  
-|**Maria Eduarda Sobrinho dos Santos** [**49020595**]
-|**Nathan Vieira De Lara** [**49462725**]
-|**Ketlyn Nayara da Silva Cezar** [**48862347**]
+|---|---|
+| **Anderson Rafael da Silva** | **49031937** |
+| **Leticia Souza Santos** | **49439286** |
+| **Maria Eduarda Sobrinho dos Santos** | **49020595** |
+| **Nathan Vieira De Lara** | **49462725** |
+| **Ketlyn Nayara da Silva Cezar** | **48862347** |
 ## Introdução
 
 Este projeto tem como objetivo desenvolver o Modelo Conceitual de Banco de Dados para a Rafimex - Mesa Posta e Decorações, uma empresa atacadista que vende artigos de mesa posta e decoração para outras empresas (B2B).
