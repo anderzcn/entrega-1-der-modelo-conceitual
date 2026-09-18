@@ -43,7 +43,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
  - **Evidências da organização:** 
   - *Localização:* [Visualizar Rafimex no Google Maps](https://maps.app.goo.gl/PDXnt86jRLMjDYKF8)
   - *Endereço e Contato:* [R. Barra do Tibagi, 537 - Bom Retiro, São Paulo - SP, 01128-000 | Tel: (11) 99471-1531- Gabriel Gedanken- DIRETOR COMERCIAL]
-    -**Registro visual:** [FOTOS DE VISITAÇÃO](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
+    -**Registro visual:** [Visualiza Fotos de Visitação](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
 ## 2. Processos de Negócio
 - **Cadastro de clientes:** só empresas (CNPJ) podem se cadastrar como clientes, e o cadastro deveria passar por revalidação periódica.
 
@@ -53,7 +53,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
 - **Controle de estoque:** a empresa separa o que já está fisicamente disponível no galpão ("Disponível/Reservado") do que ainda está vindo de importação ("Entrega Programada"), mostrando a data prevista de chegada no orçamento.
 
-**Fluxograma:** [IMAGEM FLUXOGRAMA](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
+**Fluxograma:** [Visualiza imagem Fluxogram](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
  ### Requisitos do Sistema   
 **Requisitos Funcionais**
 - RF01 — O sistema só pode cadastrar clientes com CNPJ válido e único.
