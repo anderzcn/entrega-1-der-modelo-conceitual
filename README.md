@@ -84,17 +84,16 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 ## 5. Dicionário de Dados Conceitual
 
 
-**Tabela: CLIENTE**
 
-# 1. CLIENTE (PJ)
+## 5.1 CLIENTE (PJ)
 
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
-## 1.1. Estrutura Formal
+- ### Estrutura Formal
 
 **CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
-## 1.2. Leitura da Estrutura
+- ### Leitura da Estrutura
 
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
@@ -106,7 +105,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 Por fim, `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das informações do cadastro.
 
-# 2. Atributos da Entidade CLIENTE
+- ### Atributos da Entidade CLIENTE
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
@@ -122,17 +121,17 @@ Por fim, `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das i
 | **ID_SERASA** | Varchar(50) | Sim | Identifica o registro utilizado para associação do cliente ao histórico de crédito no Serasa. |
 | **DT_DATA_DE_ATUALIZACAO** | Date | Sim | Registra a data em que as informações do cadastro foram atualizadas pela última vez. |
 
-**Tabela: COLABORADOR**
 
-# 1. COLABORADOR
+ ## 5.2 COLABORADOR
 
 A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratuais e funcionais para a atuação do profissional no sistema.
 
-## 1.1. Estrutura Formal 
+- ### Estrutura Formal
 
 **COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + ID_ENDERECO + DS_EMAIL + NR_TELEFONE + DS_COMISSAO**
+---
 
-## 1.2. Leitura da Estrutura 
+- ### Leitura da Estrutura
 
 `@ID_COLABORADOR ` Identifica o profissional no sistema.
 `NM_COLABORADOR` Representa o nome completo do colaborador.
@@ -143,7 +142,7 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 `NR_TELEFONE` Telefone contato pessoal do colaborador.
 Por fim, ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
 
-# 2. Atributos da Entidade COLABORADOR
+- ### Atributos da Entidade COLABORADOR
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
@@ -157,19 +156,18 @@ Por fim, ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador.
 | **DS_COMISSAO** | Numeric(5,2) | Sim  |Valor referente a porcentagem de venda ao colaborador.|
 
 
-**Tabela: PRODUTO**
 
-# 1. PRODUTO
+## 5.3 PRODUTO
 
 A entidade **PRODUTO** representa o cadastro dos produtos registrados no sistema. 
 Suas informações são utilizadas para identificação, classificação, controle de preços 
 e acompanhamento da quantidade disponível em estoque.
 
-## 1.1. Estrutura Formal
+- ### Estrutura Formal
 
 **PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + CD_CODIGO_BARRA + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE + ID_CATEGORIA**
 
-## 1.2. Leitura da Estrutura
+- ### Leitura da Estrutura
 
 `@ID_PRODUTO` representa o identificador único do produto no sistema. 
 `CD_SKU` corresponde ao código interno utilizado para identificação e controle do produto. 
@@ -180,7 +178,7 @@ de barras utilizado para identificação comercial.
 e venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque. 
 Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiva categoria.
 
-# 2. Atributos da Entidade PRODUTO
+- ### Atributos da Entidade PRODUTO
 
 | Atributo | Tipo físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
@@ -193,15 +191,14 @@ Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiv
 | **QT_ESTOQUE** | Integer | Sim | Indica a quantidade disponível do produto em estoque. |
 | **ID_CATEGORIA** | Integer | Sim (FK) | Identifica a categoria à qual o produto pertence, estabelecendo o relacionamento com a entidade **CATEGORIA**. |
 
-**Tabela: FORNECEDOR**
 
-# 1. FORNECEDOR
+## 5.4 FORNECEDOR
 A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
 ## 1.1. Estrutura Formal
 **PEDIDO = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + ID_ENDERECO**
 
-## 1.2. Leitura da Estrutura
-`@ ID_FORNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
+- ### Leitura da Estrutura
+`@ ID_FO/RNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
 `CD_CNPJ` Identificador do CNPJ do fornecedor.
 `NM_RAZAO_SOCIAL` Representa de forma direta a razão social do Fornecedor.
 NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quando aplicável.
@@ -209,7 +206,7 @@ NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quand
 `NR_TELEFONE` Cadastro do número do fornecedor para contatos diretos.
 Por fim, `ID_ENDERECO` Identifica o endereço em que o fornecedor está localizado.
 
-# 2.   Atributos da Entidade FORNECEDOR
+- #### Atributos da Entidade FORNECEDOR
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
@@ -222,14 +219,14 @@ Por fim, `ID_ENDERECO` Identifica o endereço em que o fornecedor está localiza
 | **ID_ENDERECO** | Integer | Sim(FK) | Identifica o endereço em que o fornecedor está localizado. |
 
 
-**Tabela: PEDIDO**
 
-# 1. PEDIDO
+## 5.5 PEDIDO
 A entidade **PEDIDO** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
-## 1.1. Estrutura Formal
+
+- #### Estrutura Formal
 **PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_TOTAL + ID_TIPO_DE_FRETE + ID_FORMA_DE_PAGAMENTO + DS_DESCONTO_APLICADO + ID_STATUS_PEDIDO** 
 
-## 1.2. Leitura da Estrutura
+- ### Leitura da Estrutura
 `@ID_PEDIDO` Identifica o pedido solicitado no sistema 
 `DT_DATA_DO_PEDIDO` Informativo da data em que o pedido foi solicitado.
 `VL_VALOR_TOTAL` Identificador do valor total do pedido solicitado pelo cliente.
@@ -238,7 +235,7 @@ A entidade **PEDIDO** representa a separação de produtos, notas, e quantidades
 `DS_DESCONTO_APLICADO` Informa a porcentagem de desconto aplicada no pedido.
 Por fim, `ID_STATUS_PEDIDO` Identificador para informar como o pedido está e em qual etapa do processo que o pedido está.
 
-# 2.   Atributos da Entidade PEDIDO
+- ### Atributos da Entidade PEDIDO
 
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
