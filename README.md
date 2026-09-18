@@ -92,7 +92,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 ## 1.1. Estrutura Formal
 
-**CLIENTE = @ID_CLIENTE + RAZAO_SOCIAL + CD_CNPJ + IE_INSCRICAO_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+**CLIENTE = @ID_CLIENTE + RAZAO_SOCIAL + CD_CNPJ + INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 ## 1.2. Leitura da Estrutura
 
@@ -113,7 +113,7 @@ Por fim, `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das i
 | **ID_CLIENTE** | Integer | Sim (PK) | Identifica unicamente o cliente no sistema. |
 | **RAZAO_SOCIAL** | Varchar(100) | Sim | Representa a razão social do cliente. |
 | **CD_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ do cliente. |
-| **IE_INSCRICAO_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
+| **INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
 | **ID_ENDERECO** | Integer | Sim (FK) | Identifica o endereço associado ao cliente. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
 | **CD_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
