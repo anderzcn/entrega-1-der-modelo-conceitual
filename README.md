@@ -41,7 +41,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
  - **Justificativa da escolha:** Escolhemos a Rafimex por ser uma empresa real, de porte médio-grande, com volume de dados suficiente para justificar uma modelagem robusta, mas ainda viável de mapear no prazo da disciplina. Além disso, uma das integrantes do grupo, Letícia, trabalha na Rafimex e tem acesso direto ao dia a dia da empresa, o que ajudou a entender os problemas reais descritos aqui.
  - **Evidências da organização:** 
-  - *Localização:* [Visualizar Rafimex no Google Maps](https://share.google/HcLa1pSVyl08VBVME)
+  - *Localização:* [Visualizar Rafimex no Google Maps](https://maps.app.goo.gl/PDXnt86jRLMjDYKF8)
   - *Endereço e Contato:* [R. Barra do Tibagi, 537 - Bom Retiro, São Paulo - SP, 01128-000 | Tel: (11) 99471-1531- Gabriel Gedanken- DIRETOR COMERCIAL]
     -**Registro visual:** [FOTOS DE VISITAÇÃO](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
 ## 2. Processos de Negócio
