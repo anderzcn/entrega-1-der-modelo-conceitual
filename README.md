@@ -332,6 +332,7 @@ A solução desenhada transforma esse problema, que hoje é descoberto só depoi
 
 Com as entidades, atributos e relacionamentos definidos e normalizados, o projeto está pronto para avançar à implementação física e a conversão desse modelo conceitual em script SQL, com todas as constraints necessárias, na Entrega 2.
 
+## Referências Bibliográfica
 
 
 
