@@ -255,7 +255,7 @@ pelo cliente. |
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
 
-1. Modelo Conceitual
+**1. Modelo Conceitual**
 Este modelo representa um sistema corporativo de vendas B2B e controle de estoque, mapeando as interações desde o cadastro de clientes e parceiros até o faturamento e a movimentação física de produtos.
 
 | Entidade | Relaciona-se com | Cardinalidade |
@@ -265,17 +265,16 @@ Este modelo representa um sistema corporativo de vendas B2B e controle de estoqu
 | **PRODUTO** | ITEM_PEDIDO | **1:N** - Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
 | **CATEGORIA** | PRODUTO | **1:N** - Uma categoria agrupa vários produtos; cada produto pertence a uma única categoria. |
 
-Definições das Entidades:
+**Definições das Entidades:**
 CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
 COLABORADORES: Vendedores e representantes comerciais responsáveis pelo faturamento e comissão.
 PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações financeiras e entregas.
 PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
 FORNECEDORES: Entidade externa emissora de notas de compra/importação.
 
-2. Fluxo de Dados (Visão Geral)
+**2. Fluxo de Dados (Visão Geral)**
 
-FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de compra.  O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. Caso o desconto aplicado exceda a margem, o pedido passa por aprovação gerencial e análise crédito. Sendo aprovado, o PEDIDO altera para faturado.
-
+FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de compra.  O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. caso o pedido seja no boleto( a prazo), o pedido passa por aprovação gerencial e análise crédito. Sendo aprovado, o PEDIDO segue para separação e faturamento.
 3. Convenções do Dicionário de Dados
 
 ### Configurações do Banco de Dados
