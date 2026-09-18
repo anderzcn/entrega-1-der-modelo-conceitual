@@ -313,6 +313,6 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 ### Justificativa Técnica
 A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a operação B2B da empresa e, ao mesmo tempo, resolver o problema real identificado: a desatualização silenciosa do cadastro dos clientes. As decisões abaixo seguem princípios de integridade referencial e normalização, mas cada uma delas nasceu de uma necessidade concreta da empresa:
 
-- **Trava de 90 dias como prevenção:** O campo DT_DATA_DE_ATUALIZACAO, em CLIENTE, é a peça central que resolve o problema real da Rafimex. Em vez de depender de alguém lembrar de checar manualmente, o próprio banco consegue calcular quando um cadastro passou da validade e bloquear novos pedidos antes que isso vire prejuízo — cumprindo RF09 e RN09.
+- **Trava de 90 dias como prevenção,não como remendo:** O campo DT_DATA_DE_ATUALIZACAO, em CLIENTE, é a peça central que resolve o problema real da Rafimex. Em vez de depender de alguém lembrar de checar manualmente, o próprio banco consegue calcular quando um cadastro passou da validade e bloquear novos pedidos antes que isso vire prejuízo — cumprindo RF09 e RN09.
 
 
