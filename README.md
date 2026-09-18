@@ -86,9 +86,79 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
 **Tabela: CLIENTE**
 
+# 1. CLIENTE (PJ)
+
+A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
+
+## 1.1. Estrutura Formal
+
+**CLIENTE = @ID_CLIENTE + RAZAO_SOCIAL + CD_CNPJ + IE_INSCRICAO_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+
+## 1.2. Leitura da Estrutura
+
+`@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
+
+`RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `IE_INSCRICAO_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
+
+`ID_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` e `CD_TELEFONE` armazenam os dados de contato.
+
+`LM_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
+
+Por fim, `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das informações do cadastro.
+
+# 2. Atributos da Entidade CLIENTE
+
+| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| **ID_CLIENTE** | Integer | Sim (PK) | Identifica unicamente o cliente no sistema. |
+| **RAZAO_SOCIAL** | Varchar(100) | Sim | Representa a razão social do cliente. |
+| **CD_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ do cliente. |
+| **IE_INSCRICAO_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
+| **ID_ENDERECO** | Integer | Sim (FK) | Identifica o endereço associado ao cliente. |
+| **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
+| **CD_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
+| **LM_LIMITE_CREDITO** | Decimal(15,2) | Sim | Representa o limite de crédito disponibilizado para compras do cliente. |
+| **IN_ATIVO** | Boolean | Sim | Indica se o cadastro do cliente está ativo no sistema. |
+| **ID_SERASA** | Varchar(50) | Sim | Identifica o registro utilizado para associação do cliente ao histórico de crédito no Serasa. |
+| **DT_DATA_DE_ATUALIZACAO** | Date | Sim | Registra a data em que as informações do cadastro foram atualizadas pela última vez. |
+
 **Tabela: COLABORADOR**
 
 **Tabela: PRODUTO**
+
+# 1.1. PRODUTO
+
+A entidade **PRODUTO** representa o cadastro dos produtos registrados no sistema. 
+Suas informações são utilizadas para identificação, classificação, controle de preços 
+e acompanhamento da quantidade disponível em estoque.
+
+## 1.1.1. Estrutura Formal
+
+**PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + CD_CODIGO_BARRA + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE + ID_CATEGORIA**
+
+## 1.1.2. Leitura da Estrutura
+
+`@ID_PRODUTO` representa o identificador único do produto no sistema. 
+`CD_SKU` corresponde ao código interno utilizado para identificação e controle do produto. 
+`CD_NCM` armazena a classificação fiscal, enquanto `CD_CODIGO_BARRA` representa o código 
+de barras utilizado para identificação comercial.
+
+`VL_PRECO_CUSTO` e `VL_PRECO_VENDA` armazenam, respectivamente, os valores de custo 
+e venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque. 
+Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiva categoria.
+
+# 2. Atributos da Entidade PRODUTO
+
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| **ID_PRODUTO** | Integer | Sim (PK) | Identifica de forma única cada produto cadastrado no sistema. |
+| **CD_SKU** | Varchar(30) | Sim | Identifica o produto por meio de um código interno utilizado para controle e organização do estoque. |
+| **CD_NCM** | Varchar(10) | Sim | Armazena o código NCM utilizado para a classificação fiscal do produto. |
+| **VL_PRECO_CUSTO** | Numeric(10,2) | Sim | Representa o valor de custo do produto para a empresa. |
+| **VL_PRECO_VENDA** | Numeric(10,2) | Sim | Representa o valor pelo qual o produto será comercializado. |
+| **CD_CODIGO_BARRA** | Varchar(20) | Sim | Armazena o código de barras utilizado para identificar o produto. |
+| **QT_ESTOQUE** | Integer | Sim | Indica a quantidade disponível do produto em estoque. |
+| **ID_CATEGORIA** | Integer | Sim (FK) | Identifica a categoria à qual o produto pertence, estabelecendo o relacionamento com a entidade **CATEGORIA**. |
 
 **Tabela: FORNECEDOR**
 
