@@ -98,7 +98,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
-`RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `IE_INSCRICAO_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
+`RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
 
 `ID_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` e `CD_TELEFONE` armazenam os dados de contato.
 
@@ -124,19 +124,52 @@ Por fim, `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das i
 
 **Tabela: COLABORADOR**
 
+# 1. COLABORADOR
+
+A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratuais e funcionais para a atuação do profissional no sistema.
+
+## 1.1. Estrutura Formal 
+
+**COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + ID_ENDERECO + DS_EMAIL + NR_TELEFONE + DS_COMISSAO**
+
+## 1.2. Leitura da Estrutura 
+
+`@ID_COLABORADOR ` Identifica o profissional no sistema.
+`NM_COLABORADOR` Representa o nome completo do colaborador.
+`NR_CPF` Número de indicação CPF do colaborador.
+`DT_DATA_DE_NASCIMENTO` Informativo da data de nascimento do colaborador.
+`ID_ENDERECO` Identificação do endereço do colaborador.
+`DS_EMAIL` Informa o Email pessoal para identificação no sistema.
+`NR_TELEFONE` Telefone contato pessoal do colaborador.
+Por fim, ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
+
+# 2. Atributos da Entidade COLABORADOR
+
+| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| **ID_COLABORADOR** | Integer | Sim (PK) | Identifica o profissional no sistema. |
+| **NM_COLABORADOR** | Varchar(120) | Sim | Representa o nome completo do colaborador. |
+| **NR_CPF** | Varchar(14) | Sim | Número de indicação CPF do colaborador. |
+| **DT_DATA_DE_NASCIMENTO** | Date | Sim | Informativo da data de nascimento do colaborador. |
+| **ID_ENDERECO** | Integer | Sim  | Identificação do endereço do colaborador. |
+| **DS_EMAIL** | Varchar(100) | Sim  | Informa o Email pessoal para identificação no sistema. |
+| **NR_TELEFONE** | Varchar(14) | Sim | Telefone contato pessoal do colaborador. |
+| **DS_COMISSAO** | Numeric(5,2) | Sim  |Valor referente a porcentagem de venda ao colaborador.|
+
+
 **Tabela: PRODUTO**
 
-# 1.1. PRODUTO
+# 1. PRODUTO
 
 A entidade **PRODUTO** representa o cadastro dos produtos registrados no sistema. 
 Suas informações são utilizadas para identificação, classificação, controle de preços 
 e acompanhamento da quantidade disponível em estoque.
 
-## 1.1.1. Estrutura Formal
+## 1.1. Estrutura Formal
 
 **PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + CD_CODIGO_BARRA + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE + ID_CATEGORIA**
 
-## 1.1.2. Leitura da Estrutura
+## 1.2. Leitura da Estrutura
 
 `@ID_PRODUTO` representa o identificador único do produto no sistema. 
 `CD_SKU` corresponde ao código interno utilizado para identificação e controle do produto. 
@@ -162,7 +195,62 @@ Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiv
 
 **Tabela: FORNECEDOR**
 
+# 1. FORNECEDOR
+A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
+## 1.1. Estrutura Formal
+**PEDIDO = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + ID_ENDERECO**
+
+## 1.2. Leitura da Estrutura
+`@ ID_FORNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
+`CD_CNPJ` Identificador do CNPJ do fornecedor.
+`NM_RAZAO_SOCIAL` Representa de forma direta a razão social do Fornecedor.
+NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quando aplicável.
+`DS_EMAIL` Informa o Email profissional do fornecedor.
+`NR_TELEFONE` Cadastro do número do fornecedor para contatos diretos.
+Por fim, `ID_ENDERECO` Identifica o endereço em que o fornecedor está localizado.
+
+# 2.   Atributos da Entidade FORNECEDOR
+
+| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| **ID_FORNECEDOR** | Integer | Sim (PK) | Identifica qual fornecedor, e quais os materiais entregue pela empresa. |
+| **NR_CNPJ** | Varchar(18) | Sim | Identificador do CNPJ do fornecedor.|
+| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa de forma direta a razão social do Fornecedor.|
+| **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
+| **DS_EMAIL** | Varchar(100) | Sim  | Informa o Email profissional do fornecedor. |
+| **NR_TELEFONE** | Varchar(14) | Sim | Cadastro do número do fornecedor para contatos diretos. |
+| **ID_ENDERECO** | Integer | Sim(FK) | Identifica o endereço em que o fornecedor está localizado. |
+
+
 **Tabela: PEDIDO**
+
+# 1. PEDIDO
+A entidade **PEDIDO** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
+## 1.1. Estrutura Formal
+**PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_TOTAL + ID_TIPO_DE_FRETE + ID_FORMA_DE_PAGAMENTO + DS_DESCONTO_APLICADO + ID_STATUS_PEDIDO** 
+
+## 1.2. Leitura da Estrutura
+`@ID_PEDIDO` Identifica o pedido solicitado no sistema 
+`DT_DATA_DO_PEDIDO` Informativo da data em que o pedido foi solicitado.
+`VL_VALOR_TOTAL` Identificador do valor total do pedido solicitado pelo cliente.
+`ID_TIPO_FRETE` Identifica a forma de frete se transportadora ou correios para entrega do produto. 
+`ID_FORMA_DE_PAGAMENTO` Identifica a forma de pagamento que o cliente escolheu pagar pelo produto.  
+`DS_DESCONTO_APLICADO` Informa a porcentagem de desconto aplicada no pedido.
+Por fim, `ID_STATUS_PEDIDO` Identificador para informar como o pedido está e em qual etapa do processo que o pedido está.
+
+# 2.   Atributos da Entidade PEDIDO
+
+
+| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| **ID_PEDIDO** | Integer | Sim (PK) | Identifica o pedido solicitado no sistema. |
+| **DT_DATA_DO_PEDIDO** | Date | Sim | Informativo da data em que o pedido foi solicitado. |
+| **VL_VALOR_TOTAL** | Decimal(18,2) | Sim | Identificador do valor total do pedido solicitado
+pelo cliente. |
+| **ID_TIPO_DE_FRETE** | Integer | Sim(FK) | Identifica a forma de frete se transportadora ou correios para entrega do produto.  |
+| **ID_FORMA_DE_PAGAMENTO** | Integer | Sim(FK)  | Identifica a forma de pagamento que o cliente escolheu pagar pelo produto.  |
+| **DS_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Informa a porcentagem de desconto aplicada no pedido.  |
+| **ID_STATUS_PEDIDO** | Integer | Sim(FK) | Identificador para informar como o pedido está e em qual etapa do processo que o pedido está. |
 
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
