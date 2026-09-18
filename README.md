@@ -53,7 +53,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
 - **Controle de estoque:** a empresa separa o que já está fisicamente disponível no galpão ("Disponível/Reservado") do que ainda está vindo de importação ("Entrega Programada"), mostrando a data prevista de chegada no orçamento.
 
-**Fluxogramas:** [IMAGEM FLUXOGRAMA](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
+**Fluxograma:** [IMAGEM FLUXOGRAMA](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
  ### Requisitos do Sistema   
 **Requisitos Funcionais**
 - RF01 — O sistema só pode cadastrar clientes com CNPJ válido e único.
