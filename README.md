@@ -308,7 +308,7 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 | `@` | **identificador** (chave primária) |
 
 ### Diagrama Entidade-Relacionamento (DER)
-[IMAGEM DER](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git)
+[Visualiza imagem DER](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git)
 
 ### Justificativa Técnica
 A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a operação B2B da empresa e, ao mesmo tempo, resolver o problema real identificado: a desatualização silenciosa do cadastro dos clientes. As decisões abaixo seguem princípios de integridade referencial e normalização, mas cada uma delas nasceu de uma necessidade concreta da empresa:
