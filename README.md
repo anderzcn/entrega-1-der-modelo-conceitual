@@ -92,13 +92,13 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 ## 1.1. Estrutura Formal
 
-**CLIENTE = @ID_CLIENTE + RAZAO_SOCIAL + CD_CNPJ + INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 ## 1.2. Leitura da Estrutura
 
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
-`RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
+`NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
 
 `ID_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` e `CD_TELEFONE` armazenam os dados de contato.
 
@@ -111,9 +111,9 @@ Por fim, `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das i
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
 | **ID_CLIENTE** | Integer | Sim (PK) | Identifica unicamente o cliente no sistema. |
-| **RAZAO_SOCIAL** | Varchar(100) | Sim | Representa a razão social do cliente. |
+| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa a razão social do cliente. |
 | **CD_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ do cliente. |
-| **INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
+| **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
 | **ID_ENDERECO** | Integer | Sim (FK) | Identifica o endereço associado ao cliente. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
 | **CD_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
