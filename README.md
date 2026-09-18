@@ -326,7 +326,7 @@ A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a o
 ### Uso de Inteligência Artificial
 
 - ## Conclusão
-Este modelo conceitual entrega uma estrutura capaz de sustentar a operação real da Rafimex de vendas, análise de crédito e controle de estoque, organizada de um jeito que dá pra confiar nos dados registrados. Ao longo do levantamento, ficou claro que o maior risco pra empresa não estava nas regras comerciais (que já funcionam bem), mas na desatualização silenciosa dos dados de contato e endereço dos clientes, o que já gerou boleto não entregue e taxa de reentrega de frtes de endereços errados.
+Este modelo conceitual entrega uma estrutura capaz de sustentar a operação real da Rafimex de vendas, análise de crédito e controle de estoque, organizada de um jeito que dá pra confiar nos dados registrados. Ao longo do levantamento, ficou claro que o maior risco pra empresa não estava nas regras comerciais (que já funcionam bem), mas na desatualização silenciosa dos dados de contato e endereço dos clientes, o que já gerou boleto não entregue e taxa de reentrega de fretes de endereços errados.
 
 A solução desenhada transforma esse problema, que hoje é descoberto só depois de já ter causado prejuízo, numa regra que o próprio banco de dados consegue aplicar sozinho: a trava de 90 dias na atualização cadastral. Junto com os controles de crédito e o registro histórico de preço em cada venda, o modelo passa a ter um caráter preventivo, e não apenas reativo.
 
