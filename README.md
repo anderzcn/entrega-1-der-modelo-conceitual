@@ -320,3 +320,22 @@ A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a o
 - **Controle de crédito misto (piloto automático + decisão humana):** os campos ID_SERASA e LM_LIMITE_CREDITO, direto na tabela CLIENTE, servem pra dar munição rápida pro setor financeiro avaliar as regras RN02, RN03 e RN04. O sistema  bloqueia sozinho quem já deve pra própria Rafimex. Mas a liberação de venda no boleto não é robótica: ela exige o aval manual do financeiro caso a caso. Até pensamos em criar uma tabela separada só para "Dados Financeiros", mas descartamos a ideia. Como o financeiro puxa essa análise o tempo todo, separar esses dados ia exigir cruzamentos (JOINs) a cada nova consulta, deixando o banco lento à toa. E vale lembrar que isso é totalmente diferente do campo IN_ATIVO, que serve apenas pra dizer se o cadastro do cliente ainda é válido ou foi desativado.
 
 - **Nomenclatura e tipos pensados pro volume real da empresa:** o dicionário de dados usa prefixos padronizados (@ID_ pra chaves primárias, IN_ pra campos booleanos, etc.) pra manter tudo rastreável no MySQL 8. Os tipos de campo também já consideram o volume real , VARCHAR maior pros contatos corporativos (pra não cortar e-mails/nomes longos) e Decimal(15,2) pros valores financeiros, garantindo que os cálculos de limite de crédito não percam precisão.
+
+- **Cada pedido amarrado a um único dono (Relação 1:N):** Quando fomos ligar o Cliente ao Pedido, a gente até chegou a pensar em usar uma relação N:N, pra caso empresas parceiras (tipo matriz e filial) quisessem juntar tudo numa compra só. Mas descartamos a ideia rapidinho pensando na vida real. A regra do faturamento não perdoa: a nota fiscal e o boleto têm que sair no nome de um CNPJ só. Então deixamos cravado em 1:N mesmo. O cliente pode fazer quantos pedidos quiser no sistema, mas cada pedido pertence a um único CNPJ. Isso evita qualquer confusão na hora de cobrar e entregar a mercadoria.
+
+### Uso de Inteligência Artificial
+
+- ## Conclusão
+Este modelo conceitual entrega uma estrutura capaz de sustentar a operação real da Rafimex de vendas, análise de crédito e controle de estoque, organizada de um jeito que dá pra confiar nos dados registrados. Ao longo do levantamento, ficou claro que o maior risco pra empresa não estava nas regras comerciais (que já funcionam bem), mas na desatualização silenciosa dos dados de contato e endereço dos clientes, o que já gerou boleto não entregue e taxa de reentrega de frtes de endereços errados.
+
+A solução desenhada transforma esse problema, que hoje é descoberto só depois de já ter causado prejuízo, numa regra que o próprio banco de dados consegue aplicar sozinho: a trava de 90 dias na atualização cadastral. Junto com os controles de crédito e o registro histórico de preço em cada venda, o modelo passa a ter um caráter preventivo, e não apenas reativo.
+
+Com as entidades, atributos e relacionamentos definidos e normalizados, o projeto está pronto para avançar à implementação física e a conversão desse modelo conceitual em script SQL, com todas as constraints necessárias, na Entrega 2.
+
+
+
+
+
+
+
+
