@@ -307,4 +307,5 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 | `{}` | **iteração** / grupo repetitivo (`n{ /ITEM/ }m`) |
 | `@` | **identificador** (chave primária) |
 
-
+### Diagrama Entidade-Relacionamento (DER)
+[IMAGEM DER](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git)
