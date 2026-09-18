@@ -309,3 +309,7 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 
 ### Diagrama Entidade-Relacionamento (DER)
 [IMAGEM DER](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git)
+
+### Justificativa Técnica
+
+
