@@ -164,7 +164,6 @@ Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiv
 
 **Tabela: PEDIDO**
 
-**Tabela associativa: ITEM_PEDIDO**
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
 
