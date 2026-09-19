@@ -101,26 +101,26 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 
 **Índice Dicionário de Dados**
   **5.1 CLIENTE (PJ)**
--Estrutura Formal
--Leitura da Estrutura
--Atributos da Entidade CLIENTE
+-Estrutura Formal-
+-Leitura da Estrutura-
+-Atributos da Entidade CLIENTE-
 
  **5.2 COLABORADOR**
--Estrutura Formal
--Leitura da Estrutura
--Atributos da Entidade COLABORADOR
+-Estrutura Formal-
+-Leitura da Estrutura-
+-Atributos da Entidade COLABORADOR-
   **5.3 PRODUTO**
--Estrutura Formal
--Leitura da Estrutura
--Atributos da Entidade PRODUTO
+-Estrutura Formal-
+-Leitura da Estrutura-
+-Atributos da Entidade PRODUTO-
   **5.4 FONECEDOR**
--Estrutura Formal
--Leitura da Estrutura
--Atributos da Entidade FORNECEDOR
+-Estrutura Formal-
+-Leitura da Estrutura-
+-Atributos da Entidade FORNECEDOR-
  **5.5 PEDIDO**
--Estrutura Formal
--Leitura da Estrutura
--Atributos da Entidade PEDIDO
+-Estrutura Formal-
+-Leitura da Estrutura-
+-Atributos da Entidade PEDIDO-
 
 ## 5.1 CLIENTE (PJ)
 
