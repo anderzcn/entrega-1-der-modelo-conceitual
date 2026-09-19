@@ -367,7 +367,7 @@ Com as entidades, atributos e relacionamentos definidos e normalizados, o projet
 
 ---
 
-## Referências Bibliográficas
+## 10. Referências Bibliográficas
 
 - ANDRADE, Cid. Aspectos Éticos, Legais e Tecnológicos no Uso de Dados. Material didático da disciplina Modelagem de Banco de Dados, 2026.
 - ANDRADE, Cid. Construção de Dicionário de Dados. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.4, 2026.
