@@ -340,6 +340,22 @@ A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a o
 
 # 9. Uso de Inteligência Artificial
 
+Durante o desenvolvimento deste projeto, foram utilizadas ferramentas de Inteligência Artificial como apoio em etapas específicas, pesquisa, esclarecimento de dúvidas técnicas e organização da documentação. O uso teve caráter auxiliar, servindo de suporte ao aprendizado e desenvolvimento da equipe, sem substituir a análise crítica e as decisões técnicas, que permanecem de responsabilidade dos integrantes do grupo.
+
+Abaixo, estão detalhadas as ferramentas utilizadas, as etapas em que foram aplicadas e sua contribuição para a entrega 1.
+
+| |  |
+|------|------------------|
+| **Ferramentas e etapa** | Foram feito uso das ferramentas ChatGPT, Gemini e Claude, em todas as etapas que exigiam conhecimento e compreensão técnica.|
+| **Motivação** | Para entender a teoria e nós dar uma visão mais clara do projeto, termos técnicos e exigências da disciplina que não dominávamos, correção ortográfica. |
+| **Prompt(s) utilizados** | "Imagine que você é um mentor na área de T.I, o professor pediu esse trabalho em anexo para o grupo fazer composto por 5 pessoas. Faça um resumo detalhado deste esqueleto de entrega, apontando tudo o que é preciso fazer e todos os pontos de atenção. Explique a estrutura do trabalho e os termos mais técnicos. O que o trabalho pede? O que é preciso para executá-lo? Como separar cada conteúdo de forma que fique bem dividido entre os integrantes do grupo?"<br><br>"Me explica como funciona a notação algébrica de um dicionário de dados"<br><br> |
+| **Resposta recebida** | ? |
+| **Fontes consultadas e verificadas** | ? |
+| **Trechos rejeitados ou corrigidos** | ? |
+| **Justificativa da escolha final** | ? |
+| **Reflexão crítica** | ?. |
+
+
 ---
 
 - # Conclusão
