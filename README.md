@@ -299,18 +299,21 @@ Este modelo representa um sistema corporativo de vendas B2B e controle de estoqu
 | **PRODUTO** | ITEM_PEDIDO | **1:N** - Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
 | **CATEGORIA** | PRODUTO | **1:N** - Uma categoria agrupa vários produtos; cada produto pertence a uma única categoria.|
 | **NOTA_FISCAL** | PRODUTO | **1:N** - Registra a movimentação de um produto no estoque. |
+| **PEDIDO** | **NOTA FISCAL** | **1:1** - Um pedido gera apenas uma nota fiscal. |
 
 ## Definições das Entidades:
 CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
 COLABORADORES: Vendedores e representantes comerciais responsáveis pelo faturamento e comissão.
 PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações financeiras e entregas.
 PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
+ITEM PEDIDO: 
 FORNECEDORES: Entidade externa emissora de notas de compra/importação.
 NOTA FISCAL: Registro mercadorias vendidas que movimentam o saldo físico do estoque.
 
 ## Fluxo de Dados (Visão Geral)
 
-FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de compra.  O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. caso o pedido seja no boleto( a prazo), o pedido passa por aprovação gerencial e análise crédito. Sendo aprovado, o PEDIDO segue para separação e faturamento de NOTA FISCAL.
+FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de compra.  O COLABORADOR abre um PEDIDO, registrando os itens da entidade PRODUTO através do ITEM PEDIDO. caso o pedido seja no boleto( a prazo), o pedido passa por aprovação gerencial e análise crédito. Sendo aprovado, o PEDIDO segue para separação e faturamento de NOTA FISCAL.
+
 3. Convenções do Dicionário de Dados
 
 ## Configurações do Banco de Dados
