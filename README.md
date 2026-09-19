@@ -378,7 +378,7 @@ Com as entidades, atributos e relacionamentos definidos e normalizados, o projet
 - COSTA, Dalton. Um guia de como criar um dicionário de dados para a sua pesquisa. Datapsico, 29 out. 2021.
 - ENTREVISTA TÉCNICA E LEVANTAMENTO DE DADOS. Visita técnica presencial realizada na empresa Rafimex Comercial Importação e Exportação Ltda (R. Barra do Tibagi, 537 - Bom Retiro). Entrevista conduzida com a Diretoria Comercial. São Paulo, 2026.
 - GITHUB. 02.04 Introdução ao GitHub: Do Zero ao Primeiro Repositório. Material de apoio técnico sobre versionamento, repositórios e boas práticas de commits.
-- MYSQL. MySQL 8.0 Reference Manual: Data Types. Documentação oficial utilizada para definição da arquitetura e tipagem dos atributos no Dicionário de Dados. Disponível em: <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>. Acesso em: set. 2026.
+- MYSQL. MySQL 8.0 Reference Manual: Data Types. Documentação oficial utilizada para definição da arquitetura e tipagem dos atributos no Dicionário de Dados. Disponível em: <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>. Acesso em set. 2026.
 
 
 
