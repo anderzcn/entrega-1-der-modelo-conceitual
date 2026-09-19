@@ -99,28 +99,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
 O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR e PEDIDO,*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
-**Índice Dicionário de Dados**.
-  **5.1 CLIENTE (PJ)**.
--Estrutura Formal.
--Leitura da Estrutura.
--Atributos da Entidade CLIENTE.
 
- **5.2 COLABORADOR**.
--Estrutura Formal.
--Leitura da Estrutura.
--Atributos da Entidade COLABORADOR.
-  **5.3 PRODUTO**.
--Estrutura Formal.
--Leitura da Estrutura.
--Atributos da Entidade PRODUTO.
-  **5.4 FONECEDOR**.
--Estrutura Formal.
--Leitura da Estrutura.
--Atributos da Entidade FORNECEDOR.
- **5.5 PEDIDO**.
--Estrutura Formal.
--Leitura da Estrutura.
--Atributos da Entidade PEDIDO.
 
 ## 5.1 CLIENTE (PJ)
 
@@ -201,14 +180,13 @@ e acompanhamento da quantidade disponível em estoque.
 
 - ### Estrutura Formal
 
-**PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + CD_CODIGO_BARRA + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE + ID_CATEGORIA**
+**PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE + ID_CATEGORIA**
 
 - ### Leitura da Estrutura
 
 `@ID_PRODUTO` representa o identificador único do produto no sistema. 
 `CD_SKU` corresponde ao código interno utilizado para identificação e controle do produto. 
-`CD_NCM` armazena a classificação fiscal, enquanto `CD_CODIGO_BARRA` representa o código 
-de barras utilizado para identificação comercial.
+`CD_NCM` armazena a classificação fiscal,
 
 `VL_PRECO_CUSTO` e `VL_PRECO_VENDA` armazenam, respectivamente, os valores de custo 
 e venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque. 
@@ -223,7 +201,6 @@ Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiv
 | **CD_NCM** | Varchar(10) | Sim | Armazena o código NCM utilizado para a classificação fiscal do produto. |
 | **VL_PRECO_CUSTO** | Numeric(10,2) | Sim | Representa o valor de custo do produto para a empresa. |
 | **VL_PRECO_VENDA** | Numeric(10,2) | Sim | Representa o valor pelo qual o produto será comercializado. |
-| **CD_CODIGO_BARRA** | Varchar(20) | Sim | Armazena o código de barras utilizado para identificar o produto. |
 | **QT_ESTOQUE** | Integer | Sim | Indica a quantidade disponível do produto em estoque. |
 | **ID_CATEGORIA** | Integer | Sim (FK) | Identifica a categoria à qual o produto pertence, estabelecendo o relacionamento com a entidade **CATEGORIA**. |
 
