@@ -256,8 +256,7 @@ Por fim, `ID_STATUS_PEDIDO` Identificador para informar como o pedido está e em
 |---|---|---|---|
 | **ID_PEDIDO** | Integer | Sim (PK) | Identifica o pedido solicitado no sistema. |
 | **DT_DATA_DO_PEDIDO** | Date | Sim | Informativo da data em que o pedido foi solicitado. |
-| **VL_VALOR_TOTAL** | Decimal(18,2) | Sim | Identificador do valor total do pedido solicitado
-pelo cliente. |
+| **VL_VALOR_TOTAL** | Decimal(18,2) | Sim | Identificador do valor total do pedido solicitado pelo cliente. |
 | **ID_TIPO_DE_FRETE** | Integer | Sim(FK) | Identifica a forma de frete se transportadora ou correios para entrega do produto.  |
 | **ID_FORMA_DE_PAGAMENTO** | Integer | Sim(FK)  | Identifica a forma de pagamento que o cliente escolheu pagar pelo produto.  |
 | **DS_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Informa a porcentagem de desconto aplicada no pedido.  |
