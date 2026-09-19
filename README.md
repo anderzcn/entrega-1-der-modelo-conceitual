@@ -22,6 +22,8 @@ O objetivo deste trabalho é modelar um banco de dados que represente corretamen
 
 O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comercial (interna e externa), catálogo de produtos, fornecedores e pedidos de venda, incluindo o controle de preço praticado e produtos que ainda estão a caminho (importação). A implementação do banco de dados em si fica para a Entrega 2.
 
+---
+
 ## 1. Caracterização da Organização
 
  - **Nome e natureza da organização:** Rafimex Comercial Importação e Exportação Ltda, conhecida comercialmente como Rafimex  Mesa Posta e Decorações, empresa privada com fins lucrativos que atua no comércio atacadista de utilidades domésticas e decoração,com parte do catálogo vindo de produtos importados.
@@ -43,7 +45,10 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
  - **Evidências da organização:** 
   - *Localização:* [Visualizar Rafimex no Google Maps](https://maps.app.goo.gl/PDXnt86jRLMjDYKF8)
   - *Endereço e Contato:* [R. Barra do Tibagi, 537 - Bom Retiro, São Paulo - SP, 01128-000 | Tel: (11) 99471-1531- Gabriel Gedanken- DIRETOR COMERCIAL]
-    -**Registro visual:** [Visualiza Fotos de Visitação](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
+    -**Registro visual:** [Visualiza Fotos de Visitação](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git)
+
+    ---
+    
 ## 2. Processos de Negócio
 - **Cadastro de clientes:** só empresas (CNPJ) podem se cadastrar como clientes, e o cadastro deveria passar por revalidação periódica.
 
@@ -54,7 +59,10 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - **Controle de estoque:** a empresa separa o que já está fisicamente disponível no galpão ("Disponível/Reservado") do que ainda está vindo de importação ("Entrega Programada"), mostrando a data prevista de chegada no orçamento.
 
 **Fluxograma:** [Visualiza imagem Fluxograma](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
- ### Requisitos do Sistema   
+
+---
+
+ ## 3. Requisitos do Sistema   
 **Requisitos Funcionais**
 - RF01 — O sistema só pode cadastrar clientes com CNPJ válido e único.
 - RF02 — O sistema deve bloquear automaticamente a emissão de qualquer pedido para clientes inadimplentes diretos com a Rafimex. Para pedidos com pagamento a prazo (boleto), o sistema deve reter a venda e exigir a aprovação manual do setor Financeiro (que avaliará o limite e as restrições no Serasa).  
@@ -70,6 +78,9 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - RNF01 — O sistema deve manter controle da data de atualização cadastral, ajudando a manter os dados em dia e em conformidade com a LGPD.
 - RNF02 —O sistema deve aplicar restrições estritas de integridade (chaves estrangeiras - FK), impedindo a existência de itens sem pedido ou pedidos sem cliente vinculado, além de bloquear a exclusão de cadastros que possuam histórico de vendas.
 - RNF03 — O sistema precisa funcionar bem mesmo com o volume atual (10.000 clientes, 1.550 produtos), sem travar ou ficar lento.
+
+  ---
+  
 ## 4. Regras de Negócio
 
 - RN01 — Só empresas com CNPJ regular podem comprar da Rafimex.
@@ -81,6 +92,9 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - RN07 — O preço cobrado numa venda fica registrado daquele jeito para sempre, mesmo que o preço de tabela mude depois.
 - RN08 — Produtos com chegada programada (importação) podem ser vendidos, desde que a data prevista de chegada apareça no orçamento.
 - RN09 — É proibida a emissão ou faturamento de pedidos para clientes cujos dados cadastrais (endereço, telefone e contato financeiro) não tenham sido confirmados nos últimos 90 dias, visando prevenir devoluções de mercadoria e extravio de cobranças (essa é a regra que resolve o problema real de desatualização identificado na Rafimex.)
+
+  ---
+  
 ## 5. Dicionário de Dados Conceitual
 
 
@@ -129,7 +143,6 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 - ### Estrutura Formal
 
 **COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + ID_ENDERECO + DS_EMAIL + NR_TELEFONE + DS_COMISSAO**
----
 
 - ### Leitura da Estrutura
 
@@ -156,12 +169,12 @@ Por fim, ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador.
 | **DS_COMISSAO** | Numeric(5,2) | Sim  |Valor referente a porcentagem de venda ao colaborador.|
 
 
-
 ## 5.3 PRODUTO
 
 A entidade **PRODUTO** representa o cadastro dos produtos registrados no sistema. 
 Suas informações são utilizadas para identificação, classificação, controle de preços 
 e acompanhamento da quantidade disponível em estoque.
+
 
 - ### Estrutura Formal
 
@@ -194,7 +207,7 @@ Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiv
 
 ## 5.4 FORNECEDOR
 A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
-## 1.1. Estrutura Formal
+- ### Estrutura Formal
 **PEDIDO = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + ID_ENDERECO**
 
 - ### Leitura da Estrutura
@@ -249,10 +262,11 @@ pelo cliente. |
 | **DS_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Informa a porcentagem de desconto aplicada no pedido.  |
 | **ID_STATUS_PEDIDO** | Integer | Sim(FK) | Identificador para informar como o pedido está e em qual etapa do processo que o pedido está. |
 
+---
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
 
-**1. Modelo Conceitual**
+## Modelo Conceitual
 Este modelo representa um sistema corporativo de vendas B2B e controle de estoque, mapeando as interações desde o cadastro de clientes e parceiros até o faturamento e a movimentação física de produtos.
 
 | Entidade | Relaciona-se com | Cardinalidade |
@@ -260,28 +274,27 @@ Este modelo representa um sistema corporativo de vendas B2B e controle de estoqu
 | **COLABORADORES** | PEDIDO | **1:N** - Um colaborador/vendedor pode emitir vários pedidos, mas um pedido tem apenas um vendedor responsável. |
 | **PEDIDO** | ITEM_PEDIDO | **1:N** - Um pedido possui um ou vários itens de pedido; cada item pertence a um único pedido. |
 | **PRODUTO** | ITEM_PEDIDO | **1:N** - Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
-| **CATEGORIA** | PRODUTO | **1:N** - Uma categoria agrupa vários produtos; cada produto pertence a uma única categoria. |
+| **CATEGORIA** | PRODUTO | **1:N** - Uma categoria agrupa vários produtos; cada produto pertence a uma única categoria.|
 
-**Definições das Entidades:**
+## Definições das Entidades:
 CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
 COLABORADORES: Vendedores e representantes comerciais responsáveis pelo faturamento e comissão.
 PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações financeiras e entregas.
 PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
 FORNECEDORES: Entidade externa emissora de notas de compra/importação.
 
-**2. Fluxo de Dados (Visão Geral)**
+## Fluxo de Dados (Visão Geral)
 
 FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de compra.  O COLABORADOR abre um PEDIDO, registrando os itens trazidos da entidade PRODUTO. caso o pedido seja no boleto( a prazo), o pedido passa por aprovação gerencial e análise crédito. Sendo aprovado, o PEDIDO segue para separação e faturamento.
 3. Convenções do Dicionário de Dados
 
-### Configurações do Banco de Dados
+## Configurações do Banco de Dados
 | Parâmetro | Configuração / Descrição |
 | **SGBD** | MySQL 8, mecanismo de armazenamento InnoDB |
 | **Codificação / Collation** | `utf8mb4` com collation `utf8mb4_0900_ai_ci` |
 
----
 
-### Padronização de Prefixos
+## Padronização de Prefixos
 | Prefixo | Significado | Exemplo de Aplicação |
 | `@ID_` | Identificador / Chave Primária (PK) | `@ID_CLIENTE` |
 | `$NM_$` | Nome | `NM_RAZAO_SOCIAL` |
@@ -293,9 +306,8 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 | `$DS_$` | Descrição ou Texto Livre | `DS_ENDERECO` |
 | `$NR_$` | Número (documento, nota fiscal ou telefone) | `NR_CNPJ`, `NR_NOTA_FISCAL` |
 
----
 
-### Notação Formal
+##  Notação Formal
 | Símbolo | Significado e Aplicação |
 | `=` | **é composto de** (define a estrutura da entidade) |
 | `+` | **e** (conecta elementos obrigatórios) |
@@ -304,10 +316,14 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 | `{}` | **iteração** / grupo repetitivo (`n{ /ITEM/ }m`) |
 | `@` | **identificador** (chave primária) |
 
-### Diagrama Entidade-Relacionamento (DER)
+---
+
+# 7. Diagrama Entidade-Relacionamento (DER)
 [Visualiza imagem DER](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git)
 
-### Justificativa Técnica
+---
+
+# 8. Justificativa Técnica
 A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a operação B2B da empresa e, ao mesmo tempo, resolver o problema real identificado: a desatualização silenciosa do cadastro dos clientes. As decisões abaixo seguem princípios de integridade referencial e normalização, mas cada uma delas nasceu de uma necessidade concreta da empresa:
 
 - **Trava de 90 dias como prevenção, não como remendo:** o campo DT_DATA_DE_ATUALIZACAO, em CLIENTE, é a peça central que resolve o problema real da Rafimex. Em vez de depender de alguém lembrar de checar manualmente, o próprio banco consegue calcular quando um cadastro passou da validade e bloquear novos pedidos antes que isso vire prejuízo, cumprindo RF09 e RN09. Chegamos a pensar em criar uma tabela separada só de "Histórico de Atualizações" pra controlar esse tempo, mas descartamos a ideia. Isso só ia inflar o banco com dados secundários. Deixar o controle direto no cadastro do cliente resolve a dor de forma muito mais direta.
@@ -320,14 +336,20 @@ A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a o
 
 - **Cada pedido amarrado a um único dono (Relação 1:N):** Quando fomos ligar o Cliente ao Pedido, a gente até chegou a pensar em usar uma relação N:N, pra caso empresas parceiras (tipo matriz e filial) quisessem juntar tudo numa compra só. Mas descartamos a ideia rapidinho pensando na vida real. A regra do faturamento não perdoa: a nota fiscal e o boleto têm que sair no nome de um CNPJ só. Então deixamos cravado em 1:N mesmo. O cliente pode fazer quantos pedidos quiser no sistema, mas cada pedido pertence a um único CNPJ. Isso evita qualquer confusão na hora de cobrar e entregar a mercadoria.
 
-### Uso de Inteligência Artificial
+---
 
-- ## Conclusão
+# 9. Uso de Inteligência Artificial
+
+---
+
+- # Conclusão
 Este modelo conceitual entrega uma estrutura capaz de sustentar a operação real da Rafimex de vendas, análise de crédito e controle de estoque, organizada de um jeito que dá pra confiar nos dados registrados. Ao longo do levantamento, ficou claro que o maior risco pra empresa não estava nas regras comerciais (que já funcionam bem), mas na desatualização silenciosa dos dados de contato e endereço dos clientes, o que já gerou boleto não entregue e taxa de reentrega de fretes de endereços errados.
 
 A solução desenhada transforma esse problema, que hoje é descoberto só depois de já ter causado prejuízo, numa regra que o próprio banco de dados consegue aplicar sozinho: a trava de 90 dias na atualização cadastral. Junto com os controles de crédito e o registro histórico de preço em cada venda, o modelo passa a ter um caráter preventivo, e não apenas reativo.
 
 Com as entidades, atributos e relacionamentos definidos e normalizados, o projeto está pronto para avançar à implementação física e a conversão desse modelo conceitual em script SQL, com todas as constraints necessárias, na Entrega 2.
+
+---
 
 ## Referências Bibliográfica
 
