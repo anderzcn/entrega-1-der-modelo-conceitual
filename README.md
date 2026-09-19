@@ -369,20 +369,16 @@ Com as entidades, atributos e relacionamentos definidos e normalizados, o projet
 
 ## 10. Referências Bibliográficas
 
-- ANDRADE, Cid. Aspectos Éticos, Legais e Tecnológicos no Uso de Dados. Material didático da disciplina Modelagem de Banco de Dados, 2026.
-- ANDRADE, Cid. Construção de Dicionário de Dados. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.4, 2026.
-- ANDRADE, Cid. Dado e Informação. Material didático da disciplina Modelagem de Banco de Dados, 2026.
-- ANDRADE, Cid. Ferramentas para Modelagem: DB Designer. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.3, 2026.
-- BRASIL. Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). Diário Oficial da União, Brasília, DF, 2018.
-- BRMODELO WEB. Ferramenta online de modelagem de diagramas entidade-relacionamento. Disponível em: <brmodeloweb.com>.
-- COSTA, Dalton. Um guia de como criar um dicionário de dados para a sua pesquisa. Datapsico, 29 out. 2021.
-- ENTREVISTA TÉCNICA E LEVANTAMENTO DE DADOS. Visita técnica presencial realizada na empresa Rafimex Comercial Importação e Exportação Ltda (R. Barra do Tibagi, 537 - Bom Retiro). Entrevista conduzida com a Diretoria Comercial. São Paulo, 2026.
-- GITHUB. 02.04 Introdução ao GitHub: Do Zero ao Primeiro Repositório. Material de apoio técnico sobre versionamento, repositórios e boas práticas de commits.
-- MYSQL. MySQL 8.0 Reference Manual: Data Types. Documentação oficial utilizada para definição da arquitetura e tipagem dos atributos no Dicionário de Dados. Disponível em: <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>. Acesso em Setembro 2026.
-
-
-
-
-
-
+* **ANDRADE, Cid.** Aspectos Éticos, Legais e Tecnológicos no Uso de Dados. Material didático da disciplina Modelagem de Banco de Dados, 2026.
+* **ANDRADE, Cid.** Construção de Dicionário de Dados. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.4, 2026.
+* **ANDRADE, Cid.** Dado e Informação. Material didático da disciplina Modelagem de Banco de Dados, 2026.
+* **ANDRADE, Cid.** Ferramentas para Modelagem: DB Designer. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.3, 2026.
+* **BRASIL.** Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). Diário Oficial da União, Brasília, DF, 2018.
+* **BRMODELO WEB.** Ferramenta online de modelagem de diagramas entidade-relacionamento. Disponível em: <https://www.brmodeloweb.com>. Acesso em: set. 2026.
+* **CADONÁ.** *Modelagem Conceitual - Exemplo.* YouTube, 2020. Disponível em: <https://youtu.be/BzQ7kkTZVIo>. Acesso em: set. 2026.
+* **COSTA, Dalton.** *Um guia de como criar um dicionário de dados para a sua pesquisa.* Datapsico, 29 out. 2021. 
+* **ENTREVISTA TÉCNICA E LEVANTAMENTO DE DADOS.** Visita técnica presencial realizada na empresa Rafimex Comercial Importação e Exportação Ltda (R. Barra do Tibagi, 537 - Bom Retiro). Entrevista conduzida com a Diretoria Comercial. São Paulo, 2026.
+* **GITHUB.** *02.04 Introdução ao GitHub: Do Zero ao Primeiro Repositório.pdf*. Material de apoio técnico sobre versionamento, repositórios e boas práticas de commits.
+* **MONITOR DIGITAL IFF.** *Banco de Dados: Diagrama Entidade-Relacionamento: cardinalidades em relacionamentos.* YouTube, 2020. Disponível em: <https://youtu.be/GdxodSoV_5k>. Acesso em: set. 2026.
+* **MYSQL.** *MySQL 8.0 Reference Manual: Data Types*. Documentação oficial utilizada para definição da arquitetura e tipagem dos atributos no Dicionário de Dados. Disponível em: <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>. Acesso em: set. 2026.
 
