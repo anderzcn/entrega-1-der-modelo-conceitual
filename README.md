@@ -97,6 +97,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
   
 ## 5. Dicionário de Dados Conceitual
 
+O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR e PEDIDO,*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
 
 ## 5.1 CLIENTE (PJ)
