@@ -219,7 +219,7 @@ NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quand
 `NR_TELEFONE` Cadastro do número do fornecedor para contatos diretos.
 Por fim, `ID_ENDERECO` Identifica o endereço em que o fornecedor está localizado.
 
-- #### Atributos da Entidade FORNECEDOR
+- ### Atributos da Entidade FORNECEDOR
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
@@ -236,7 +236,7 @@ Por fim, `ID_ENDERECO` Identifica o endereço em que o fornecedor está localiza
 ## 5.5 PEDIDO
 A entidade **PEDIDO** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
 
-- #### Estrutura Formal
+- ### Estrutura Formal
 **PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_TOTAL + ID_TIPO_DE_FRETE + ID_FORMA_DE_PAGAMENTO + DS_DESCONTO_APLICADO + ID_STATUS_PEDIDO** 
 
 - ### Leitura da Estrutura
