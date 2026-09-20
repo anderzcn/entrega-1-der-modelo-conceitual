@@ -125,36 +125,6 @@ Princípios da lei aplicados diretamente no modelo:
 
 O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR ,PEDIDO e NOTA FISCAL*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
-**Índice Dicionário de Dados**.  
-   **5.1 CLIENTE (PJ)**.  
-  -Estrutura Formal.  
-  -Leitura da Estrutura.  
-  -Atributos da Entidade CLIENTE.  
-  
-  **5.2 COLABORADOR**.  
-  -Estrutura Formal.  
-  -Leitura da Estrutura.  
-  -Atributos da Entidade COLABORADOR. 
-  
-  **5.3 PRODUTO**.  
-  -Estrutura Formal.  
-  -Leitura da Estrutura. 
-  -Atributos da Entidade PRODUTO.  
-   
-   **5.4 FONECEDOR**.  
-   -Estrutura Formal.  
-   -Leitura da Estrutura.  
-   -Atributos da Entidade FORNECEDOR.  
-   
-   **5.5 PEDIDO**.  
-   -Estrutura Formal.  
-   -Leitura da Estrutura.  
-   -Atributos da Entidade PEDIDO.
-
-   **5.6 NOTA FISCAL**.  
-   -Estrutura Formal.  
-   -Leitura da Estrutura.  
-   -Atributos da Entidade NOTA FISCAL.
 
 
 ## 5.1 CLIENTE (PJ)
