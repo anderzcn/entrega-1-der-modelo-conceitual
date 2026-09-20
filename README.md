@@ -123,7 +123,7 @@ Princípios da lei aplicados diretamente no modelo:
   
 ## 5. Dicionário de Dados Conceitual
 
-O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR e PEDIDO,*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
+O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR ,PEDIDO e NOTA FISCAL*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
 **Índice Dicionário de Dados**.  
    **5.1 CLIENTE (PJ)**.  
@@ -158,15 +158,12 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 
 
 ## 5.1 CLIENTE (PJ)
-
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
 - ### Estrutura Formal
-
 **CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 - ### Leitura da Estrutura
-
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
 `NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
@@ -175,7 +172,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 `LM_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
 
-Por fim, `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das informações do cadastro.
+ `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das informações do cadastro.
 
 - ### Atributos da Entidade CLIENTE
 
@@ -211,7 +208,7 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 `ID_ENDERECO` Identificação do endereço do colaborador.
 `DS_EMAIL` Informa o Email pessoal para identificação no sistema.
 `NR_TELEFONE` Telefone contato pessoal do colaborador.
-Por fim, ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
+ ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
 
 - ### Atributos da Entidade COLABORADOR
 
@@ -235,7 +232,6 @@ e acompanhamento da quantidade disponível em estoque.
 
 
 - ### Estrutura Formal
-
 **PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE + ID_CATEGORIA**
 
 - ### Leitura da Estrutura
@@ -246,7 +242,7 @@ e acompanhamento da quantidade disponível em estoque.
 
 `VL_PRECO_CUSTO` e `VL_PRECO_VENDA` armazenam, respectivamente, os valores de custo 
 e venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque. 
-Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiva categoria.
+ `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiva categoria.
 
 - ### Atributos da Entidade PRODUTO
 
@@ -263,6 +259,8 @@ Por fim, `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiv
 
 ## 5.4 FORNECEDOR
 A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
+
+
 - ### Estrutura Formal
 **PEDIDO = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + ID_ENDERECO**
 
@@ -273,7 +271,7 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quando aplicável.
 `DS_EMAIL` Informa o Email profissional do fornecedor.
 `NR_TELEFONE` Cadastro do número do fornecedor para contatos diretos.
-Por fim, `ID_ENDERECO` Identifica o endereço em que o fornecedor está localizado.
+ `ID_ENDERECO` Identifica o endereço em que o fornecedor está localizado.
 
 - ### Atributos da Entidade FORNECEDOR
 
@@ -290,7 +288,7 @@ Por fim, `ID_ENDERECO` Identifica o endereço em que o fornecedor está localiza
 
 
 ## 5.5 PEDIDO
-A entidade **PEDIDO** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
+A entidade **PEDIDO** representa a separação de produtos e quantidades de itens que o cliente solicitou.
 
 - ### Estrutura Formal
 **PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_TOTAL + ID_TIPO_DE_FRETE + ID_FORMA_DE_PAGAMENTO + DS_DESCONTO_APLICADO + ID_STATUS_PEDIDO** 
@@ -302,10 +300,9 @@ A entidade **PEDIDO** representa a separação de produtos, notas, e quantidades
 `ID_TIPO_FRETE` Identifica a forma de frete se transportadora ou correios para entrega do produto. 
 `ID_FORMA_DE_PAGAMENTO` Identifica a forma de pagamento que o cliente escolheu pagar pelo produto.  
 `DS_DESCONTO_APLICADO` Informa a porcentagem de desconto aplicada no pedido.
-Por fim, `ID_STATUS_PEDIDO` Identificador para informar como o pedido está e em qual etapa do processo que o pedido está.
+ `ID_STATUS_PEDIDO` Identificador para informar como o pedido está e em qual etapa do processo que o pedido está.
 
 - ### Atributos da Entidade PEDIDO
-
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
@@ -316,6 +313,41 @@ Por fim, `ID_STATUS_PEDIDO` Identificador para informar como o pedido está e em
 | **ID_FORMA_DE_PAGAMENTO** | Integer | Sim(FK)  | Identifica a forma de pagamento que o cliente escolheu pagar pelo produto.  |
 | **DS_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Informa a porcentagem de desconto aplicada no pedido.  |
 | **ID_STATUS_PEDIDO** | Integer | Sim(FK) | Identificador para informar como o pedido está e em qual etapa do processo que o pedido está. |
+
+
+
+## 5.6 NOTA_FISCAL
+A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um pedido já faturado, contendo os dados legais e tributários exigidos para a emissão da nota.
+
+- ### Estrutura Formal
+`NOTA_FISCAL= @ID_NF + ID_PEDIDO + NUMERO_NF + CHAVE_ACESSO + DATA_EMISSAO + 
+VLR_IMPOSTO_IMPORTACAO + VLR_TOTAL_IMPOSTOS + VLR_TOTAL_NF + STATUS_NF
+
+- ### Leitura da Estrutura
+`@ID_NF` identifica a nota fiscal no sistema. 
+`ID_PEDIDO `vincula a nota ao pedido que a originou , é essa referência que evita duplicar, na nota, os dados do cliente e dos produtos já registrados no pedido. 
+`NUMERO_NF` é o número sequencial da nota emitida.
+`CHAVE_ACESSO` é o código de 44 dígitos que identifica a NF-e perante a Receita.
+`DATA_EMISSAO` informa quando a nota foi emitida.
+`VLR_IMPOSTO_IMPORTACAO` registra o valor de imposto de importação incidente, quando aplicável. 
+`VLR_TOTAL_IMPOSTOS` soma todos os tributos da nota. 
+`VLR_TOTAL_NF` é o valor final faturado, já com os impostos inclusos.
+`STATUS_NF` indica se a nota está emitida ou foi cancelada.
+
+- ### Atributos da Entidade NOTA FISCAL
+
+| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| **id_nf**| Integer | Sim (PK) | Identifica a nota fiscal no sistema. |
+| **id_pedido** | Integer | Sim (FK) | Vincula a nota fiscal ao pedido que a originou. |
+| **numero_nf** | Integer | Sim (único) | Número sequencial da nota fiscal emitida. |
+| **chave_acesso** | Varchar(44) | Sim (único) | Código de acesso da NF-e, exigido pela Receita Federal. |
+| **data_emissao** | Date | Sim | Data em que a nota fiscal foi emitida. |
+| **vlr_imposto_importacao** | Decimal(18,2) | Não | Valor de imposto de importação, quando o produto faturado for de origem importada,(nem todo produto importado tem IPI, como tecido e Rattan) |
+| **vlr_total_impostos** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
+| **vlr_total_nf** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
+| **status_nf** | Varchar(20) | Sim | 'Emitida' ou 'Cancelada'. |
+
 
 ---
 
