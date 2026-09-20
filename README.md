@@ -54,9 +54,10 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
 - **Análise de crédito:** antes de aprovar um pedido no boleto, o Financeiro verifica se o cliente tem restrição no Serasa ou pendência com a própria Rafimex, bloqueando a venda ou limitando a forma de pagamento conforme o caso.
 
-- **Emissão de pedidos:** todo pedido é aberto vinculado a um cliente e a um representante, com desconto aplicado dentro da alçada permitida (até 4%, acima disso precisa de aprovação da diretoria) e a modalidade de entrega definida.
-
 - **Controle de estoque:** a empresa separa o que já está fisicamente disponível no galpão ("Disponível/Reservado") do que ainda está vindo de importação ("Entrega Programada"), mostrando a data prevista de chegada no orçamento.
+
+- **Emissão de pedidos:** todo pedido é aberto vinculado a um cliente e a um representante, com desconto aplicado dentro da alçada permitida (até 4%, acima disso precisa de aprovação da diretoria) e a modalidade de entrega/frete definida. Depois de passar pelas checagens de crédito e estoque, o pedido é faturado, com a emissão da nota fiscal correspondente.
+
 
 **Fluxograma:** [Visualiza imagem Fluxograma](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
 
@@ -78,6 +79,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - RNF01 — O sistema deve manter controle da data de atualização cadastral, ajudando a manter os dados em dia e em conformidade com a LGPD.
 - RNF02 —O sistema deve aplicar restrições estritas de integridade (chaves estrangeiras - FK), impedindo a existência de itens sem pedido ou pedidos sem cliente vinculado, além de bloquear a exclusão de cadastros que possuam histórico de vendas.
 - RNF03 — O sistema precisa funcionar bem mesmo com o volume atual (10.000 clientes, 1.550 produtos), sem travar ou ficar lento.
+- RNF04 — O acesso aos dados cadastrais dos clientes (CNPJ, contatos, limite de crédito) deve ser restrito a usuários autorizados do sistema, seguindo o princípio da necessidade/minimização previsto no art. 6º, inciso III, da LGPD.- 
 
   ---
   
@@ -92,8 +94,32 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - RN07 — O preço cobrado numa venda fica registrado daquele jeito para sempre, mesmo que o preço de tabela mude depois.
 - RN08 — Produtos com chegada programada (importação) podem ser vendidos, desde que a data prevista de chegada apareça no orçamento.
 - RN09 — É proibida a emissão ou faturamento de pedidos para clientes cujos dados cadastrais (endereço, telefone e contato financeiro) não tenham sido confirmados nos últimos 90 dias, visando prevenir devoluções de mercadoria e extravio de cobranças (essa é a regra que resolve o problema real de desatualização identificado na Rafimex.)
+ ---
 
-  ---
+ ## Conformidade Legal (LGPD)
+
+Embora a Rafimex opere no modelo B2B (empresa para empresa), o modelo de dados também trata informações de pessoas físicas , como o CPF dos colaboradores e o nome e contato do responsável dentro de cada empresa cliente. Por isso, mesmo numa operação majoritariamente entre empresas, parte dos dados tratados se enquadra como dado pessoal sob a LGPD (Lei nº 13.709/2018).
+
+Princípios da lei aplicados diretamente no modelo:
+
+- **Qualidade dos dados (art. 6º, V):** a trava de atualização cadastral de 90 dias (RN09) garante que os dados de contato permaneçam exatos e atualizados, evitando o problema real identificado na Rafimex.
+- **Necessidade/minimização (art. 6º, III):** o dicionário de dados coleta apenas os campos necessários pra operação comercial — não há coleta de dado supérfluo sobre clientes ou colaboradores.
+- **Controle de acesso:** informações sensíveis do ponto de vista comercial, como limite de crédito e situação no Serasa, têm acesso restrito a usuários autorizados (RNF04).
+
+**Tratamento de Dados por Entidade**
+
+| Entidade | Contém dado pessoal (LGPD)? | Quais campos | Tratamento aplicado |
+|---|---|---|---|
+| CLIENTE | Indireto | Nome/e-mail/telefone do contato responsável na empresa | Acesso restrito (RNF04) + revalidação a cada 90 dias (RN09) |
+| COLABORADOR | Sim | CPF, nome, data de nascimento, e-mail, telefone, endereço | Acesso restrito a RH/administrativo; dado de identificação de pessoa física |
+| FORNECEDOR | Indireto | CNPJ (não é dado pessoal — é de pessoa jurídica) + contato, se pessoa física | Acesso restrito (RNF04) |
+| PRODUTO | Não se aplica | — | Não há dado pessoal envolvido |
+| PEDIDO | Não diretamente | Vincula CLIENTE e COLABORADOR por chave estrangeira | Integridade referencial protege o histórico sem duplicar dado pessoal |
+| NOTA_FISCAL | Não diretamente | Vincula-se ao PEDIDO, que por sua vez vincula-se ao CLIENTE | Não duplica dado pessoal, os dados do cliente são obtidos por referência ao pedido, não armazenados de novo na nota |
+
+*Observação: CNPJ identifica pessoa jurídica, não pessoa física ,por isso não é, por si só, dado pessoal sob a LGPD. O que exige cuidado é o nome/contato da pessoa física responsável dentro de cada empresa (cliente, fornecedor) e os dados dos colaboradores, que são pessoas físicas.*
+
+ ---
   
 ## 5. Dicionário de Dados Conceitual
 
