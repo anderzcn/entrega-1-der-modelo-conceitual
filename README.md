@@ -372,7 +372,7 @@ Durante o desenvolvimento deste projeto, foram utilizadas ferramentas de Intelig
 
 Abaixo, estão detalhadas as ferramentas utilizadas, as etapas em que foram aplicadas e sua contribuição para a entrega 1.
 
-| |  |
+| Critério | Detalhamento |
 |------|------------------|
 | **Ferramentas e etapa** | Foram feito uso das ferramentas ChatGPT, Gemini e Claude, em todas as etapas que exigiam conhecimento e compreensão técnica.|
 | **Motivação** | Compreender a teoria, obter uma visão mais clara do projeto, esclarecer termos técnicos e exigências da disciplina que o grupo não dominava, além de auxiliar na correção ortográfica dos textos produzidos. |
