@@ -327,6 +327,7 @@ VLR_IMPOSTO_IMPORTACAO + VLR_TOTAL_IMPOSTOS + VLR_TOTAL_NF + STATUS_NF
 Este modelo representa um sistema corporativo de vendas B2B e controle de estoque, mapeando as interações desde o cadastro de clientes e parceiros até o faturamento e a movimentação física de produtos.
 
 | Entidade | Relaciona-se com | Cardinalidade |
+| ------ | ---- | ------|
 | **CLIENTES** | PEDIDO | **1:N** - Um cliente pode realizar vários pedidos, mas um pedido pertence a apenas um cliente. |
 | **COLABORADORES** | PEDIDO | **1:N** - Um colaborador/vendedor pode emitir vários pedidos, mas um pedido tem apenas um vendedor responsável. |
 | **PEDIDO** | ITEM_PEDIDO | **1:N** - Um pedido possui um ou vários itens de pedido; cada item pertence a um único pedido. |
