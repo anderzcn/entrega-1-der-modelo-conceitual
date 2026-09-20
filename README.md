@@ -428,6 +428,8 @@ A modelagem do banco de dados da Rafimex foi pensada pra refletir de verdade a o
 
 - **Cada pedido amarrado a um único dono (Relação 1:N):** Quando fomos ligar o Cliente ao Pedido, a gente até chegou a pensar em usar uma relação N:N, pra caso empresas parceiras (tipo matriz e filial) quisessem juntar tudo numa compra só. Mas descartamos a ideia rapidinho pensando na vida real. A regra do faturamento não perdoa: a nota fiscal e o boleto têm que sair no nome de um CNPJ só. Então deixamos cravado em 1:N mesmo. O cliente pode fazer quantos pedidos quiser no sistema, mas cada pedido pertence a um único CNPJ. Isso evita qualquer confusão na hora de cobrar e entregar a mercadoria.
 
+- **Por que NOTA_FISCAL é uma entidade separada, e não só um campo em PEDIDO:** a nota fiscal tem seus próprios dados legais (número, chave de acesso, status) que só existem depois que o pedido é faturado , mantê-la separada evita que o PEDIDO fique com campos vazios antes da emissão, e permite cancelar uma nota sem mexer no pedido original. A tabela NOTA_FISCAL guarda só o vínculo com o pedido (não duplica dados do cliente); o documento fiscal completo, com todos os dados exigidos por lei.
+
 ---
 
 # 9. Uso de Inteligência Artificial
@@ -455,22 +457,23 @@ Este modelo conceitual entrega uma estrutura capaz de sustentar a operação rea
 
 A solução desenhada transforma esse problema, que hoje é descoberto só depois de já ter causado prejuízo, numa regra que o próprio banco de dados consegue aplicar sozinho: a trava de 90 dias na atualização cadastral. Junto com os controles de crédito e o registro histórico de preço em cada venda, o modelo passa a ter um caráter preventivo, e não apenas reativo.
 
-Com as entidades, atributos e relacionamentos definidos e normalizados, o projeto está pronto para avançar à implementação física e a conversão desse modelo conceitual em script SQL, com todas as constraints necessárias, na Entrega 2.
+Com as entidades, atributos e relacionamentos definidos e normalizados,  o projeto está pronto para avançar à normalização e à implementação física do banco de dados na Entrega 2.
+
 
 ---
 
 ## 10. Referências Bibliográficas
 
-* **ANDRADE, Cid.** Aspectos Éticos, Legais e Tecnológicos no Uso de Dados. Material didático da disciplina Modelagem de Banco de Dados, 2026.
-* **ANDRADE, Cid.** Construção de Dicionário de Dados. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.4, 2026.
-* **ANDRADE, Cid.** Dado e Informação. Material didático da disciplina Modelagem de Banco de Dados, 2026.
-* **ANDRADE, Cid.** Ferramentas para Modelagem: DB Designer. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.3, 2026.
-* **BRASIL.** Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). Diário Oficial da União, Brasília, DF, 2018.
-* **BRMODELO WEB.** Ferramenta online de modelagem de diagramas entidade-relacionamento. Disponível em: <https://www.brmodeloweb.com>. Acesso em: set. 2026.
-* **CADONÁ.** *Modelagem Conceitual - Exemplo.* YouTube, 2020. Disponível em: <https://youtu.be/BzQ7kkTZVIo>. Acesso em: set. 2026.
-* **COSTA, Dalton.** *Um guia de como criar um dicionário de dados para a sua pesquisa.* Datapsico, 29 out. 2021. 
-* **ENTREVISTA TÉCNICA E LEVANTAMENTO DE DADOS.** Visita técnica presencial realizada na empresa Rafimex Comercial Importação e Exportação Ltda (R. Barra do Tibagi, 537 - Bom Retiro). Entrevista conduzida com a Diretoria Comercial. São Paulo, 2026.
-* **GITHUB.** *02.04 Introdução ao GitHub: Do Zero ao Primeiro Repositório.pdf*. Material de apoio técnico sobre versionamento, repositórios e boas práticas de commits.
-* **MONITOR DIGITAL IFF.** *Banco de Dados: Diagrama Entidade-Relacionamento: cardinalidades em relacionamentos.* YouTube, 2020. Disponível em: <https://youtu.be/GdxodSoV_5k>. Acesso em: set. 2026.
-* **MYSQL.** *MySQL 8.0 Reference Manual: Data Types*. Documentação oficial utilizada para definição da arquitetura e tipagem dos atributos no Dicionário de Dados. Disponível em: <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>. Acesso em: set. 2026.
-
+* *ANDRADE, Cid.* Aspectos Éticos, Legais e Tecnológicos no Uso de Dados. Material didático da disciplina Modelagem de Banco de Dados, 2026.
+* *ANDRADE, Cid.* Construção de Dicionário de Dados. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.4, 2026.
+* *ANDRADE, Cid.* Dado e Informação. Material didático da disciplina Modelagem de Banco de Dados, 2026.
+* *ANDRADE, Cid.* Ferramentas para Modelagem: DB Designer. Material didático da disciplina Modelagem de Banco de Dados, Unidade 2, Aula 2.3, 2026.
+* *BRASIL.* Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). Diário Oficial da União, Brasília, DF, 2018.
+* *BRMODELO WEB.* Ferramenta online de modelagem de diagramas entidade-relacionamento. Disponível em: <https://www.brmodeloweb.com>. Acesso em: set. 2026.
+* *CADONÁ.* Modelagem Conceitual - Exemplo. YouTube, 2020. Disponível em: <https://youtu.be/BzQ7kkTZVIo>. Acesso em: set. 2026.
+* *COSTA, Dalton.* Um guia de como criar um dicionário de dados para a sua pesquisa. Datapsico, 29 out. 2021. 
+* *ENTREVISTA TÉCNICA E LEVANTAMENTO DE DADOS.* Visita técnica presencial realizada na empresa Rafimex Comercial Importação e Exportação Ltda (R. Barra do Tibagi, 537 - Bom Retiro). Entrevista conduzida com a Diretoria Comercial. São Paulo, 2026.
+* *GITHUB.* 02.04 Introdução ao GitHub: Do Zero ao Primeiro Repositório.pdf. Material de apoio técnico sobre versionamento, repositórios e boas práticas de commits.
+* *IBM.* Modelos de Dados. IBM Docs. Documentação técnica consultada para referência em estruturação de dados. Disponível em: <https://www.ibm.com/docs/pt-br/sc-and-ds/9.0.0?topic=views-data-models>. Acesso em: set. 2026.
+* *MONITOR DIGITAL IFF.* Banco de Dados: Diagrama Entidade-Relacionamento: cardinalidades em relacionamentos. YouTube, 2020. Disponível em: <https://youtu.be/GdxodSoV_5k>. Acesso em: set. 2026.
+* *MYSQL.* MySQL 8.0 Reference Manual: Data Types. Documentação oficial utilizada para definição da arquitetura e tipagem dos atributos no Dicionário de Dados. Disponível em: <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>. Acesso em: set. 2026.
