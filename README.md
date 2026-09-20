@@ -151,6 +151,12 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
    -Leitura da Estrutura.  
    -Atributos da Entidade PEDIDO.
 
+   **5.6 NOTA FISCAL**.  
+   -Estrutura Formal.  
+   -Leitura da Estrutura.  
+   -Atributos da Entidade NOTA FISCAL.
+
+
 ## 5.1 CLIENTE (PJ)
 
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
