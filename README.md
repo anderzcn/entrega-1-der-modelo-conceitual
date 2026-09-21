@@ -131,7 +131,7 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
 - ### Estrutura Formal
-**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + VL_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 - ### Leitura da Estrutura
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
@@ -140,7 +140,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 `DS_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` Armazena o e-mail empresarial utilizado para contato e identificação no sistema.  `NR_TELEFONE` Armazena o telefone de contato do cliente.
 
-`LM_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
+`VL_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
 
  `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das informações do cadastro.
 
@@ -155,7 +155,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 | **DS_ENDERECO** | Integer | Sim | estabelece o relacionamento com o endereço do cliente. | 
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
 | **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
-| **LM_LIMITE_CREDITO** | Decimal(15,2) | Sim | representa o limite de crédito concedido ao cliente. |
+| **VL_LIMITE_CREDITO** | Decimal(15,2) | Sim | representa o limite de crédito concedido ao cliente. |
 | **IN_ATIVO** | Boolean | Sim | indica se o cadastro está ativo. |
 | **ID_SERASA** | Varchar(50) | Sim | permite associar o cliente ao histórico de crédito no Serasa. |
 | **DT_DATA_DE_ATUALIZACAO** | Date | Sim | registra a data da última atualização das informações do cadastro. |
