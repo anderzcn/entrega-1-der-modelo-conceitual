@@ -156,7 +156,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
 | **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
 | **VL_LIMITE_CREDITO** | Decimal(15,2) | Sim | representa o limite de crédito concedido ao cliente. |
-| **IN_ATIVO** | Boolean | Sim | indica se o cadastro está ativo. {0 SIM \|1 NÃO}|
+| **IN_ATIVO** | Boolean | Sim | indica se o cadastro está ativo. [SIM | NÃO]|
 | **ID_SERASA** | Varchar(50) | Sim | permite associar o cliente ao histórico de crédito no Serasa. |
 | **DT_DATA_DE_ATUALIZACAO** | Date | Sim | registra a data da última atualização das informações do cadastro. |
 
@@ -261,12 +261,12 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 A entidade **PEDIDO** representa a separação de produtos e quantidades de itens que o cliente solicitou.
 
 - ### Estrutura Formal
-**PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_TOTAL + DS_TIPO_DE_FRETE + DS_FORMA_DE_PAGAMENTO + VL_DESCONTO_APLICADO + DS_STATUS_PEDIDO** 
+**PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_VENDA + DS_TIPO_DE_FRETE + DS_FORMA_DE_PAGAMENTO + VL_DESCONTO_APLICADO + DS_STATUS_PEDIDO** 
 
 - ### Leitura da Estrutura
 `@ID_PEDIDO` Identifica o pedido solicitado no sistema 
 `DT_DATA_DO_PEDIDO` Informativo da data em que o pedido foi solicitado.
-`VL_VALOR_TOTAL` Identificador do valor total do pedido solicitado pelo cliente.
+`VL_VALOR_VENDA` Valor de venda do pedido solicitado pelo cliente.
 `DS_TIPO_FRETE` Descreve a forma de frete se transportadora ou correios para entrega do produto. 
 `DS_FORMA_DE_PAGAMENTO` Descreve a forma de pagamento que o cliente escolheu pagar pelo produto.  
 `VL_DESCONTO_APLICADO` Valor da porcentagem da porcentagem de desconto aplicada no pedido.
@@ -278,7 +278,7 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 |---|---|---|---|
 | **ID_PEDIDO** | Integer | Sim (PK) | Identifica o pedido solicitado no sistema. |
 | **DT_DATA_DO_PEDIDO** | Date | Sim | Informativo da data em que o pedido foi solicitado. |
-| **VL_VALOR_TOTAL** | Decimal(18,2) | Sim | Identificador do valor total do pedido solicitado pelo cliente. |
+| **VL_VALOR_VENDA** | Decimal(18,2) | Sim | Valor de venda do pedido solicitado. |
 | **DS_TIPO_DE_FRETE** | Integer | Sim | Descreve a forma de frete se transportadora ou correios para entrega do produto.   |
 | **DS_FORMA_DE_PAGAMENTO** | Integer | Sim  | Descreve a forma de pagamento que o cliente escolheu pagar pelo produto.    |
 | **VL_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Valor da porcentagem de desconto aplicada no pedido.  |
@@ -290,8 +290,7 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um pedido já faturado, contendo os dados legais e tributários exigidos para a emissão da nota.
 
 - ### Estrutura Formal
-`NOTA_FISCAL= @ID_NF + ID_PEDIDO + NR_NF + NR_CHAVE_ACESSO + DT_DATA_EMISSAO + 
-VL_IMPOSTO_IMPORTACAO + VL_TOTAL_IMPOSTOS + VL_TOTAL_NF + DS_STATUS_NF
+**NOTA_FISCAL= @ID_NF + ID_PEDIDO + NR_NF + NR_CHAVE_ACESSO + DT_DATA_EMISSAO + VL_TOTAL_IMPOSTOS + VL_TOTAL_NF + DS_STATUS_NF**
 
 - ### Leitura da Estrutura
 `@ID_NF` identifica a nota fiscal no sistema. 
@@ -314,7 +313,7 @@ VL_IMPOSTO_IMPORTACAO + VL_TOTAL_IMPOSTOS + VL_TOTAL_NF + DS_STATUS_NF
 | **DT_DATA_EMISSAO** | Date | Sim | Data em que a nota fiscal foi emitida. |
 | **VL_TOTAL_IMPOSTOS** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
 | **VL_TOTAL_NF** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
-| **DS_STATUS_NF** | Varchar(20) | Sim | 'Emitida' ou 'Cancelada'. |
+| **DS_STATUS_NF** | Varchar(20) | Sim | [Emitida' ou 'Cancelada]. |
 
 
 ---
