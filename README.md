@@ -179,7 +179,7 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 `DS_ENDERECO` Descrição do endereço do colaborador.
 `DS_EMAIL` Informa o Email pessoal para identificação no sistema.
 `NR_TELEFONE` Telefone contato pessoal do colaborador.
- ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
+ `DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
 
 - ### Atributos da Entidade COLABORADOR
 
@@ -237,7 +237,7 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 `@ ID_FORNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
 `CD_CNPJ` Identificador do CNPJ do fornecedor.
 `NM_RAZAO_SOCIAL` Representa de forma direta a razão social do Fornecedor.
-NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quando aplicável.
+`NR_INSCRIC_ESTADUAL` Armazena o número de inscrição estadual da empresa, quando aplicável.
 `DS_EMAIL` Informa o Email profissional do fornecedor.
 `NR_TELEFONE` Cadastro do número do fornecedor para contatos diretos.
  `DS_ENDERECO` Descrição do endereço em que o fornecedor está localizado.
@@ -289,33 +289,31 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um pedido já faturado, contendo os dados legais e tributários exigidos para a emissão da nota.
 
 - ### Estrutura Formal
-`NOTA_FISCAL= @ID_NF + ID_PEDIDO + NUMERO_NF + CHAVE_ACESSO + DATA_EMISSAO + 
-VLR_IMPOSTO_IMPORTACAO + VLR_TOTAL_IMPOSTOS + VLR_TOTAL_NF + STATUS_NF
+`NOTA_FISCAL= @ID_NF + ID_PEDIDO + NR_NF + NR_CHAVE_ACESSO + DT_DATA_EMISSAO + 
+VL_IMPOSTO_IMPORTACAO + VL_TOTAL_IMPOSTOS + VL_TOTAL_NF + DS_STATUS_NF
 
 - ### Leitura da Estrutura
 `@ID_NF` identifica a nota fiscal no sistema. 
 `ID_PEDIDO `vincula a nota ao pedido que a originou , é essa referência que evita duplicar, na nota, os dados do cliente e dos produtos já registrados no pedido. 
-`NUMERO_NF` é o número sequencial da nota emitida.
-`CHAVE_ACESSO` é o código de 44 dígitos que identifica a NF-e perante a Receita.
-`DATA_EMISSAO` informa quando a nota foi emitida.
-`VLR_IMPOSTO_IMPORTACAO` registra o valor de imposto de importação incidente, quando aplicável. 
-`VLR_TOTAL_IMPOSTOS` soma todos os tributos da nota. 
-`VLR_TOTAL_NF` é o valor final faturado, já com os impostos inclusos.
-`STATUS_NF` indica se a nota está emitida ou foi cancelada.
+`NR_NF` é o número sequencial da nota emitida.
+`NR_CHAVE_ACESSO` é o código de 44 dígitos que identifica a NF-e perante a Receita.
+`DT_DATA_EMISSAO` informa quando a nota foi emitida.
+`VL_TOTAL_IMPOSTOS` soma todos os tributos da nota. 
+`VL_TOTAL_NF` é o valor final faturado, já com os impostos inclusos.
+`DS_STATUS_NF` indica se a nota está emitida ou foi cancelada.
 
 - ### Atributos da Entidade NOTA FISCAL
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
-| **id_nf**| Integer | Sim (PK) | Identifica a nota fiscal no sistema. |
-| **id_pedido** | Integer | Sim (FK) | Vincula a nota fiscal ao pedido que a originou. |
-| **numero_nf** | Integer | Sim (único) | Número sequencial da nota fiscal emitida. |
-| **chave_acesso** | Varchar(44) | Sim (único) | Código de acesso da NF-e, exigido pela Receita Federal. |
-| **data_emissao** | Date | Sim | Data em que a nota fiscal foi emitida. |
-| **vlr_imposto_importacao** | Decimal(18,2) | Não | Valor de imposto de importação, quando o produto faturado for de origem importada,(nem todo produto importado tem IPI, como tecido e Rattan) |
-| **vlr_total_impostos** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
-| **vlr_total_nf** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
-| **status_nf** | Varchar(20) | Sim | 'Emitida' ou 'Cancelada'. |
+| **ID_NF**| Integer | Sim (PK) | Identifica a nota fiscal no sistema. |
+| **iID_PEDIDO** | Integer | Sim (FK) | Vincula a nota fiscal ao pedido que a originou. |
+| **NR_NF** | Integer | Sim (único) | Número sequencial da nota fiscal emitida. |
+| **NR_CHAVE_ACESSO** | Varchar(44) | Sim (único) | Código de acesso da NF-e, exigido pela Receita Federal. |
+| **DT_DATA_EMISSAO** | Date | Sim | Data em que a nota fiscal foi emitida. |
+| **VL_TOTAL_IMPOSTOS** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
+| **VL_TOTAL_NF** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
+| **DS_STATUS_NF** | Varchar(20) | Sim | 'Emitida' ou 'Cancelada'. |
 
 
 ---
