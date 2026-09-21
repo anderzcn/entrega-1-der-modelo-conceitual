@@ -260,16 +260,16 @@ NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quand
 A entidade **PEDIDO** representa a separação de produtos e quantidades de itens que o cliente solicitou.
 
 - ### Estrutura Formal
-**PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_TOTAL + ID_TIPO_DE_FRETE + ID_FORMA_DE_PAGAMENTO + DS_DESCONTO_APLICADO + ID_STATUS_PEDIDO** 
+**PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_TOTAL + DS_TIPO_DE_FRETE + DS_FORMA_DE_PAGAMENTO + VL_DESCONTO_APLICADO + DS_STATUS_PEDIDO** 
 
 - ### Leitura da Estrutura
 `@ID_PEDIDO` Identifica o pedido solicitado no sistema 
 `DT_DATA_DO_PEDIDO` Informativo da data em que o pedido foi solicitado.
 `VL_VALOR_TOTAL` Identificador do valor total do pedido solicitado pelo cliente.
-`ID_TIPO_FRETE` Identifica a forma de frete se transportadora ou correios para entrega do produto. 
-`ID_FORMA_DE_PAGAMENTO` Identifica a forma de pagamento que o cliente escolheu pagar pelo produto.  
-`DS_DESCONTO_APLICADO` Informa a porcentagem de desconto aplicada no pedido.
- `ID_STATUS_PEDIDO` Identificador para informar como o pedido está e em qual etapa do processo que o pedido está.
+`DS_TIPO_FRETE` Descreve a forma de frete se transportadora ou correios para entrega do produto. 
+`DS_FORMA_DE_PAGAMENTO` Descreve a forma de pagamento que o cliente escolheu pagar pelo produto.  
+`VL_DESCONTO_APLICADO` Valor da porcentagem da porcentagem de desconto aplicada no pedido.
+ `DS_STATUS_PEDIDO` Descreve o status do pedido e em qual etapa do processo que o pedido está.
 
 - ### Atributos da Entidade PEDIDO
 
@@ -278,10 +278,10 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 | **ID_PEDIDO** | Integer | Sim (PK) | Identifica o pedido solicitado no sistema. |
 | **DT_DATA_DO_PEDIDO** | Date | Sim | Informativo da data em que o pedido foi solicitado. |
 | **VL_VALOR_TOTAL** | Decimal(18,2) | Sim | Identificador do valor total do pedido solicitado pelo cliente. |
-| **ID_TIPO_DE_FRETE** | Integer | Sim(FK) | Identifica a forma de frete se transportadora ou correios para entrega do produto.  |
-| **ID_FORMA_DE_PAGAMENTO** | Integer | Sim(FK)  | Identifica a forma de pagamento que o cliente escolheu pagar pelo produto.  |
-| **DS_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Informa a porcentagem de desconto aplicada no pedido.  |
-| **ID_STATUS_PEDIDO** | Integer | Sim(FK) | Identificador para informar como o pedido está e em qual etapa do processo que o pedido está. |
+| **DS_TIPO_DE_FRETE** | Integer | Sim | Descreve a forma de frete se transportadora ou correios para entrega do produto.   |
+| **DS_FORMA_DE_PAGAMENTO** | Integer | Sim  | Descreve a forma de pagamento que o cliente escolheu pagar pelo produto.    |
+| **VL_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Valor da porcentagem de desconto aplicada no pedido.  |
+| **DS_STATUS_PEDIDO** | Integer | Sim | Descreve o status do pedido e em qual etapa do processo que o pedido está.|
 
 
 
