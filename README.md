@@ -160,7 +160,9 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 | **ID_SERASA** | Varchar(50) | Sim | permite associar o cliente ao histórico de crédito no Serasa. |
 | **DT_DATA_DE_ATUALIZACAO** | Date | Sim | registra a data da última atualização das informações do cadastro. |
 
+### Índices
 
+**Índices:** PK `ID_CLIENTE` (clusterizado); índice único em `CD_CNPJ` (impede o cadastro duplicado de clientes); índice secundário em `NM_RAZAO_SOCIAL` (busca de clientes pela razão social); índice secundário em `DT_DATA_DE_ATUALIZACAO` (identificação de cadastros sem atualização há mais de 90 dias).
 
  ## 5.2 COLABORADOR
 
@@ -194,6 +196,9 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 | **NR_TELEFONE** | Varchar(14) | Sim | Telefone contato pessoal do colaborador. |
 | **DS_COMISSAO** | Numeric(5,2) | Sim  |Valor referente a porcentagem de venda ao colaborador.|
 
+### Índices
+
+**Índices:** PK `ID_COLABORADOR` (clusterizado); índice único em `NR_CPF` (impede o cadastro duplicado do mesmo colaborador); índice secundário em `NM_COLABORADOR` (busca de colaboradores pelo nome).
 
 ## 5.3 PRODUTO
 
@@ -226,6 +231,9 @@ unitário de venda do produto. `QT_ESTOQUE` indica a quantidade disponível em e
 | **QT_ESTOQUE** | Integer | Sim | Indica a quantidade disponível do produto em estoque. |  
 | **DS_DESCRICAO** | Varchar(150) | Sim | Descrição do produto que está sendo adquirido. |
 
+### Índices
+
+**Índices:** PK `ID_PRODUTO` (clusterizado); índice único em `CD_SKU` (garante a identificação exclusiva do produto); índice secundário em `CD_NCM` (facilita consultas pela classificação fiscal do produto).
 
 ## 5.4 FORNECEDOR
 A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
@@ -255,7 +263,9 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 | **NR_TELEFONE** | Varchar(14) | Sim | Cadastro do número do fornecedor para contatos diretos. |
 | **DS_ENDERECO** | Integer | Sim | Descrição do endereço em que o fornecedor está localizado. |
 
+### Índices
 
+**Índices:** PK `ID_FORNECEDOR` (clusterizado); índice único em `NR_CNPJ` (impede o cadastro duplicado do fornecedor); índice secundário em `NM_RAZAO_SOCIAL` (busca de fornecedores pela razão social).
 
 ## 5.5 PEDIDO
 A entidade **PEDIDO** representa a separação de produtos e quantidades de itens que o cliente solicitou.
@@ -284,7 +294,9 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 | **VL_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Valor da porcentagem de desconto aplicada no pedido.  |
 | **DS_STATUS_PEDIDO** | Integer | Sim | Descreve o status do pedido e em qual etapa do processo que o pedido está.|
 
+### Índices
 
+**Índices:** PK `ID_PEDIDO` (clusterizado); índice secundário em `DT_DATA_DO_PEDIDO` (consulta de pedidos por período); índice secundário em `DS_STATUS_PEDIDO` (consulta de pedidos conforme seu status).
 
 ## 5.6 NOTA_FISCAL
 A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um pedido já faturado, contendo os dados legais e tributários exigidos para a emissão da nota.
@@ -315,6 +327,9 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 | **VL_TOTAL_NF** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
 | **DS_STATUS_NF** | Varchar(20) | Sim | ]Descreve o status da nota fiscal se foi emitida ou ainda necessário emitir. |
 
+### Índices
+
+**Índices:** PK `ID_NF` (clusterizado); índice único em `ID_PEDIDO` (garante a relação 1:1 entre pedido e nota fiscal); índice único em `NR_NF` (impede números de nota fiscal duplicados); índice único em `NR_CHAVE_ACESSO` (garante a unicidade da chave de acesso da NF-e); índice secundário em `DT_DATA_EMISSAO` (consulta de notas fiscais por período).
 
 ---
 
