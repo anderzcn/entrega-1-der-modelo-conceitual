@@ -297,10 +297,10 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 `ID_PEDIDO `vincula a nota ao pedido que a originou , é essa referência que evita duplicar, na nota, os dados do cliente e dos produtos já registrados no pedido. 
 `NR_NF` é o número sequencial da nota emitida.
 `NR_CHAVE_ACESSO` é o código de 44 dígitos que identifica a NF-e perante a Receita.
-`DT_DATA_EMISSAO` informa quando a nota foi emitida.
+`DT_DATA_EMISSAO` informa data quando a nota foi emitida.
 `VL_TOTAL_IMPOSTOS` soma todos os tributos da nota. 
 `VL_TOTAL_NF` é o valor final faturado, já com os impostos inclusos.
-`DS_STATUS_NF` indica se a nota foi emitida ou foi cancelada.
+`DS_STATUS_NF` indica se a nota foi emitida ou ainda nescessario imprimir.
 
 - ### Atributos da Entidade NOTA FISCAL
 
@@ -313,7 +313,7 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 | **DT_DATA_EMISSAO** | Date | Sim | Data em que a nota fiscal foi emitida. |
 | **VL_TOTAL_IMPOSTOS** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
 | **VL_TOTAL_NF** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
-| **DS_STATUS_NF** | Varchar(20) | Sim | ]Descreve se o status da nota fiscal se foi emitida ou cancelada. |
+| **DS_STATUS_NF** | Varchar(20) | Sim | ]Descreve o status da nota fiscal se foi emitida ou ainda necessário emitir. |
 
 
 ---
