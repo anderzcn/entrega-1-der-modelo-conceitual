@@ -131,14 +131,14 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
 - ### Estrutura Formal
-**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + NR_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 - ### Leitura da Estrutura
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
 `NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
 
-`ID_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` e `NR_TELEFONE` armazenam os dados de contato.
+`DS_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` Armazena o e-mail empresarial utilizado para contato e identificação no sistema.  `NR_TELEFONE` Armazena o telefone de contato do cliente.
 
 `LM_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
 
@@ -148,17 +148,18 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
-| **ID_CLIENTE** | Integer | Sim (PK) | Identifica unicamente o cliente no sistema. |
-| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa a razão social do cliente. |
-| **CD_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ do cliente. |
-| **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
-| **ID_ENDERECO** | Integer | Sim | Identifica o endereço associado ao cliente. |
+| **ID_CLIENTE** | Integer | Sim (PK) | identifica de forma única e exclusiva cada registro de cliente no sistema. |
+| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | representa o nome empresarial do cliente. |
+| **CD_CNPJ** | Varchar(18) | Sim | armazena o número do CNPJ. |
+| **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | armazena o número da inscrição estadual, quando aplicável. |
+| **DS_ENDERECO** | Integer | Sim | estabelece o relacionamento com o endereço do cliente. | 
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
 | **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
-| **LM_LIMITE_CREDITO** | Decimal(15,2) | Sim | Representa o limite de crédito disponibilizado para compras do cliente. |
-| **IN_ATIVO** | Boolean | Sim | Indica se o cadastro do cliente está ativo no sistema. |
-| **ID_SERASA** | Varchar(50) | Sim | Identifica o registro utilizado para associação do cliente ao histórico de crédito no Serasa. |
-| **DT_DATA_DE_ATUALIZACAO** | Date | Sim | Registra a data em que as informações do cadastro foram atualizadas pela última vez. |
+| **LM_LIMITE_CREDITO** | Decimal(15,2) | Sim | representa o limite de crédito concedido ao cliente. |
+| **IN_ATIVO** | Boolean | Sim | indica se o cadastro está ativo. |
+| **ID_SERASA** | Varchar(50) | Sim | permite associar o cliente ao histórico de crédito no Serasa. |
+| **DT_DATA_DE_ATUALIZACAO** | Date | Sim | registra a data da última atualização das informações do cadastro. |
+
 
 
  ## 5.2 COLABORADOR
@@ -167,7 +168,7 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 
 - ### Estrutura Formal
 
-**COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + ID_ENDERECO + DS_EMAIL + NR_TELEFONE + DS_COMISSAO**
+**COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + DS_COMISSAO**
 
 - ### Leitura da Estrutura
 
@@ -175,7 +176,7 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 `NM_COLABORADOR` Representa o nome completo do colaborador.
 `NR_CPF` Número de indicação CPF do colaborador.
 `DT_DATA_DE_NASCIMENTO` Informativo da data de nascimento do colaborador.
-`ID_ENDERECO` Identificação do endereço do colaborador.
+`DS_ENDERECO` Descrição do endereço do colaborador.
 `DS_EMAIL` Informa o Email pessoal para identificação no sistema.
 `NR_TELEFONE` Telefone contato pessoal do colaborador.
  ` DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
@@ -188,7 +189,7 @@ A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratua
 | **NM_COLABORADOR** | Varchar(120) | Sim | Representa o nome completo do colaborador. |
 | **NR_CPF** | Varchar(14) | Sim | Número de indicação CPF do colaborador. |
 | **DT_DATA_DE_NASCIMENTO** | Date | Sim | Informativo da data de nascimento do colaborador. |
-| **ID_ENDERECO** | Integer | Sim  | Identificação do endereço do colaborador. |
+| **DS_ENDERECO** | Integer | Sim  | Identificação do endereço do colaborador. |
 | **DS_EMAIL** | Varchar(100) | Sim  | Informa o Email pessoal para identificação no sistema. |
 | **NR_TELEFONE** | Varchar(14) | Sim | Telefone contato pessoal do colaborador. |
 | **DS_COMISSAO** | Numeric(5,2) | Sim  |Valor referente a porcentagem de venda ao colaborador.|
@@ -232,7 +233,7 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 
 
 - ### Estrutura Formal
-**FORNECEDOR = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + ID_ENDERECO**
+**FORNECEDOR = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + DS_ENDERECO**
 
 - ### Leitura da Estrutura
 `@ ID_FORNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
@@ -241,7 +242,7 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quando aplicável.
 `DS_EMAIL` Informa o Email profissional do fornecedor.
 `NR_TELEFONE` Cadastro do número do fornecedor para contatos diretos.
- `ID_ENDERECO` Identifica o endereço em que o fornecedor está localizado.
+ `DS_ENDERECO` Descrição do endereço em que o fornecedor está localizado.
 
 - ### Atributos da Entidade FORNECEDOR
 
@@ -253,7 +254,7 @@ NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quand
 | **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
 | **DS_EMAIL** | Varchar(100) | Sim  | Informa o Email profissional do fornecedor. |
 | **NR_TELEFONE** | Varchar(14) | Sim | Cadastro do número do fornecedor para contatos diretos. |
-| **ID_ENDERECO** | Integer | Sim | Identifica o endereço em que o fornecedor está localizado. |
+| **DS_ENDERECO** | Integer | Sim | Descrição do endereço em que o fornecedor está localizado. |
 
 
 
