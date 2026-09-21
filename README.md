@@ -131,14 +131,14 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
 - ### Estrutura Formal
-**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + CD_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ID_ENDERECO + DS_EMAIL + NR_TELEFONE + LM_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 - ### Leitura da Estrutura
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
 `NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
 
-`ID_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` e `CD_TELEFONE` armazenam os dados de contato.
+`ID_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` e `NR_TELEFONE` armazenam os dados de contato.
 
 `LM_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
 
@@ -152,9 +152,9 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 | **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa a razão social do cliente. |
 | **CD_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ do cliente. |
 | **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
-| **ID_ENDERECO** | Integer | Sim (FK) | Identifica o endereço associado ao cliente. |
+| **ID_ENDERECO** | Integer | Sim | Identifica o endereço associado ao cliente. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
-| **CD_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
+| **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
 | **LM_LIMITE_CREDITO** | Decimal(15,2) | Sim | Representa o limite de crédito disponibilizado para compras do cliente. |
 | **IN_ATIVO** | Boolean | Sim | Indica se o cadastro do cliente está ativo no sistema. |
 | **ID_SERASA** | Varchar(50) | Sim | Identifica o registro utilizado para associação do cliente ao histórico de crédito no Serasa. |
@@ -232,10 +232,10 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 
 
 - ### Estrutura Formal
-**PEDIDO = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + ID_ENDERECO**
+**FORNECEDOR = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + ID_ENDERECO**
 
 - ### Leitura da Estrutura
-`@ ID_FO/RNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
+`@ ID_FORNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
 `CD_CNPJ` Identificador do CNPJ do fornecedor.
 `NM_RAZAO_SOCIAL` Representa de forma direta a razão social do Fornecedor.
 NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quando aplicável.
@@ -253,7 +253,7 @@ NR_INSCRIC_ESTADUAL Armazena o número de inscrição estadual da empresa, quand
 | **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
 | **DS_EMAIL** | Varchar(100) | Sim  | Informa o Email profissional do fornecedor. |
 | **NR_TELEFONE** | Varchar(14) | Sim | Cadastro do número do fornecedor para contatos diretos. |
-| **ID_ENDERECO** | Integer | Sim(FK) | Identifica o endereço em que o fornecedor está localizado. |
+| **ID_ENDERECO** | Integer | Sim | Identifica o endereço em que o fornecedor está localizado. |
 
 
 
