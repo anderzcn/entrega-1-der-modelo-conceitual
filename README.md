@@ -203,7 +203,7 @@ e acompanhamento da quantidade disponível em estoque.
 
 
 - ### Estrutura Formal
-**PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE + ID_CATEGORIA**
+**PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + VL_PRECO_CUSTO + VL_PRECO_VENDA + QT_ESTOQUE**
 
 - ### Leitura da Estrutura
 
@@ -213,7 +213,6 @@ e acompanhamento da quantidade disponível em estoque.
 
 `VL_PRECO_CUSTO` e `VL_PRECO_VENDA` armazenam, respectivamente, os valores de custo 
 e venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque. 
- `ID_CATEGORIA` estabelece o relacionamento do produto com sua respectiva categoria.
 
 - ### Atributos da Entidade PRODUTO
 
@@ -225,7 +224,6 @@ e venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque.
 | **VL_PRECO_CUSTO** | Numeric(10,2) | Sim | Representa o valor de custo do produto para a empresa. |
 | **VL_PRECO_VENDA** | Numeric(10,2) | Sim | Representa o valor pelo qual o produto será comercializado. |
 | **QT_ESTOQUE** | Integer | Sim | Indica a quantidade disponível do produto em estoque. |
-| **ID_CATEGORIA** | Integer | Sim (FK) | Identifica a categoria à qual o produto pertence, estabelecendo o relacionamento com a entidade **CATEGORIA**. |
 
 
 ## 5.4 FORNECEDOR
