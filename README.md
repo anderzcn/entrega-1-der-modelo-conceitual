@@ -156,7 +156,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
 | **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
 | **VL_LIMITE_CREDITO** | Decimal(15,2) | Sim | representa o limite de crédito concedido ao cliente. |
-| **IN_ATIVO** | Boolean | Sim | indica se o cadastro está ativo. |
+| **IN_ATIVO** | Boolean | Sim | indica se o cadastro está ativo. {0 SIM \|1 NÃO}|
 | **ID_SERASA** | Varchar(50) | Sim | permite associar o cliente ao histórico de crédito no Serasa. |
 | **DT_DATA_DE_ATUALIZACAO** | Date | Sim | registra a data da última atualização das informações do cadastro. |
 
