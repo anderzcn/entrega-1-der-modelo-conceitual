@@ -203,7 +203,7 @@ e acompanhamento da quantidade disponível em estoque.
 
 
 - ### Estrutura Formal
-**PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + VL_PRECO_CUSTO + VL_PRECO_UNITARIO + QT_ESTOQUE**
+**PRODUTO = @ID_PRODUTO + CD_SKU + CD_NCM + VL_PRECO_CUSTO + VL_PRECO_UNITARIO + QT_ESTOQUE + DS_DESCRICAO**
 
 - ### Leitura da Estrutura
 
