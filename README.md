@@ -131,12 +131,12 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
 - ### Estrutura Formal
-**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + VL_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + NR_CNPJ + NR_INSCRIC_ESTADUAL + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + VL_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 - ### Leitura da Estrutura
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
-`NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
+`NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `NR_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
 
 `DS_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` Armazena o e-mail empresarial utilizado para contato e identificação no sistema.  `NR_TELEFONE` Armazena o telefone de contato do cliente.
 
@@ -150,7 +150,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 |---|---|---|---|
 | **ID_CLIENTE** | Integer | Sim (PK) | identifica de forma única e exclusiva cada registro de cliente no sistema. |
 | **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | representa o nome empresarial do cliente. |
-| **CD_CNPJ** | Varchar(18) | Sim | armazena o número do CNPJ. |
+| **NR_CNPJ** | Varchar(18) | Sim | armazena o número do CNPJ. |
 | **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | armazena o número da inscrição estadual, quando aplicável. |
 | **DS_ENDERECO** | Integer | Sim | estabelece o relacionamento com o endereço do cliente. | 
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
@@ -244,7 +244,7 @@ A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantid
 
 - ### Leitura da Estrutura
 `@ ID_FORNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
-`CD_CNPJ` Identificador do CNPJ do fornecedor.
+`NR_CNPJ` Identificador do CNPJ do fornecedor.
 `NM_RAZAO_SOCIAL` Representa de forma direta a razão social do Fornecedor.
 `NR_INSCRIC_ESTADUAL` Armazena o número de inscrição estadual da empresa, quando aplicável.
 `DS_EMAIL` Informa o Email profissional do fornecedor.
@@ -319,7 +319,7 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
 | **ID_NF**| Integer | Sim (PK) | Identifica a nota fiscal no sistema. |
-| **iID_PEDIDO** | Integer | Sim (FK) | Vincula a nota fiscal ao pedido que a originou. |
+| **ID_PEDIDO** | Integer | Sim (FK) | Vincula a nota fiscal ao pedido que a originou. |
 | **NR_NF** | Integer | Sim (único) | Número sequencial da nota fiscal emitida. |
 | **NR_CHAVE_ACESSO** | Varchar(44) | Sim (único) | Código de acesso da NF-e, exigido pela Receita Federal. |
 | **DT_DATA_EMISSAO** | Date | Sim | Data em que a nota fiscal foi emitida. |
