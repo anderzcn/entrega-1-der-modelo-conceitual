@@ -182,7 +182,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 | **VL_LIMITE_CREDITO** | Decimal(15,2) | Sim | Representa o limite de crédito concedido ao cliente. |
 | **IN_ATIVO** | Booleano | Sim | Indica se o cadastro está ativo. |
 | **ID_SERASA** | Varchar(50) | Sim | Permite associar o cliente ao histórico de crédito no Serasa. |
-| **DT_DATA_DE_ATUALIZACAO** | Date | Sim | Registra a data da última atualização das informações do cadastro. |
+| **DT_DATA_DE_ATUALIZACAO** | Data | Sim | Registra a data da última atualização das informações do cadastro. |
 
 ### Índices
 
