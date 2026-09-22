@@ -128,41 +128,65 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 
 
 ## 5.1 CLIENTE (PJ)
+
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
-- ### Estrutura Formal
-**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + NR_CNPJ + NR_INSCRIC_ESTADUAL + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + VL_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+---
 
-- ### Leitura da Estrutura
+### Estrutura Formal
+
+**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ENDERECO + DS_EMAIL + TELEFONE + VL_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+
+**ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
+
+**TELEFONE = CD_DDD + NR_NUMERO**
+
+---
+
+### Leitura da Estrutura
+
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
-`NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `NR_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
+`NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
 
-`DS_ENDERECO` estabelece o relacionamento com o endereço do cliente. `DS_EMAIL` Armazena o e-mail empresarial utilizado para contato e identificação no sistema.  `NR_TELEFONE` Armazena o telefone de contato do cliente.
+`ENDERECO` é um atributo composto que reúne os dados de localização do cliente, sendo decomposto em `CD_CEP` (código postal), `CD_UF` (sigla do estado), `DS_CIDADE` (cidade), `DS_BAIRRO` (bairro), `DS_RUA` (rua), `NR_NUMERO` (número) e `DS_COMPLEMENTO` (complemento).
+
+`DS_EMAIL` armazena o e-mail empresarial utilizado para contato e identificação no sistema.
+
+`TELEFONE` é um atributo composto que reúne os dados de contato telefônico do cliente, sendo decomposto em `CD_DDD` (código de área) e `NR_NUMERO` (número do telefone).
 
 `VL_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
 
- `DT_DATA_DE_ATUALIZACAO` registra a data da última atualização das informações do cadastro.
+`DT_DATA_DE_ATUALIZACAO` registra os dados da última atualização das informações do cadastro.
 
-- ### Atributos da Entidade CLIENTE
+---
 
-| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+### Atributos da Entidade CLIENTE
+
+| **Atributo** | **Tipo Físico** | **Obrigatório** | **Descrição** |
 |---|---|---|---|
-| **ID_CLIENTE** | Integer | Sim (PK) | identifica de forma única e exclusiva cada registro de cliente no sistema. |
-| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | representa o nome empresarial do cliente. |
-| **NR_CNPJ** | Varchar(18) | Sim | armazena o número do CNPJ. |
-| **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | armazena o número da inscrição estadual, quando aplicável. |
-| **DS_ENDERECO** | Integer | Sim | estabelece o relacionamento com o endereço do cliente. | 
+| **ID_CLIENTE** | Número inteiro | Sim (PK) | Identifica de forma única e exclusiva cada registro de cliente no sistema. |
+| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa o nome empresarial do cliente. |
+| **CD_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ. |
+| **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número da inscrição estadual, quando aplicável. |
+| **CD_CEP** | Varchar(9) | Sim | Armazena o código de endereçamento postal do cliente. |
+| **CD_UF** | Char(2) | Sim | Armazena a sigla da unidade federativa do endereço do cliente. |
+| **DS_CIDADE** | Varchar(100) | Sim | Armazena a cidade do endereço do cliente. |
+| **DS_BAIRRO** | Varchar(100) | Sim | Armazena o bairro do endereço do cliente. |
+| **DS_RUA** | Varchar(150) | Sim | Armazena o nome da rua do endereço do cliente. |
+| **NR_NUMERO** | Varchar(10) | Sim | Armazena o número do endereço do cliente. |
+| **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço, quando aplicável. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
-| **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do cliente. |
-| **VL_LIMITE_CREDITO** | Decimal(15,2) | Sim | representa o limite de crédito concedido ao cliente. |
-| **IN_ATIVO** | Boolean | Sim | indica se o cadastro está ativo.|
-| **ID_SERASA** | Varchar(50) | Sim | permite associar o cliente ao histórico de crédito no Serasa. |
-| **DT_DATA_DE_ATUALIZACAO** | Date | Sim | registra a data da última atualização das informações do cadastro. |
+| **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do cliente. |
+| **NR_NUMERO** | Varchar(10) | Sim | Armazena o número do telefone do cliente. |
+| **VL_LIMITE_CREDITO** | Decimal(15,2) | Sim | Representa o limite de crédito concedido ao cliente. |
+| **IN_ATIVO** | Booleano | Sim | Indica se o cadastro está ativo. |
+| **ID_SERASA** | Varchar(50) | Sim | Permite associar o cliente ao histórico de crédito no Serasa. |
+| **DT_DATA_DE_ATUALIZACAO** | Data | Sim | Registra a data da última atualização das informações do cadastro. |
 
 ### Índices
 
-**Índices:** PK `ID_CLIENTE` (clusterizado); índice único em `CD_CNPJ` (impede o cadastro duplicado de clientes); índice secundário em `NM_RAZAO_SOCIAL` (busca de clientes pela razão social); índice secundário em `DT_DATA_DE_ATUALIZACAO` (identificação de cadastros sem atualização há mais de 90 dias).
+**Índices:** PK `ID_CLIENTE` (clusterizado); índice único em `CD_CNPJ` (impedir o cadastro duplicado de clientes); índice secundário em `NM_RAZAO_SOCIAL` (busca de clientes pela razão social); índice secundário em `DT_DATA_DE_ATUALIZACAO` (identificação de cadastros sem atualização há mais de 90 dias).
 
  ## 5.2 COLABORADOR
 
