@@ -135,7 +135,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 ### Estrutura Formal
 
-**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + CD_CNPJ + NR_INSCRIC_ESTADUAL + ENDERECO + DS_EMAIL + TELEFONE + VL_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
+**CLIENTE = @ID_CLIENTE + NM_RAZAO_SOCIAL + NR_CNPJ + NR_INSCRIC_ESTADUAL + ENDERECO + DS_EMAIL + TELEFONE + VL_LIMITE_CREDITO + IN_ATIVO + ID_SERASA + DT_DATA_DE_ATUALIZACAO**
 
 **ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
 
@@ -147,7 +147,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 `@ID_CLIENTE` é a chave primária (**PK**) e identifica de forma única e exclusiva cada registro de cliente no sistema.
 
-`NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `CD_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
+`NM_RAZAO_SOCIAL` representa o nome empresarial do cliente. `NR_CNPJ` armazena o número do CNPJ. `NR_INSCRIC_ESTADUAL` armazena o número da inscrição estadual, quando aplicável.
 
 `ENDERECO` é um atributo composto que reúne os dados de localização do cliente, sendo decomposto em `CD_CEP` (código postal), `CD_UF` (sigla do estado), `DS_CIDADE` (cidade), `DS_BAIRRO` (bairro), `DS_RUA` (rua), `NR_NUMERO` (número) e `DS_COMPLEMENTO` (complemento).
 
@@ -167,7 +167,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 |---|---|---|---|
 | **ID_CLIENTE** | Número inteiro | Sim (PK) | Identifica de forma única e exclusiva cada registro de cliente no sistema. |
 | **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa o nome empresarial do cliente. |
-| **CD_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ. |
+| **NR_CNPJ** | Varchar(18) | Sim | Armazena o número do CNPJ. |
 | **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número da inscrição estadual, quando aplicável. |
 | **CD_CEP** | Varchar(9) | Sim | Armazena o código de endereçamento postal do cliente. |
 | **CD_UF** | Char(2) | Sim | Armazena a sigla da unidade federativa do endereço do cliente. |
