@@ -197,7 +197,9 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 
 ### Estrutura Formal
 
-**COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + DS_COMISSAO**
+**COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + DS_ENDERECO + DS_EMAIL + TELEFONE + DS_COMISSAO**
+
+**TELEFONE = CD_DDD + NR_NUMERO**
 
 ---
 
@@ -207,9 +209,11 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 
 `NM_COLABORADOR` representa o nome completo do colaborador. `NR_CPF` armazena o número do CPF do colaborador. `DT_DATA_DE_NASCIMENTO` registra a data de nascimento do colaborador.
 
-`DS_ENDERECO` armazena o endereço do colaborador. `DS_EMAIL` armazena o e-mail utilizado para contato e identificação no sistema. `NR_TELEFONE` armazena o telefone de contato do colaborador.
+`DS_ENDERECO` armazena o endereço do colaborador. `DS_EMAIL` armazena o e-mail utilizado para contato e identificação no sistema.
 
-`DS_COMISSAO` representa o valor referente à porcentagem de comissão de venda atribuída ao colaborador.
+`TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO`, utilizado para armazenar o telefone de contato do colaborador.
+
+`DS_COMISSAO` representa a porcentagem de comissão de venda atribuída ao colaborador.
 
 ---
 
@@ -223,18 +227,15 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 | **DT_DATA_DE_NASCIMENTO** | Data | Sim | Registra a data de nascimento do colaborador. |
 | **DS_ENDERECO** | Varchar(200) | Sim | Armazena o endereço do colaborador. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail utilizado para contato e identificação no sistema. |
-| **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do colaborador. |
+| **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do colaborador. |
+| **NR_NUMERO (TELEFONE)** | Varchar(14) | Sim | Armazena o número de telefone do colaborador. |
 | **DS_COMISSAO** | Numérico(5,2) | Sim | Representa a porcentagem de comissão de venda atribuída ao colaborador. |
 
 ---
 
-### Índices da Entidade COLABORADOR
+### Índices
 
-| **Tipo** | **Atributo** | **Descrição** |
-|---|---|---|
-| **PK** | **ID_COLABORADOR** | Identifica de forma única o colaborador no sistema. |
-| **UNIQUE** | **NR_CPF** | Garante que o CPF seja único para cada colaborador. |
-| **Índice secundário** | **NM_COLABORADOR** | Facilita a busca de colaboradores pelo nome. |
+**Índices:** PK `ID_COLABORADOR` (clusterizado); índice único em `NR_CPF` (impede o cadastro duplicado do colaborador); índice secundário em `NM_COLABORADOR` (facilita a busca de colaboradores pelo nome).
 
 ## 5.3 PRODUTO
 
