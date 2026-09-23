@@ -401,7 +401,6 @@ Este modelo representa um sistema corporativo de vendas B2B e controle de estoqu
 | **COLABORADORES** | PEDIDO | **1:N** - Um colaborador/vendedor pode emitir vários pedidos, mas um pedido tem apenas um vendedor responsável. |
 | **PEDIDO** | ITEM_PEDIDO | **1:N** - Um pedido possui um ou vários itens de pedido; cada item pertence a um único pedido. |
 | **PRODUTO** | ITEM_PEDIDO | **1:N** - Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
-| **CATEGORIA** | PRODUTO | **1:N** - Uma categoria agrupa vários produtos; cada produto pertence a uma única categoria.|
 | **NOTA_FISCAL** | PRODUTO | **1:N** - Registra a movimentação de um produto no estoque. |
 | **PEDIDO** | **NOTA FISCAL** | **1:1** - Um pedido gera apenas uma nota fiscal. |
 
