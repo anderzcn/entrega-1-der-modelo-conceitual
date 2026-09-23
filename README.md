@@ -132,7 +132,6 @@ O dicionário de dados conceitual reúne a documentação das entidades que form
 
 A entidade **CLIENTE** representa o armazenamento das informações das pessoas jurídicas que consomem os produtos e serviços da empresa.
 
----
 
 ### Estrutura Formal
 
@@ -142,7 +141,6 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 **TELEFONE = CD_DDD + NR_NUMERO_TEL**
 
----
 
 ### Leitura da Estrutura
 
@@ -160,7 +158,6 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 `DT_DATA_DE_ATUALIZACAO` registra os dados da última atualização das informações do cadastro.
 
----
 
 ### Atributos da Entidade CLIENTE
 
@@ -193,29 +190,29 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuais e funcionais para a atuação do profissional no sistema.
 
----
 
 ### Estrutura Formal
 
 **COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + DS_ENDERECO + DS_EMAIL + TELEFONE + DS_COMISSAO**
 
+**ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
+
 **TELEFONE = CD_DDD + NR_NUMERO_TEL**
 
----
 
 ### Leitura da Estrutura
 
 `@ID_COLABORADOR` é a chave primária (**PK**) e identifica de forma única o colaborador no sistema.
 
 `NM_COLABORADOR` representa o nome completo do colaborador. `NR_CPF` armazena o número do CPF do colaborador. `DT_DATA_DE_NASCIMENTO` registra a data de nascimento do colaborador.
+`DS_EMAIL` armazena o e-mail do colaborador. `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO_TEL`.
 
-`DS_ENDERECO` armazena o endereço do colaborador. `DS_EMAIL` armazena o e-mail utilizado para contato e identificação no sistema.
+`ENDERECO` é um atributo composto que reúne os dados de localização do colaborador, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO` e `DS_COMPLEMENTO`.
 
 `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO_TEL`, utilizado para armazenar o telefone de contato do colaborador.
 
 `DS_COMISSAO` representa a porcentagem de comissão de venda atribuída ao colaborador.
 
----
 
 ### Atributos da Entidade COLABORADOR
 
@@ -225,13 +222,18 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 | **NM_COLABORADOR** | Varchar(120) | Sim | Representa o nome completo do colaborador. |
 | **NR_CPF** | Varchar(14) | Sim | Armazena o número do CPF do colaborador. |
 | **DT_DATA_DE_NASCIMENTO** | Data | Sim | Registra a data de nascimento do colaborador. |
-| **DS_ENDERECO** | Varchar(200) | Sim | Armazena o endereço do colaborador. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail utilizado para contato e identificação no sistema. |
+| **CD_CEP** | Varchar(9) | Sim | Armazena o código postal do colaborador. |
+| **CD_UF** | Char(2) | Sim | Armazena a sigla do estado do colaborador. |
+| **DS_CIDADE** | Varchar(100) | Sim | Armazena a cidade do colaborador. |
+| **DS_BAIRRO** | Varchar(100) | Sim | Armazena o bairro do colaborador. |
+| **DS_RUA** | Varchar(150) | Sim | Armazena a rua do colaborador. |
+| **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço colaborador. |
+| **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do colaborador. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do colaborador. |
 | **NR_NUMERO_TEL** | Varchar(14) | Sim | Armazena o número de telefone do colaborador. |
 | **DS_COMISSAO** | Numérico(5,2) | Sim | Representa a porcentagem de comissão de venda atribuída ao colaborador. |
 
----
 
 ### Índices
 
