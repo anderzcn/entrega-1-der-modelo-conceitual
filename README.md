@@ -140,7 +140,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 **ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
 
-**TELEFONE = CD_DDD + NR_NUMERO**
+**TELEFONE = CD_DDD + NR_NUMERO_TEL**
 
 ---
 
@@ -154,7 +154,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 `DS_EMAIL` armazena o e-mail empresarial utilizado para contato e identificação no sistema.
 
-`TELEFONE` é um atributo composto que reúne os dados de contato telefônico do cliente, sendo decomposto em `CD_DDD` (código de área) e `NR_NUMERO` (número do telefone).
+`TELEFONE` é um atributo composto que reúne os dados de contato telefônico do cliente, sendo decomposto em `CD_DDD` (código de área) e `NR_NUMERO_TEL` (número do telefone).
 
 `VL_LIMITE_CREDITO` representa o limite de crédito concedido ao cliente. `IN_ATIVO` indica se o cadastro está ativo. `ID_SERASA` permite associar o cliente ao histórico de crédito no Serasa.
 
@@ -179,7 +179,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço, quando aplicável. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail empresarial utilizado para contato e identificação no sistema. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do cliente. |
-| **NR_NUMERO** | Varchar(10) | Sim | Armazena o número do telefone do cliente. |
+| **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do telefone do cliente. |
 | **VL_LIMITE_CREDITO** | Decimal(15,2) | Sim | Representa o limite de crédito concedido ao cliente. |
 | **IN_ATIVO** | Booleano | Sim | Indica se o cadastro está ativo. |
 | **ID_SERASA** | Varchar(50) | Sim | Permite associar o cliente ao histórico de crédito no Serasa. |
@@ -199,7 +199,7 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 
 **COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + DS_ENDERECO + DS_EMAIL + TELEFONE + DS_COMISSAO**
 
-**TELEFONE = CD_DDD + NR_NUMERO**
+**TELEFONE = CD_DDD + NR_NUMERO_TEL**
 
 ---
 
@@ -211,7 +211,7 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 
 `DS_ENDERECO` armazena o endereço do colaborador. `DS_EMAIL` armazena o e-mail utilizado para contato e identificação no sistema.
 
-`TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO`, utilizado para armazenar o telefone de contato do colaborador.
+`TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO_TEL`, utilizado para armazenar o telefone de contato do colaborador.
 
 `DS_COMISSAO` representa a porcentagem de comissão de venda atribuída ao colaborador.
 
@@ -228,7 +228,7 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 | **DS_ENDERECO** | Varchar(200) | Sim | Armazena o endereço do colaborador. |
 | **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail utilizado para contato e identificação no sistema. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do colaborador. |
-| **NR_NUMERO (TELEFONE)** | Varchar(14) | Sim | Armazena o número de telefone do colaborador. |
+| **NR_NUMERO_TEL** | Varchar(14) | Sim | Armazena o número de telefone do colaborador. |
 | **DS_COMISSAO** | Numérico(5,2) | Sim | Representa a porcentagem de comissão de venda atribuída ao colaborador. |
 
 ---
@@ -284,7 +284,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 
 **ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
 
-**TELEFONE = CD_DDD + NR_NUMERO**
+**TELEFONE = CD_DDD + NR_NUMERO_TEL**
 
 -
 
@@ -294,7 +294,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 
 `NR_CNPJ` armazena o CNPJ do fornecedor. `NM_RAZAO_SOCIAL` representa a razão social do fornecedor. `NR_INSCRIC_ESTADUAL` armazena o número de inscrição estadual da empresa, quando aplicável.
 
-`DS_EMAIL` armazena o e-mail do fornecedor. `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO`.
+`DS_EMAIL` armazena o e-mail do fornecedor. `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO_TEL`.
 
 `ENDERECO` é um atributo composto que reúne os dados de localização do fornecedor, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO` e `DS_COMPLEMENTO`.
 
@@ -314,7 +314,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 | **DS_CIDADE** | Varchar(100) | Sim | Armazena a cidade do fornecedor. |
 | **DS_BAIRRO** | Varchar(100) | Sim | Armazena o bairro do fornecedor. |
 | **DS_RUA** | Varchar(150) | Sim | Armazena a rua do fornecedor. |
-| **NR_NUMERO (ENDERECO)** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
+| **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do fornecedor. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do fornecedor. |
 | **NR_NUMERO (TELEFONE)** | Varchar(14) | Sim | Armazena o número de telefone do fornecedor. |
