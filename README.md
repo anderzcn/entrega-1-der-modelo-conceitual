@@ -45,9 +45,10 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
  - **Evidências da organização:** 
   - *Localização:* [Visualizar Rafimex no Google Maps](https://maps.app.goo.gl/PDXnt86jRLMjDYKF8)
   - *Endereço e Contato:* [R. Barra do Tibagi, 537 - Bom Retiro, São Paulo - SP, 01128-000 | Tel: (11) 99471-1531- Gabriel Gedanken- DIRETOR COMERCIAL]
-    -**Registro visual:** [Visualiza Fotos de Visitação](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git)
+- **Registro visual:**
+    - [Visualiza Foto da Visitação](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/IMAGEM_VISITACAO_RAFIMEX.jpeg)
+    - [Visualiza Foto da Fachada](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/IMAGEM_FACHADA_RAFIMEX.jpeg)
 
-    ---
     
 ## 2. Processos de Negócio
 - **Cadastro de clientes:** só empresas (CNPJ) podem se cadastrar como clientes, e o cadastro deveria passar por revalidação periódica.
