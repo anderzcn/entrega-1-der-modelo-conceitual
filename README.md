@@ -272,37 +272,55 @@ unitário de venda do produto. `QT_ESTOQUE` indica a quantidade disponível em e
 **Índices:** PK `ID_PRODUTO` (clusterizado); índice único em `CD_SKU` (garante a identificação exclusiva do produto); índice secundário em `CD_NCM` (facilita consultas pela classificação fiscal do produto).
 
 ## 5.4 FORNECEDOR
-A entidade **FORNECEDOR** representa a separação de produtos, notas, e quantidades de itens que o cliente solicitou.
 
+A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento de produtos para a empresa.
 
-- ### Estrutura Formal
-**FORNECEDOR = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + NR_TELEFONE + DS_ENDERECO**
+-
 
-- ### Leitura da Estrutura
-`@ ID_FORNECEDOR ` | Identifica qual fornecedor, e quais os materiais entregue pela empresa.
-`NR_CNPJ` Identificador do CNPJ do fornecedor.
-`NM_RAZAO_SOCIAL` Representa de forma direta a razão social do Fornecedor.
-`NR_INSCRIC_ESTADUAL` Armazena o número de inscrição estadual da empresa, quando aplicável.
-`DS_EMAIL` Informa o Email profissional do fornecedor.
-`NR_TELEFONE` Cadastro do número do fornecedor para contatos diretos.
- `DS_ENDERECO` Descrição do endereço em que o fornecedor está localizado.
+### Estrutura Formal
 
-- ### Atributos da Entidade FORNECEDOR
+**FORNECEDOR = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + TELEFONE + ENDERECO**
 
-| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+**ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
+
+**TELEFONE = CD_DDD + NR_NUMERO**
+
+-
+
+### Leitura da Estrutura
+
+`@ID_FORNECEDOR` é a chave primária (**PK**) e identifica de forma única o fornecedor no sistema.
+
+`NR_CNPJ` armazena o CNPJ do fornecedor. `NM_RAZAO_SOCIAL` representa a razão social do fornecedor. `NR_INSCRIC_ESTADUAL` armazena o número de inscrição estadual da empresa, quando aplicável.
+
+`DS_EMAIL` armazena o e-mail do fornecedor. `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO`.
+
+`ENDERECO` é um atributo composto que reúne os dados de localização do fornecedor, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO` e `DS_COMPLEMENTO`.
+
+-
+
+### Atributos da Entidade FORNECEDOR
+
+| **Atributo** | **Tipo Físico** | **Obrigatório** | **Descrição** |
 |---|---|---|---|
-| **ID_FORNECEDOR** | Integer | Sim (PK) | Identifica qual fornecedor, e quais os materiais entregue pela empresa. |
-| **NR_CNPJ** | Varchar(18) | Sim | Identificador do CNPJ do fornecedor.|
-| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa de forma direta a razão social do Fornecedor.|
+| **ID_FORNECEDOR** | Número inteiro | Sim (PK) | Identifica de forma única o fornecedor no sistema. |
+| **NR_CNPJ** | Varchar(18) | Sim | Armazena o CNPJ do fornecedor. |
+| **NM_RAZAO_SOCIAL** | Varchar(100) | Sim | Representa a razão social do fornecedor. |
 | **NR_INSCRIC_ESTADUAL** | Varchar(20) | Não | Armazena o número de inscrição estadual da empresa, quando aplicável. |
-| **DS_EMAIL** | Varchar(100) | Sim  | Informa o Email profissional do fornecedor. |
-| **NR_TELEFONE** | Varchar(14) | Sim | Cadastro do número do fornecedor para contatos diretos. |
-| **DS_ENDERECO** | Integer | Sim | Descrição do endereço em que o fornecedor está localizado. |
+| **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail do fornecedor. |
+| **CD_CEP** | Varchar(9) | Sim | Armazena o código postal do fornecedor. |
+| **CD_UF** | Char(2) | Sim | Armazena a sigla do estado do fornecedor. |
+| **DS_CIDADE** | Varchar(100) | Sim | Armazena a cidade do fornecedor. |
+| **DS_BAIRRO** | Varchar(100) | Sim | Armazena o bairro do fornecedor. |
+| **DS_RUA** | Varchar(150) | Sim | Armazena a rua do fornecedor. |
+| **NR_NUMERO (ENDERECO)** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
+| **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do fornecedor. |
+| **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do fornecedor. |
+| **NR_NUMERO (TELEFONE)** | Varchar(14) | Sim | Armazena o número de telefone do fornecedor. |
 
 ### Índices
 
-**Índices:** PK `ID_FORNECEDOR` (clusterizado); índice único em `NR_CNPJ` (impede o cadastro duplicado do fornecedor); índice secundário em `NM_RAZAO_SOCIAL` (busca de fornecedores pela razão social).
-
+**Índices:** PK `ID_FORNECEDOR` (clusterizado); índice único em `NR_CNPJ` (impede o cadastro duplicado do fornecedor); índice secundário em `NM_RAZAO_SOCIAL` (facilita a busca de fornecedores pela razão social).
 ## 5.5 PEDIDO
 A entidade **PEDIDO** representa a separação de produtos e quantidades de itens que o cliente solicitou.
 
