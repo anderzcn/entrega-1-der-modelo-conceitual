@@ -352,7 +352,7 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 | **VL_IMPOSTO_IMPORTACAO** | Decimal(18,2) | Não | Valor de imposto de importação, quando o produto faturado for de origem importada,(nem todo produto importado tem IPI, como tecido e Rattan) |
 | **VL_TOTAL_IMPOSTOS** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
 | **VL_TOTAL_NF** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
-| **DS_STATUS_NF** | Varchar(20) | Sim | ]Descreve o status da nota fiscal se foi emitida ou ainda necessário emitir. |
+| **DS_STATUS_NF** | Varchar(20) | Sim | Descreve o status da nota fiscal, 'Emitida' ou 'Cancelada'. |
 
 ### Índices
 
