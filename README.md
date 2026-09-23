@@ -20,7 +20,7 @@ A Rafimex já opera com regras de negócio bem definidas para crédito, desconto
 
 O objetivo deste trabalho é modelar um banco de dados que represente corretamente as regras que a Rafimex já segue, e que resolva esse problema específico de cadastro desatualizado de forma preventiva, avisando antes que vire prejuízo, e não só depois.
 
-O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comercial (interna e externa), catálogo de produtos, fornecedores e pedidos de venda, incluindo o controle de preço praticado e produtos que ainda estão a caminho (importação). A implementação do banco de dados em si fica para a Entrega 2.
+O escopo deste projeto é a modelagem conceitual: mapear clientes, equipe comercial (interna e externa), catálogo de produtos, fornecedores e pedidos de venda, incluindo o controle de preço praticado e produtos que ainda estão a caminho (importação).
 
 ---
 
@@ -60,7 +60,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - **Emissão de pedidos:** todo pedido é aberto vinculado a um cliente e a um representante, com desconto aplicado dentro da alçada permitida (até 4%, acima disso precisa de aprovação da diretoria) e a modalidade de entrega/frete definida. Depois de passar pelas checagens de crédito e estoque, o pedido é faturado, com a emissão da nota fiscal correspondente.
 
 
-**Fluxograma:** [Visualiza imagem Fluxograma](https://github.com/leticiasantoslht-cmyk/Docs-Rafimex2.git) 
+**Fluxograma:** [Visualiza imagem Fluxograma]() 
 
 ---
 
@@ -80,7 +80,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - RNF01 — O sistema deve manter controle da data de atualização cadastral, ajudando a manter os dados em dia e em conformidade com a LGPD.
 - RNF02 —O sistema deve aplicar restrições estritas de integridade (chaves estrangeiras - FK), impedindo a existência de itens sem pedido ou pedidos sem cliente vinculado, além de bloquear a exclusão de cadastros que possuam histórico de vendas.
 - RNF03 — O sistema precisa funcionar bem mesmo com o volume atual (10.000 clientes, 1.550 produtos), sem travar ou ficar lento.
-- RNF04 — O acesso aos dados cadastrais dos clientes (CNPJ, contatos, limite de crédito) deve ser restrito a usuários autorizados do sistema, seguindo o princípio da necessidade/minimização previsto no art. 6º, inciso III, da LGPD.- 
+- RNF04 — O acesso aos dados cadastrais dos clientes (CNPJ, contatos, limite de crédito) deve ser restrito a usuários autorizados do sistema, seguindo o princípio da necessidade/minimização previsto no art. 6º, inciso III, da LGPD. 
 
   ---
   
