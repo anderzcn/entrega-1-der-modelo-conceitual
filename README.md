@@ -189,41 +189,52 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 **Índices:** PK `ID_CLIENTE` (clusterizado); índice único em `CD_CNPJ` (impedir o cadastro duplicado de clientes); índice secundário em `NM_RAZAO_SOCIAL` (busca de clientes pela razão social); índice secundário em `DT_DATA_DE_ATUALIZACAO` (identificação de cadastros sem atualização há mais de 90 dias).
 
- ## 5.2 COLABORADOR
+## 5.2 COLABORADOR
 
-A entidade **COLABORADOR** representa a coleta dos dados operacionais, contratuais e funcionais para a atuação do profissional no sistema.
+A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuais e funcionais para a atuação do profissional no sistema.
 
-- ### Estrutura Formal
+---
+
+### Estrutura Formal
 
 **COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + DS_ENDERECO + DS_EMAIL + NR_TELEFONE + DS_COMISSAO**
 
-- ### Leitura da Estrutura
+---
 
-`@ID_COLABORADOR ` Identifica o profissional no sistema.
-`NM_COLABORADOR` Representa o nome completo do colaborador.
-`NR_CPF` Número de indicação CPF do colaborador.
-`DT_DATA_DE_NASCIMENTO` Informativo da data de nascimento do colaborador.
-`DS_ENDERECO` Descrição do endereço do colaborador.
-`DS_EMAIL` Informa o Email pessoal para identificação no sistema.
-`NR_TELEFONE` Telefone contato pessoal do colaborador.
- `DS_COMISSAO`   Valor referente a porcentagem de venda ao colaborador. 
+### Leitura da Estrutura
 
-- ### Atributos da Entidade COLABORADOR
+`@ID_COLABORADOR` é a chave primária (**PK**) e identifica de forma única o colaborador no sistema.
 
-| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+`NM_COLABORADOR` representa o nome completo do colaborador. `NR_CPF` armazena o número do CPF do colaborador. `DT_DATA_DE_NASCIMENTO` registra a data de nascimento do colaborador.
+
+`DS_ENDERECO` armazena o endereço do colaborador. `DS_EMAIL` armazena o e-mail utilizado para contato e identificação no sistema. `NR_TELEFONE` armazena o telefone de contato do colaborador.
+
+`DS_COMISSAO` representa o valor referente à porcentagem de comissão de venda atribuída ao colaborador.
+
+---
+
+### Atributos da Entidade COLABORADOR
+
+| **Atributo** | **Tipo Físico** | **Obrigatório** | **Descrição** |
 |---|---|---|---|
-| **ID_COLABORADOR** | Integer | Sim (PK) | Identifica o profissional no sistema. |
+| **ID_COLABORADOR** | Número inteiro | Sim (PK) | Identifica de forma única o colaborador no sistema. |
 | **NM_COLABORADOR** | Varchar(120) | Sim | Representa o nome completo do colaborador. |
-| **NR_CPF** | Varchar(14) | Sim | Número de indicação CPF do colaborador. |
-| **DT_DATA_DE_NASCIMENTO** | Date | Sim | Informativo da data de nascimento do colaborador. |
-| **DS_ENDERECO** | Integer | Sim  | Identificação do endereço do colaborador. |
-| **DS_EMAIL** | Varchar(100) | Sim  | Informa o Email pessoal para identificação no sistema. |
-| **NR_TELEFONE** | Varchar(14) | Sim | Telefone contato pessoal do colaborador. |
-| **DS_COMISSAO** | Numeric(5,2) | Sim  |Valor referente a porcentagem de venda ao colaborador.|
+| **NR_CPF** | Varchar(14) | Sim | Armazena o número do CPF do colaborador. |
+| **DT_DATA_DE_NASCIMENTO** | Data | Sim | Registra a data de nascimento do colaborador. |
+| **DS_ENDERECO** | Varchar(200) | Sim | Armazena o endereço do colaborador. |
+| **DS_EMAIL** | Varchar(100) | Sim | Armazena o e-mail utilizado para contato e identificação no sistema. |
+| **NR_TELEFONE** | Varchar(14) | Sim | Armazena o telefone de contato do colaborador. |
+| **DS_COMISSAO** | Numérico(5,2) | Sim | Representa a porcentagem de comissão de venda atribuída ao colaborador. |
 
-### Índices
+---
 
-**Índices:** PK `ID_COLABORADOR` (clusterizado); índice único em `NR_CPF` (impede o cadastro duplicado do mesmo colaborador); índice secundário em `NM_COLABORADOR` (busca de colaboradores pelo nome).
+### Índices da Entidade COLABORADOR
+
+| **Tipo** | **Atributo** | **Descrição** |
+|---|---|---|
+| **PK** | **ID_COLABORADOR** | Identifica de forma única o colaborador no sistema. |
+| **UNIQUE** | **NR_CPF** | Garante que o CPF seja único para cada colaborador. |
+| **Índice secundário** | **NM_COLABORADOR** | Facilita a busca de colaboradores pelo nome. |
 
 ## 5.3 PRODUTO
 
