@@ -327,14 +327,15 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um pedido já faturado, contendo os dados legais e tributários exigidos para a emissão da nota.
 
 - ### Estrutura Formal
-**NOTA_FISCAL= @ID_NF + ID_PEDIDO + NR_NF + NR_CHAVE_ACESSO + DT_DATA_EMISSAO + VL_TOTAL_IMPOSTOS + VL_TOTAL_NF + DS_STATUS_NF**
+**NOTA_FISCAL= @ID_NF + ID_PEDIDO + NR_NF + NR_CHAVE_ACESSO + DT_DATA_EMISSAO + VL_IMPOSTO_IMPORTACAO + VL_TOTAL_IMPOSTOS + VL_TOTAL_NF + DS_STATUS_NF**
 
 - ### Leitura da Estrutura
 `@ID_NF` identifica a nota fiscal no sistema. 
 `ID_PEDIDO `vincula a nota ao pedido que a originou , é essa referência que evita duplicar, na nota, os dados do cliente e dos produtos já registrados no pedido. 
 `NR_NF` é o número sequencial da nota emitida.
 `NR_CHAVE_ACESSO` é o código de 44 dígitos que identifica a NF-e perante a Receita.
-`DT_DATA_EMISSAO` informa data quando a nota foi emitida.
+`DT_DATA_EMISSAO` informa data quando a nota foi emitida.  
+`VL_IMPOSTO_IMPORTACAO` registra o valor de imposto de importação incidente, quando aplicável.
 `VL_TOTAL_IMPOSTOS` soma todos os tributos da nota. 
 `VL_TOTAL_NF` é o valor final faturado, já com os impostos inclusos.
 `DS_STATUS_NF` indica se a nota foi emitida ou ainda nescessario imprimir.
@@ -347,7 +348,8 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 | **ID_PEDIDO** | Integer | Sim (FK) | Vincula a nota fiscal ao pedido que a originou. |
 | **NR_NF** | Integer | Sim (único) | Número sequencial da nota fiscal emitida. |
 | **NR_CHAVE_ACESSO** | Varchar(44) | Sim (único) | Código de acesso da NF-e, exigido pela Receita Federal. |
-| **DT_DATA_EMISSAO** | Date | Sim | Data em que a nota fiscal foi emitida. |
+| **DT_DATA_EMISSAO** | Date | Sim | Data em que a nota fiscal foi emitida. | 
+| **VL_IMPOSTO_IMPORTACAO** | Decimal(18,2) | Não | Valor de imposto de importação, quando o produto faturado for de origem importada,(nem todo produto importado tem IPI, como tecido e Rattan) |
 | **VL_TOTAL_IMPOSTOS** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
 | **VL_TOTAL_NF** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
 | **DS_STATUS_NF** | Varchar(20) | Sim | ]Descreve o status da nota fiscal se foi emitida ou ainda necessário emitir. |
