@@ -384,7 +384,7 @@ PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações f
 
 PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
 
-ITEM PEDIDO: Associativa com Detalhamento dos produtos que compõem um pedido, registrando a descrição, quantidade vendida, valor unitário  praticado em cada venda.
+ITEM PEDIDO: Associativa com Detalhamento dos produtos que compõem um pedido, registrando a descrição, quantidade vendida e valor unitário  praticado em cada venda.
 
 FORNECEDORES: Entidade externa emissora de notas de compra/importação.
 
