@@ -55,7 +55,7 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
 - **Análise de crédito:** antes de aprovar um pedido no boleto, o Financeiro verifica se o cliente tem restrição no Serasa ou pendência com a própria Rafimex, bloqueando a venda ou limitando a forma de pagamento conforme o caso.
 
-- **Controle de estoque:** a empresa separa o que já está fisicamente disponível no galpão ("Disponível/Reservado") do que ainda está vindo de importação ("Entrega Programada"), mostrando a data prevista de chegada no orçamento.
+- **Controle de estoque:** a empresa separa o que já está fisicamente disponível no galpão ("Disponível/Reservado") do que ainda está vindo de importação (Entrega Programada), mostrando a data prevista de chegada no orçamento.
 
 - **Emissão de pedidos:** todo pedido é aberto vinculado a um cliente e a um representante, com desconto aplicado dentro da alçada permitida (até 4%, acima disso precisa de aprovação da diretoria) e a modalidade de entrega/frete definida. Depois de passar pelas checagens de crédito e estoque, o pedido é faturado, com a emissão da nota fiscal correspondente.
 
