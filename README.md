@@ -377,11 +377,17 @@ Este modelo representa um sistema corporativo de vendas B2B e controle de estoqu
 
 ## Definições das Entidades:
 CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
+
 COLABORADORES: Vendedores e representantes comerciais responsáveis pelo faturamento e comissão.
+
 PEDIDO: Documento transacional de venda, incluindo notas fiscais, aprovações financeiras e entregas.
+
 PRODUTO: Item comercializável com código fiscal, saldo de estoque físico e preços de custo e venda.
-ITEM PEDIDO: 
+
+ITEM PEDIDO: Associativa com Detalhamento dos produtos que compõem um pedido, registrando a descrição, quantidade vendida, valor unitário  praticado em cada venda.
+
 FORNECEDORES: Entidade externa emissora de notas de compra/importação.
+
 NOTA FISCAL: Registro mercadorias vendidas que movimentam o saldo físico do estoque.
 
 ## Fluxo de Dados (Visão Geral)
