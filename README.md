@@ -458,7 +458,7 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 ---
 
 # 7. Diagrama Entidade-Relacionamento (DER)
-[Visualiza imagem DER](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/commit/9ff44a0a8d71cb6048c4ca1dfc0114bdb1efb476)
+[Visualiza imagem DER](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/DER_MODELO_CONCEITUAL.png)
 
 ---
 
