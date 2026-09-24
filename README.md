@@ -397,14 +397,15 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 ## Modelo Conceitual
 Este modelo representa um sistema corporativo de vendas B2B e controle de estoque, mapeando as interações desde o cadastro de clientes e parceiros até o faturamento e a movimentação física de produtos.
 
-| Entidade | Relaciona-se com | Cardinalidade |
-| ------ | ---- | ------|
-| **CLIENTES** | PEDIDO | **1:N** - Um cliente pode realizar vários pedidos, mas um pedido pertence a apenas um cliente. |
-| **COLABORADORES** | PEDIDO | **1:N** - Um colaborador/vendedor pode emitir vários pedidos, mas um pedido tem apenas um vendedor responsável. |
-| **PEDIDO** | ITEM_PEDIDO | **1:N** - Um pedido possui um ou vários itens de pedido; cada item pertence a um único pedido. |
-| **PRODUTO** | ITEM_PEDIDO | **1:N** - Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
-| **NOTA_FISCAL** | PRODUTO | **1:N** - Registra a movimentação de um produto no estoque. |
-| **PEDIDO** | **NOTA FISCAL** | **1:1** - Um pedido gera apenas uma nota fiscal. |
+
+| ENTIDADE |  RELACIONAMENTO  | ENTIDADE | DESCRIÇÃO |
+|----------|----------------------------|----------|-----------|
+| **COLABORADOR** | (0,n) atende (1,1) | **CLIENTE** | Um colaborador pode atender múltiplos clientes e um cliente pode ser atendido apenas por um colaborador.. |
+| **CLIENTE** | (1,1) realiza (0,n) | **PEDIDO** | Um cliente pode realizar vários pedidos, mas cada pedido pertence a apenas um cliente. |
+| **PEDIDO** | (0,n) possui (1,n) | **ITEM_PEDIDO** | Um pedido possui um ou vários itens de pedido; cada item pertence a nenhum ou vários pedidos. |
+| **PRODUTO** | (0,1) está em (0,n) | **ITEM_PEDIDO** | Um produto pode estar presente em diversos itens de pedidos; cada item refere-se a um único produto. |
+| **PEDIDO** | (1,1) emite (1,1) | **NOTA_FISCAL** | Um pedido gera uma nota fiscal; uma nota fiscal refere-se a um único pedido. |
+| **FORNECEDOR** | (1,n) fornece (1,n)| **PRODUTO** | Um produto pode ser fornecido por múltiplos fornecedores e um fornecedor fornece múltiplos produtos. |
 
 ## Definições das Entidades:
 CLIENTES: Pessoa jurídica compradora, com limite de crédito e controle de inadimplência.
@@ -425,7 +426,6 @@ NOTA FISCAL: Registro mercadorias vendidas que movimentam o saldo físico do est
 
 FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de compra.  O COLABORADOR abre um PEDIDO, registrando os itens da entidade PRODUTO através do ITEM PEDIDO. caso o pedido seja no boleto( a prazo), o pedido passa por aprovação gerencial e análise crédito. Sendo aprovado, o PEDIDO segue para separação e faturamento de NOTA FISCAL.
 
-3. Convenções do Dicionário de Dados
 
 ## Configurações do Banco de Dados
 | Parâmetro | Configuração / Descrição |
