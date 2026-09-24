@@ -60,8 +60,6 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - **Emissão de pedidos:** todo pedido é aberto vinculado a um cliente e a um representante, com desconto aplicado dentro da alçada permitida (até 4%, acima disso precisa de aprovação da diretoria) e a modalidade de entrega/frete definida. Depois de passar pelas checagens de crédito e estoque, o pedido é faturado, com a emissão da nota fiscal correspondente.
 
 
-**Fluxograma:** [Visualiza imagem Fluxograma]() 
-
 ---
 
  ## 3. Requisitos do Sistema   
