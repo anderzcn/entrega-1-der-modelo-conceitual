@@ -228,7 +228,6 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 | **DS_CIDADE** | Varchar(100) | Sim | Armazena a cidade do colaborador. |
 | **DS_BAIRRO** | Varchar(100) | Sim | Armazena o bairro do colaborador. |
 | **DS_RUA** | Varchar(150) | Sim | Armazena a rua do colaborador. |
-| **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço colaborador. |
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do colaborador. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do colaborador. |
 | **NR_NUMERO_TEL** | Varchar(14) | Sim | Armazena o número de telefone do colaborador. |
@@ -256,7 +255,7 @@ e acompanhamento da quantidade disponível em estoque.
 `CD_NCM` armazena a classificação fiscal,
 
 `VL_PRECO_CUSTO` e `VL_PRECO_UNITARIO` armazenam, respectivamente, os valores de custo 
-unitário de venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque. `DS_DESCRICAO` Descreve qual produto está sendo adquirido 
+unitário de venda do produto. `QT_ESTOQUE` indica a quantidade disponível em estoque. `DS_DESCRICAO` descreve o produto cadastrado no sistema.
 
 - ### Atributos da Entidade PRODUTO
 
@@ -319,7 +318,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 | **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do fornecedor. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do fornecedor. |
-| **NR_NUMERO (TELEFONE)** | Varchar(14) | Sim | Armazena o número de telefone do fornecedor. |
+| **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
 
 ### Índices
 
@@ -366,11 +365,11 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 `ID_PEDIDO `vincula a nota ao pedido que a originou , é essa referência que evita duplicar, na nota, os dados do cliente e dos produtos já registrados no pedido. 
 `NR_NF` é o número sequencial da nota emitida.
 `NR_CHAVE_ACESSO` é o código de 44 dígitos que identifica a NF-e perante a Receita.
-`DT_DATA_EMISSAO` informa data quando a nota foi emitida.  
+`DT_DATA_EMISSAO` informa a data em que a nota foi emitida. 
 `VL_IMPOSTO_IMPORTACAO` registra o valor de imposto de importação incidente, quando aplicável.
 `VL_TOTAL_IMPOSTOS` soma todos os tributos da nota. 
 `VL_TOTAL_NF` é o valor final faturado, já com os impostos inclusos.
-`DS_STATUS_NF` indica se a nota foi emitida ou ainda nescessario imprimir.
+`DS_STATUS_NF` indica se a nota foi emitida ou ainda necessário imprimir.
 
 - ### Atributos da Entidade NOTA FISCAL
 
