@@ -182,7 +182,7 @@ A entidade **CLIENTE** representa o armazenamento das informações das pessoas 
 
 ### Índices
 
-**Índices:** PK `ID_CLIENTE` (clusterizado); índice único em `CD_CNPJ` (impedir o cadastro duplicado de clientes); índice secundário em `NM_RAZAO_SOCIAL` (busca de clientes pela razão social); índice secundário em `DT_DATA_DE_ATUALIZACAO` (identificação de cadastros sem atualização há mais de 90 dias).
+**Índices:** PK `ID_CLIENTE` (clusterizado); índice único em `NR_CNPJ` (impedir o cadastro duplicado de clientes); índice secundário em `NM_RAZAO_SOCIAL` (busca de clientes pela razão social); índice secundário em `DT_DATA_DE_ATUALIZACAO` (identificação de cadastros sem atualização há mais de 90 dias).
 
 ## 5.2 COLABORADOR
 
@@ -281,7 +281,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 
 **FORNECEDOR = @ID_FORNECEDOR + NR_CNPJ + NM_RAZAO_SOCIAL + NR_INSCRIC_ESTADUAL + DS_EMAIL + TELEFONE + ENDERECO**
 
-**ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
+**ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO_ENDERECO + DS_COMPLEMENTO**
 
 **TELEFONE = CD_DDD + NR_NUMERO_TEL**
 
@@ -295,7 +295,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 
 `DS_EMAIL` armazena o e-mail do fornecedor. `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO_TEL`.
 
-`ENDERECO` é um atributo composto que reúne os dados de localização do fornecedor, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO` e `DS_COMPLEMENTO`.
+`ENDERECO` é um atributo composto que reúne os dados de localização do fornecedor, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO_ENDERECO` e `DS_COMPLEMENTO`.
 
 -
 
@@ -316,7 +316,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 | **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do fornecedor. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do fornecedor. |
-| **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
+| **NR_NUMERO_ENDERECO** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
 
 ### Índices
 
@@ -329,6 +329,8 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 
 - ### Leitura da Estrutura
 `@ID_PEDIDO` Identifica o pedido solicitado no sistema 
+`ID_CLIENTE` Vincula o pedido ao cliente solicitante do pedido. 
+`ID_COLABORADOR` Vincula o pedido ao colaborador responsável.
 `DT_DATA_DO_PEDIDO` Informativo da data em que o pedido foi solicitado.
 `VL_VALOR_VENDA` Valor de venda do pedido solicitado pelo cliente.
 `DS_TIPO_FRETE` Descreve a forma de frete se transportadora ou correios para entrega do produto. 
@@ -341,12 +343,14 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
 | **ID_PEDIDO** | Integer | Sim (PK) | Identifica o pedido solicitado no sistema. |
+| **ID_CLIENTE** | Número inteiro | Sim (FK) | Vincula o pedido ao cliente solicitante do pedido. |
+| **ID_COLABORADOR** | Número inteiro | Sim (PK) | Vincula o pedido ao colaborador responsável. |
 | **DT_DATA_DO_PEDIDO** | Date | Sim | Informativo da data em que o pedido foi solicitado. |
 | **VL_VALOR_VENDA** | Decimal(18,2) | Sim | Valor de venda do pedido solicitado. |
-| **DS_TIPO_DE_FRETE** | Integer | Sim | Descreve a forma de frete se transportadora ou correios para entrega do produto.   |
-| **DS_FORMA_DE_PAGAMENTO** | Integer | Sim  | Descreve a forma de pagamento que o cliente escolheu pagar pelo produto.    |
+| **DS_TIPO_DE_FRETE** | Varchar(30) | Sim | Descreve a forma de frete se transportadora ou correios para entrega do produto.   |
+| **DS_FORMA_DE_PAGAMENTO** | Varchar(50) | Sim  | Descreve a forma de pagamento que o cliente escolheu pagar pelo produto.    |
 | **VL_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Valor da porcentagem de desconto aplicada no pedido.  |
-| **DS_STATUS_PEDIDO** | Integer | Sim | Descreve o status do pedido e em qual etapa do processo que o pedido está.|
+| **DS_STATUS_PEDIDO** | Varchar(30) | Sim | Descreve o status do pedido e em qual etapa do processo que o pedido está.|
 
 ### Índices
 
