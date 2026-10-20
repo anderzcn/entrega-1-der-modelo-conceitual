@@ -325,7 +325,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 A entidade **PEDIDO** representa a separação de produtos e quantidades de itens que o cliente solicitou.
 
 - ### Estrutura Formal
-**PEDIDO = @ID_PEDIDO + DT_DATA_DO_PEDIDO + VL_VALOR_VENDA + DS_TIPO_DE_FRETE + DS_FORMA_DE_PAGAMENTO + VL_DESCONTO_APLICADO + DS_STATUS_PEDIDO** 
+**PEDIDO = @ID_PEDIDO + ID_CLIENTE + ID_COLABORADOR + DT_DATA_DO_PEDIDO + VL_VALOR_VENDA + DS_TIPO_DE_FRETE + DS_FORMA_DE_PAGAMENTO + VL_DESCONTO_APLICADO + DS_STATUS_PEDIDO** 
 
 - ### Leitura da Estrutura
 `@ID_PEDIDO` Identifica o pedido solicitado no sistema 
