@@ -344,7 +344,7 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 |---|---|---|---|
 | **ID_PEDIDO** | Integer | Sim (PK) | Identifica o pedido solicitado no sistema. |
 | **ID_CLIENTE** | Número inteiro | Sim (FK) | Vincula o pedido ao cliente solicitante do pedido. |
-| **ID_COLABORADOR** | Número inteiro | Sim (PK) | Vincula o pedido ao colaborador responsável. |
+| **ID_COLABORADOR** | Número inteiro | Sim (FK) | Vincula o pedido ao colaborador responsável. |
 | **DT_DATA_DO_PEDIDO** | Date | Sim | Informativo da data em que o pedido foi solicitado. |
 | **VL_VALOR_VENDA** | Decimal(18,2) | Sim | Valor de venda do pedido solicitado. |
 | **DS_TIPO_DE_FRETE** | Varchar(30) | Sim | Descreve a forma de frete se transportadora ou correios para entrega do produto.   |
