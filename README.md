@@ -426,44 +426,6 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 **Índices:** PK `ID_NF` (clusterizado); índice único em `ID_PEDIDO` (garante a relação 1:1 entre pedido e nota fiscal); índice único em `NR_NF` (impede números de nota fiscal duplicados); índice único em `NR_CHAVE_ACESSO` (garante a unicidade da chave de acesso da NF-e); índice secundário em `DT_DATA_EMISSAO` (consulta de notas fiscais por período).
 
 
-### 5.9 DEVOLUCAO
-A entidade DEVOLUCAO registra o retorno de mercadorias não entregues e aciona travas de segurança logística.
-
-*Estrutura Formal*
-DEVOLUCAO = @ID_DEVOLUCAO + ID_PEDIDO + DT_DATA_DEVOLUCAO + DS_MOTIVO + (VL_TAXA_REENTREGA) + IN_BLOQUEIA_CLIENTE
-
-*Leitura da Estrutura*
-@ID_DEVOLUCAO identifica a devolução no sistema. ID_PEDIDO é a chave estrangeira que indica qual pedido foi devolvido. DT_DATA_DEVOLUCAO registra quando a mercadoria retornou. DS_MOTIVO descreve a causa (ex.: endereço incorreto, recusado pelo destinatário). VL_TAXA_REENTREGA guarda o custo de reenvio, quando houver. IN_BLOQUEIA_CLIENTE é o gatilho que, quando verdadeiro, bloqueia o cliente automaticamente — é essa coluna que dá suporte real à regra de negócio correspondente (RN13).
-
-*Atributos da Entidade DEVOLUCAO*
-| Atributo | Tipo Físico | Obrigatório | Descrição |
-| :--- | :--- | :--- | :--- |
-| ID_DEVOLUCAO | Integer | Sim (PK) | Identifica a devolução. |
-| ID_PEDIDO | Integer | Sim (FK) | Pedido que foi devolvido. |
-| DT_DATA_DEVOLUCAO | Date | Sim | Quando a mercadoria voltou. |
-| DS_MOTIVO | Varchar(150) | Sim | Ex.: "Endereço incorreto", "Recusado pelo destinatário". |
-| VL_TAXA_REENTREGA | Decimal(10,2)| Não | Custo da reentrega, quando houver. |
-| IN_BLOQUEIA_CLIENTE | Booleano | Sim | Se TRUE, dispara o bloqueio do cliente. |
-
-### 5.10 CONTAS_A_PAGAR
-A entidade CONTAS_A_PAGAR gerencia as obrigações financeiras da empresa junto aos seus fornecedores.
-
-*Estrutura Formal*
-CONTAS_A_PAGAR = @ID_CONTA_PAGAR + ID_COMPRA + VL_VALOR + DT_VENCIMENTO + (DT_PAGAMENTO) + DS_STATUS_PAGAMENTO
-
-*Leitura da Estrutura*
-@ID_CONTA_PAGAR identifica o título no sistema. ID_COMPRA é a chave estrangeira que liga o título à ordem de importação que o originou — é essa ligação que dá suporte real à regra de compras (RN11). VL_VALOR é o valor a pagar ao fornecedor. DT_VENCIMENTO é o prazo acordado. DT_PAGAMENTO fica vazio até o pagamento ser efetivado. DS_STATUS_PAGAMENTO indica a situação atual do título.
-
-*Atributos da Entidade CONTAS_A_PAGAR*
-| Atributo | Tipo Físico | Obrigatório | Descrição |
-| :--- | :--- | :--- | :--- |
-| ID_CONTA_PAGAR | Integer | Sim (PK) | Identifica o título. |
-| ID_COMPRA | Integer | Sim (FK) | Ordem de importação que originou a conta (única). |
-| VL_VALOR | Decimal(18,2)| Sim | Valor a pagar ao fornecedor. |
-| DT_VENCIMENTO | Date | Sim | Prazo de pagamento. |
-| DT_PAGAMENTO | Date | Não | Preenchido só quando for pago. |
-| DS_STATUS_PAGAMENTO| Varchar(20) | Sim | 'Pendente', 'Pago', 'Atrasado'. |
-
 
 ## 5.7 ITEM_PEDIDO (Entidade Associativa)
 A entidade ITEM_PEDIDO resolve o relacionamento N:N entre Pedido e Produto, registrando a quantidade comercializada e congelando o preço histórico, garantindo conformidade com o RF05.
