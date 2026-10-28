@@ -139,8 +139,12 @@ Princípios da lei aplicados diretamente no modelo:
 
 O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR ,PEDIDO e NOTA FISCAL*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
-* *Collation (utf8mb4_0900_ai_ci):* Justifica-se o uso por suportar o padrão completo UTF-8 de 4 bytes (incluindo símbolos), sendo accent-insensitive (ai) e case-insensitive (ci), o que otimiza buscas por Razão Social e Endereços sem diferenciar letras maiúsculas/minúsculas ou acentos.
-
+**Controlo de Versão e Configuração:**
+* **Versão do Dicionário:** 1.1
+* **Data de Atualização:** 26/10/2026
+* **SGBD Alvo:** MySQL 8.0
+* **Collation (`utf8mb4_0900_ai_ci`):** Justifica-se o uso por suportar o padrão completo UTF-8 de 4 bytes (incluindo símbolos), sendo *accent-insensitive* (`ai`) e *case-insensitive* (`ci`), o que otimiza buscas por Razão Social e Endereços sem diferenciar letras maiúsculas/minúsculas ou acentos.
+  
 *Notação Formal:*
 | Símbolo | Significado e Aplicação |
 | :--- | :--- |
