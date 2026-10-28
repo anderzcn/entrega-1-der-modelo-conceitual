@@ -417,6 +417,9 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 | **VL_TOTAL_IMPOSTOS** | Decimal(18,2) | Sim | Soma de todos os tributos incidentes na nota. |
 | **VL_TOTAL_NF** | Decimal(18,2) | Sim | Valor total da nota fiscal, incluindo os impostos. |
 | **DS_STATUS_NF** | Varchar(20) | Sim | Descreve o status da nota fiscal, 'Emitida' ou 'Cancelada'. |
+| **DT_PAGAMENTO** | Data | Não | Preenchido quando cliente quita boleto. |
+| **DS_STATUS_RECEBIMENTO** | Varchar(20) | Sim | Pendente ou pago- controla a liberação da comissão (RN12). |
+
 
 ### Índices
 
