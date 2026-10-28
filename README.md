@@ -406,7 +406,7 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 
 **Índices:** PK `ID_NF` (clusterizado); índice único em `ID_PEDIDO` (garante a relação 1:1 entre pedido e nota fiscal); índice único em `NR_NF` (impede números de nota fiscal duplicados); índice único em `NR_CHAVE_ACESSO` (garante a unicidade da chave de acesso da NF-e); índice secundário em `DT_DATA_EMISSAO` (consulta de notas fiscais por período).
 
-### 5.7 ITEM_PEDIDO (Entidade Associativa)
+## 5.7 ITEM_PEDIDO (Entidade Associativa)
 A entidade ITEM_PEDIDO resolve o relacionamento N:N entre Pedido e Produto, registrando a quantidade comercializada e congelando o preço histórico, garantindo conformidade com o RF05.
 
 *Estrutura Formal*
@@ -423,7 +423,7 @@ ITEM_PEDIDO = @ID_ITEM + ID_PEDIDO + ID_PRODUTO + QT_VENDIDA + VL_PRECO_UNITARIO
 
 *Índices:* PK ID_ITEM (clusterizado); índice secundário em ID_PEDIDO; índice secundário em ID_PRODUTO.
 
-### 5.8 LOG_ACESSO e Tabela de Papéis por Operação (Matriz LGPD)
+## 5.8 LOG_ACESSO e Tabela de Papéis por Operação (Matriz LGPD)
 Para suportar o RNF04 (Acesso Restrito) e o Princípio da Responsabilização da LGPD, a entidade LOG_ACESSO audita quem acessa os dados, cruzada com a Matriz de Retenção e Papéis.
 
 *Estrutura Formal*
