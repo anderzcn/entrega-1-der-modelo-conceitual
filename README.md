@@ -406,6 +406,37 @@ A entidade **NOTA_FISCAL** representa o documento fiscal gerado a partir de um p
 
 **Índices:** PK `ID_NF` (clusterizado); índice único em `ID_PEDIDO` (garante a relação 1:1 entre pedido e nota fiscal); índice único em `NR_NF` (impede números de nota fiscal duplicados); índice único em `NR_CHAVE_ACESSO` (garante a unicidade da chave de acesso da NF-e); índice secundário em `DT_DATA_EMISSAO` (consulta de notas fiscais por período).
 
+### 5.7 ITEM_PEDIDO (Entidade Associativa)
+A entidade ITEM_PEDIDO resolve o relacionamento N:N entre Pedido e Produto, registrando a quantidade comercializada e congelando o preço histórico, garantindo conformidade com o RF05.
+
+*Estrutura Formal*
+ITEM_PEDIDO = @ID_ITEM + ID_PEDIDO + ID_PRODUTO + QT_VENDIDA + VL_PRECO_UNITARIO_PRATICADO
+
+*Atributos da Entidade ITEM_PEDIDO*
+| Atributo | Tipo Físico | Obrigatório | Descrição |
+| :--- | :--- | :--- | :--- |
+| ID_ITEM | Integer | Sim (PK) | Identificador único da linha do item associativo. |
+| ID_PEDIDO | Integer | Sim (FK) | Vínculo com o pedido correspondente. |
+| ID_PRODUTO | Integer | Sim (FK) | Vínculo com o produto comercializado. |
+| QT_VENDIDA | Integer | Sim | Quantidade de peças do item inseridas no pedido. |
+| VL_PRECO_UNITARIO_PRATICADO| Decimal(10,2)| Sim | Preço de venda congelado no momento da emissão. |
+
+*Índices:* PK ID_ITEM (clusterizado); índice secundário em ID_PEDIDO; índice secundário em ID_PRODUTO.
+
+### 5.8 LOG_ACESSO e Tabela de Papéis por Operação (Matriz LGPD)
+Para suportar o RNF04 (Acesso Restrito) e o Princípio da Responsabilização da LGPD, a entidade LOG_ACESSO audita quem acessa os dados, cruzada com a Matriz de Retenção e Papéis.
+
+*Estrutura Formal*
+LOG_ACESSO = @ID_LOG + ID_COLABORADOR + DT_ACESSO + DS_OPERACAO + DS_TABELA_AFETADA
+
+*Matriz de Operações, Base Legal e Retenção:*
+| Entidade Alvo | Papel / Perfil | Operações (CRUD) | Base Legal (Art. 7º LGPD) | Tempo de Retenção |
+| :--- | :--- | :--- | :--- | :--- |
+| *CLIENTE* | Vendedor / Rep. | Ler, Inserir, Atualizar | Execução de Contrato (Inciso V) | Enquanto ativo + 5 anos (Código Civil) |
+| *CLIENTE* | Financeiro | Ler, Atualizar | Proteção ao Crédito (Inciso X) | 5 anos pós-quitação |
+| *COLABORADOR*| RH / Diretoria | Ler, Inserir, Atualizar, Apagar| Obrigação Legal (Inciso II) | 30 anos (Legislação Trabalhista) |
+| *PEDIDO / NF*| Faturamento | Ler, Inserir | Obrigação Legal (Inciso II) | 5 anos fiscais |
+| *LOG_ACESSO* | Administrador | Ler, Inserir | Legítimo Interesse / Segurança | 6 meses (Marco Civil da Internet) |
 ---
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
