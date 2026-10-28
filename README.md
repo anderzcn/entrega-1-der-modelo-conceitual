@@ -51,14 +51,27 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 
     
 ## 2. Processos de Negócio
-- **Cadastro de clientes:** só empresas (CNPJ) podem se cadastrar como clientes, e o cadastro deveria passar por revalidação periódica.
+A operação atacadista da Rafimex funciona num fluxo interligado, estruturado nos seguintes processos:
 
-- **Análise de crédito:** antes de aprovar um pedido no boleto, o Financeiro verifica se o cliente tem restrição no Serasa ou pendência com a própria Rafimex, bloqueando a venda ou limitando a forma de pagamento conforme o caso.
+*2.1 Cadastro de Clientes e Análise de Crédito (O Foco do Problema)*
+* *Cadastro:* O registo é restrito a Pessoas Jurídicas (CNPJ) e realizado de forma manual pelos representantes. Atualmente, o processo é passivo e não exige validação periódica, o que gera a desatualização silenciosa de e-mails financeiros e endereços (é exatamente nesta etapa do processo que a nossa modelagem atuará propondo a trava preventiva de 90 dias).
+* *Análise de Crédito:* Vendas a prazo (boleto) disparam uma checagem de pendências internas e no Serasa, podendo bloquear o pedido ou restringir a forma de pagamento.
+*
 
-- **Controle de estoque:** a empresa separa o que já está fisicamente disponível no galpão ("Disponível/Reservado") do que ainda está vindo de importação (Entrega Programada), mostrando a data prevista de chegada no orçamento.
+*2.2 Ciclo de Compras, Importação e Contas a Pagar*
+* *Cadastro de Fornecedores e Importação:* Compras são feitas de fornecedores homologado. Quando um item atinge o ponto de pedido, gera-se uma Ordem de Importação.
+* *Recebimento e Contas a Pagar:* A previsão de chegada da importação permite vender o produto antecipadamente (Entrega Programada). O recebimento físico da mercadoria gera os títulos no Contas a Pagar e regista os impostos.
 
-- **Emissão de pedidos:** todo pedido é aberto vinculado a um cliente e a um representante, com desconto aplicado dentro da alçada permitida (até 4%, acima disso precisa de aprovação da diretoria) e a modalidade de entrega/frete definida. Depois de passar pelas checagens de crédito e estoque, o pedido é faturado, com a emissão da nota fiscal correspondente.
+*2.3 Emissão de Pedidos e Faturamento*
+* *Orçamento e Emissão:* O representante comercial emite o pedido, seleciona os itens (estoque disponível ou programado) e o tipo de frete.
+* *Alçada de Descontos:* O representante pode conceder até 4% de desconto; acima disso, o pedido fica retido para aprovação gerencial.
+* *Faturamento (Nota Fiscal):* Aprovado o crédito e a disponibilidade, o pedido é faturado, gerando a Nota Fiscal Eletrónica.
 
+*2.4 Expedição, Cobrança, Devoluções e Comissões*
+* *Separação e Expedição:* A expedição efetua a separação e despacha a mercadoria (transportadora ou retirada). 
+* *Devolução:* Atualmente, quando uma mercadoria volta por endereço errado ou desatualizado, a equipa logística regista o retorno, mas o sistema não bloqueia automaticamente o cliente. Isto cria o risco de um novo pedido ser faturado com o mesmo endereço errado, gerando reentregas e prejuízos sucessivos (a nossa modelagem propõe corrigir isto com a RN09, criando uma trava automática por devolução logística).
+* *Cobrança e Recebimento:* O boleto é gerado e enviado. O pagamento dá baixa no título; a inadimplência bloqueia o cliente.
+* *Comissão dos Representantes:* * O sistema calcula a comissão com base no tipo de atuação do colaborador (sendo 8% para representantes externos e 3% para internos), mas o pagamento ao profissional só ocorre após a liquidação (pagamento) do boleto pelo cliente.
 
 ---
 
@@ -93,8 +106,10 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
 - RN07 — O preço cobrado numa venda fica registrado daquele jeito para sempre, mesmo que o preço de tabela mude depois.
 - RN08 — Produtos com chegada programada (importação) podem ser vendidos, desde que a data prevista de chegada apareça no orçamento.
 - RN09 — É proibida a emissão ou faturamento de pedidos para clientes cujos dados cadastrais (endereço, telefone e contato financeiro) não tenham sido confirmados nos últimos 90 dias, visando prevenir devoluções de mercadoria e extravio de cobranças (essa é a regra que resolve o problema real de desatualização identificado na Rafimex.)
- 
-
+- RN10  — A compra e importação de mercadorias só pode ser realizada com fornecedores previamente cadastrados com CNPJ válido.
+- RN11  — As ordens de importação devem registrar a previsão de chegada para permitir a venda de estoque futuro e, ao chegarem, devem obrigatoriamente alimentar o contas a pagar.
+- RN12 — O cálculo da comissão difere conforme o tipo de vínculo do colaborador: aplica-se o percentual de *8% para representantes externos* e *3% para vendedores internos*. A liberação financeira do pagamento de ambas as comissões só ocorre após a efetiva liquidação (pagamento) do boleto pelo cliente.
+ ---
  ## Conformidade Legal (LGPD)
 
 Embora a Rafimex opere no modelo B2B (empresa para empresa), o modelo de dados também trata informações de pessoas físicas , como o CPF dos colaboradores e o nome e contato do responsável dentro de cada empresa cliente. Por isso, mesmo numa operação majoritariamente entre empresas, parte dos dados tratados se enquadra como dado pessoal sob a LGPD (Lei nº 13.709/2018).
