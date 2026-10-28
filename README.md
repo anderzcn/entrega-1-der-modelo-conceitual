@@ -139,7 +139,19 @@ Princípios da lei aplicados diretamente no modelo:
 
 O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR ,PEDIDO e NOTA FISCAL*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
+* *Collation (utf8mb4_0900_ai_ci):* Justifica-se o uso por suportar o padrão completo UTF-8 de 4 bytes (incluindo símbolos), sendo accent-insensitive (ai) e case-insensitive (ci), o que otimiza buscas por Razão Social e Endereços sem diferenciar letras maiúsculas/minúsculas ou acentos.
 
+*Notação Formal:*
+| Símbolo | Significado e Aplicação |
+| :--- | :--- |
+| = | é composto de (define a estrutura da entidade) |
+| + | e (conecta elementos obrigatórios) |
+| () | opcional (campos que podem ser nulos) |
+| [] | escolha obrigatória entre alternativas exclusivas |
+| {} | iteração / grupo repetitivo |
+| @ | identificador (chave primária) |
+| / / | delimitadores de comentários ou restrições |
+| * * | indicadores de chave estrangeira (FK) |
 
 ## 5.1 CLIENTE (PJ)
 
