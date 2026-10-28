@@ -109,6 +109,7 @@ A operação atacadista da Rafimex funciona num fluxo interligado, estruturado n
 - RN10  — A compra e importação de mercadorias só pode ser realizada com fornecedores previamente cadastrados com CNPJ válido.
 - RN11  — As ordens de importação devem registrar a previsão de chegada para permitir a venda de estoque futuro e, ao chegarem, devem obrigatoriamente alimentar o contas a pagar.
 - RN12 — O cálculo da comissão difere conforme o tipo de vínculo do colaborador: aplica-se o percentual de *8% para representantes externos* e *3% para vendedores internos*. A liberação financeira do pagamento de ambas as comissões só ocorre após a efetiva liquidação (pagamento) do boleto pelo cliente.
+- RN13 — Toda devolução por endereço incorreto ou desatualizado bloqueia automaticamente o cliente para novos pedidos, até que o cadastro seja revalidado — independente da trava de 90 dias (RN09), que é por tempo, não por evento.
  ---
  ## Conformidade Legal (LGPD)
 
@@ -260,8 +261,7 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do colaborador. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do colaborador. |
 | **NR_NUMERO_TEL** | Varchar(14) | Sim | Armazena o número de telefone do colaborador. |
-| **DS_COMISSAO** | Numérico(5,2) | Sim | Representa a porcentagem de comissão de venda atribuída ao colaborador. |
-
+| **DS_COMISSAO** | Numérico(5,2) | Sim | 'Interno' ou 'Externo' — define a alçada de comissão (3% ou 8%) aplicada pela RN12
 
 ### Índices
 
