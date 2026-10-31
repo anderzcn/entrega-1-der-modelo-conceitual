@@ -481,7 +481,7 @@ A entidade **COMPRA_IMPORTACAO** representa o registro da compra ou importação
 ### Atributos da Entidade COMPRA_IMPORTACAO
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
-| ** ID_COMPRA**| Integer | Sim (PK) | Identifica de forma única e exclusiva cada compra/importação no sistema. |
+| **ID_COMPRA**| Integer | Sim (PK) | Identifica de forma única e exclusiva cada compra/importação no sistema. |
 | **ID_FONECEDOR** | Integer | Sim (FK) | Referência ao fornecedor responsável pela compra/importação.|
 | **NR_PEDIDO** | Vachar(50) | Sim  | Número ou código atribuído à compra/importação. |
 | **DS_STATUS** | Varchar(20) | Sim  | Status atual da compra ('Aberta', 'Recebida', 'Concluída', etc.). |
