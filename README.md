@@ -458,6 +458,44 @@ LOG_ACESSO = @ID_LOG + ID_COLABORADOR + DT_ACESSO + DS_OPERACAO + DS_TABELA_AFET
 | *COLABORADOR*| RH / Diretoria | Ler, Inserir, Atualizar, Apagar| Obrigação Legal (Inciso II) | 30 anos (Legislação Trabalhista) |
 | *PEDIDO / NF*| Faturamento | Ler, Inserir | Obrigação Legal (Inciso II) | 5 anos fiscais |
 | *LOG_ACESSO* | Administrador | Ler, Inserir | Legítimo Interesse / Segurança | 6 meses (Marco Civil da Internet) |
+
+## 5.9 COMPRA_IMPORTACAO
+A entidade **COMPRA_IMPORTACAO** representa o registro da compra ou importação realizada pela empresa, reunindo as informações comerciais, fiscais, legais e tributárias necessárias para formalizar a operação, controlar o pedido e acompanhar o recebimento dos produtos.
+
+ ### Estrutura Formal
+
+**COMPRA_IMPORTACAO = @ID_COMPRA + ID_FORNECEDOR + NR_PEDIDO + DS_STATUS + DS_OPERACAO + DT_PEDIDO + DT_RECEBIMENTO + MOEDA + VLR_TOTAL + DS_INCOTERM**
+
+- ### Leitura da Estrutura 
+`@ID_COMPRA` chave primária exclusiva que identifica cada compra no sistema
+`ID_FORNECEDOR` referência ao fornecedor que realizou a venda/importação.
+`NR_PEDIDO` número ou código da compra/importação. 
+`DS_STATUS` indica a situação atual da compra (ex: 'Aberta', 'Recebida', 'Concluída', 'Cancelada').
+`DS_OPERACAO` tipo da operação, por exemplo, 'Importação', 'Compra nacional'.
+`DT_PEDIDO` data em que o pedido de compra foi realizado.
+`DT_RECEBIMENTO` data em que os produtos foram recebidos.
+`MOEDA` moeda utilizada na compra (ex: BRL, USD, EUR).
+`VLR_TOTAL` valor total da compra na moeda especificada.
+`DS_INCOTERM` termo internacional de comércio aplicado na importação
+
+### Atributos da Entidade COMPRA_IMPORTACAO
+| Atributo | Tipo Físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ** ID_COMPRA**| Integer | Sim (PK) | Identifica de forma única e exclusiva cada compra/importação no sistema. |
+| **ID_FONECEDOR** | Integer | Sim (FK) | Referência ao fornecedor responsável pela compra/importação.|
+| **NR_PEDIDO** | Vachar(50) | Sim  | Número ou código atribuído à compra/importação. |
+| **DS_STATUS** | Varchar(20) | Sim  | Status atual da compra ('Aberta', 'Recebida', 'Concluída', etc.). |
+| **DS_OPERACAO** | Vachar(20) | Sim | Tipo da operação ('Importação', 'Compra nacional', etc.). | 
+| **DT_PEDIDO** | Date | Não | Valor de imposto de importação, quando o produto faturado for de origem importada,(nem todo produto importado tem IPI, como tecido e Rattan) |
+| **DT_RECEBIMENTO** | Date | Sim | Data em que os produtos foram recebidos. |
+| **MOEDA** | Char(3) | Sim | Código da moeda utilizada na compra (ex: BRL, USD, EUR). |
+| **VLR_TOTAL** | Varchar(18,2) | Sim | Valor total da compra na moeda especificada. |
+| **DS_INCOTERM** | Varchar(10) | Sim | Termo internacional de comércio aplicado na importação. |
+
+### Índices
+
+**Índices:** PK `ID_COMPRA` (clusterizado): Identificação única da compra; índice único composto `ID_FORNECEDOR` e `NR_PEDIDO`  Evita registro duplicado do mesmo número de pedido para o mesmo fornecedor; Índice secundário em `DS_STATUS`  Facilita consultas e filtros por situação da compra; Índice secundário em `DT_PEDIDO` Permite consultas por período e intervalos de datas.
+
 ---
 
 ## 6. Modelagem Conceitual (Entidades, Atributos e Relacionamentos)
