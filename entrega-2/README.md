@@ -436,7 +436,7 @@ As regras que dependem de outra tabela (situação do cliente, limite, devoluç�
 
 ## 2. Modelo Lógico Relacional
 
-- **Software:** ⚠️ PREENCHER (brModelo Web ou MySQL Workbench → Database → Reverse Engineer).
+- **Software:** 
 - **Imagem:** [diagramas/modelo-logico.png](diagramas/modelo-logico.png)
 
 ![Modelo lógico](diagramas/modelo-logico.png)
