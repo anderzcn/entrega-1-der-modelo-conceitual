@@ -165,7 +165,7 @@ Não houve divergência. O que o entrevistado descreveu foi confirmado pela obse
 | Ponto | Entrega 1 | Entrega 2 (depois do novo levantamento) |
 | :---- | :---- | :---- |
 | Ciclo de compras e importação | Não descrito | Confirmado: pedido de compra a fornecedor homologado, previsão de chegada e recebimento (RN10, RN11) |
-| Contas a pagar | Não descrito | Confirmado: todo pedido de compra gera conta a pagar (RN11) |
+| Contas a pagar | Não descrito |  todo pedido de compra gera conta a pagar (RN11) |
 | Cobrança e recebimento | Não descrito |  boleto parcelado (um título por parcela), baixa no pagamento, inadimplência bloqueia o cliente |
 | Devolução / reentrega | Não descrito |  hoje não bloqueia o cliente; o modelo passa a bloquear (RN13) |
 | Comissão | Não descrita | Confirmada: 8% externo / 3% interno, paga após a quitação do boleto (RN12) |
