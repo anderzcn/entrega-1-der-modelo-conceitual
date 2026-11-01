@@ -250,5 +250,30 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
   - "pedido com ao menos um item" não tem constraint própria: é conferido pela auditoria A08.
 - **Generalização/especialização:** colaborador interno e externo diferem só no percentual de comissão, sem atributos próprios. Por isso não viraram tabelas separadas: a diferença ficou na tabela TIPO_COLABORADOR (estratégia de tabela única, com o tipo como referência).
 
+- ### 1.3 Definição de Chaves Primárias e Estrangeiras
+
+| Tabela | PK | FK | Aponta para |
+| :---- | :---- | :---- | :---- |
+| TIPO_FRETE | ID_TIPO_FRETE | — | — |
+| FORMA_PAGAMENTO | ID_FORMA_PAGAMENTO | — | — |
+| STATUS_PEDIDO | ID_STATUS_PEDIDO | — | — |
+| TIPO_COLABORADOR | ID_TIPO_COLABORADOR | — | — |
+| COLABORADOR | ID_COLABORADOR | ID_TIPO_COLABORADOR | TIPO_COLABORADOR |
+| CLIENTE | ID_CLIENTE | ID_COLABORADOR | COLABORADOR |
+| PRODUTO | ID_PRODUTO | — | — |
+| FORNECEDOR | ID_FORNECEDOR | — | — |
+| FORNECEDOR_PRODUTO | ID_FORNECEDOR + ID_PRODUTO | ID_FORNECEDOR, ID_PRODUTO | FORNECEDOR, PRODUTO |
+| PEDIDO | ID_PEDIDO | ID_CLIENTE, ID_COLABORADOR, ID_TIPO_FRETE, ID_FORMA_PAGAMENTO, ID_STATUS_PEDIDO | CLIENTE, COLABORADOR, TIPO_FRETE, FORMA_PAGAMENTO, STATUS_PEDIDO |
+| ITEM_PEDIDO | ID_PEDIDO + ID_PRODUTO | ID_PEDIDO, ID_PRODUTO | PEDIDO, PRODUTO |
+| NOTA_FISCAL | ID_NF | ID_PEDIDO (UNIQUE) | PEDIDO |
+| CONTAS_A_RECEBER | ID_CONTA_RECEBER | ID_NF (UNIQUE) | NOTA_FISCAL |
+| DEVOLUCAO | ID_DEVOLUCAO | ID_NF (UNIQUE) | NOTA_FISCAL |
+| COMPRA_IMPORTACAO | ID_COMPRA | ID_FORNECEDOR | FORNECEDOR |
+| ITEM_COMPRA | ID_COMPRA + ID_PRODUTO | ID_COMPRA, ID_PRODUTO | COMPRA_IMPORTACAO, PRODUTO |
+| CONTAS_A_PAGAR | ID_CONTA_PAGAR | ID_COMPRA (UNIQUE) | COMPRA_IMPORTACAO |
+
+### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
+
+
 
 
