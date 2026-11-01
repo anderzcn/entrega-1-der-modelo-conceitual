@@ -524,6 +524,66 @@ A massa está no próprio [docs/script.sql](docs/script.sql), no bloco 4. Ela é
 
 ---
 
+## 5. Repositório GitHub
+
+```
+README.md                      relatório técnico (este arquivo)
+levantamento/levantamento.md   levantamento completo da entrevista
+entrega-1/                     fotos da fachada e da visita técnica
+diagramas/                     der-revisado.png, modelo-logico.png
+docs/                          script.sql, dicionario-dados.md
+slides/                        apresentacao.pdf
+```
+
+- **Dicionário de dados (turma GTI):** [docs/dicionario-dados.md](docs/dicionario-dados.md). Tem uma entrada por tabela e coluna, com tipo, obrigatoriedade, unicidade, valores permitidos e valor padrão, igual ao script.
+- **Commits:** cada integrante faz commits com a própria conta ao longo do desenvolvimento.
+
+---
+
+## 6. Uso de Inteligência Artificial
+
+**Entrega 1:** o registro do uso de IA na Entrega 1 (ChatGPT, Gemini e Claude) continua válido e está em [entrega-1/README.md](entrega-1/README.md). 
+
+**Entrega 2 — script SQL e massa de dados**
+
+
+
+## 7. Apresentação Corporativa Final
+
+Pitch de 8 minutos: [slides/apresentacao.pdf](slides/apresentacao.pdf)
+
+| # | Conteúdo | Material |
+| :---- | :---- | :---- |
+| 1 | Problema: cadastro desatualizado gerando boleto perdido e reentrega | foto da fachada e P1–P3 |
+| 2 | Solução: trava de 90 dias, aviso antecipado, bloqueio por devolução e controle de crédito | — |
+| 3 | Modelo lógico | `diagramas/modelo-logico.png` |
+| 4 | SQL rodando | `docs/script.sql` executado ao vivo no Workbench |
+| 5 | Consultas | G02 (aviso de cadastros), G04 (inadimplência) e A02 (bloqueio por devolução), mais um teste de trigger |
+| 6 | BI e IA | painel proposto e previsão de inadimplência e de demanda |
+| 7 | Benefícios | prevenção em vez de prejuízo; cobrança com contato certo; menos reentregas |
+
+---
+
+## Conclusão
+
+O banco de dados entregue representa toda a operação da Rafimex: cadastro, crédito, vendas, faturamento, cobrança, devoluções, comissões, compras e estoque. Ele transforma o problema central da empresa, o cadastro desatualizado descoberto só depois do prejuízo, em regras que o próprio banco aplica:
+- o aviso de quem vai vencer (G02);
+- a trava de 90 dias (RN09);
+- o bloqueio após devolução por endereço (RN13).
+
+Junto com o controle de crédito, o preço praticado gravado e a comissão liberada só após o pagamento, a gestão passa a ter indicadores para agir antes do prejuízo.
+
+## Referências
+
+- ANDRADE, Cid. *Construção de Dicionário de Dados*. Material didático da disciplina Modelagem de Banco de Dados, 2026.
+- BRASIL. Lei nº 13.709, de 14 de agosto de 2018. *Lei Geral de Proteção de Dados Pessoais (LGPD)*. Diário Oficial da União, Brasília, DF, 2018.
+- BRMODELO WEB. Ferramenta online de modelagem de dados. Disponível em: <https://app.brmodeloweb.com>. Acesso em: nov. 2026.
+- ELMASRI, R.; NAVATHE, S. B. *Sistemas de banco de dados*. 7. ed. São Paulo: Pearson, 2018.
+- HEUSER, C. A. *Projeto de banco de dados*. 6. ed. Porto Alegre: Bookman, 2009.
+- ORACLE. *MySQL 8.0 Reference Manual*. Disponível em: <https://dev.mysql.com/doc/refman/8.0/en/>. Acesso em: nov. 2026.
+- ENTREVISTA TÉCNICA. Visita à Rafimex Comercial Importação e Exportação Ltda, R. Barra do Tibagi, 537 — Bom Retiro, São Paulo/SP. Entrevista com a Diretoria Comercial, 2026.
+
+
 
 
 
