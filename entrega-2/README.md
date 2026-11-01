@@ -555,7 +555,7 @@ Pitch de 8 minutos: [slides/apresentacao.pdf](slides/apresentacao.pdf)
 | # | Conteúdo | Material |
 | :---- | :---- | :---- |
 | 1 | Problema: cadastro desatualizado gerando boleto perdido e reentrega | foto da fachada e P1–P3 |
-| 2 | Solução: trava de 90 dias, aviso antecipado, bloqueio por devolução e controle de crédito | — |
+| 2 | Solução: trava de 90 dias, aviso antecipado, bloqueio por devolução e controle de crédito | Esquema do fluxo do pedido com as travas do banco: cadastro confirmado há até 90 dias (RN09) → sem devolução pendente (RN13) → crédito liberado (RN02–RN04) → pedido aceito |
 | 3 | Modelo lógico | `diagramas/modelo-logico.png` |
 | 4 | SQL rodando | `docs/script.sql` executado ao vivo no Workbench |
 | 5 | Consultas | G02 (aviso de cadastros), G04 (inadimplência) e A02 (bloqueio por devolução), mais um teste de trigger |
