@@ -46,8 +46,8 @@ Disponibilizar links automáticos de validação por WhatsApp ou e-mail, permiti
   - *Localização:* [Visualizar Rafimex no Google Maps](https://maps.app.goo.gl/PDXnt86jRLMjDYKF8)
   - *Endereço e Contato:* [R. Barra do Tibagi, 537 - Bom Retiro, São Paulo - SP, 01128-000 | Tel: (11) 99471-1531- Gabriel Gedanken- DIRETOR COMERCIAL]
 - **Registro visual:**
-    - [Visualiza Foto da Visitação](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/IMAGEM_VISITACAO_RAFIMEX.jpeg)
-    - [Visualiza Foto da Fachada](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/IMAGEM_FACHADA_RAFIMEX.jpeg)
+    - [Visualiza Foto da Visitação](entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg)
+    - [Visualiza Foto da Fachada](entrega-1/IMAGEM_FACHADA_RAFIMEX.jpeg)
 
     
 ## 2. Processos de Negócio
@@ -564,7 +564,7 @@ FORNECEDOR fornece para a empresa. O CLIENTE cadastrado faz a solicitação de c
 ---
 
 # 7. Diagrama Entidade-Relacionamento (DER)
-[Visualiza imagem DER](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/DER_MODELO_CONCEITUAL.png)
+[Visualiza imagem DER](entrega-1/DER_MODELO_CONCEITUAL.png)
 
 ---
 
