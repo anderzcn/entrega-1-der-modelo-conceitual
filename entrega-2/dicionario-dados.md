@@ -120,6 +120,7 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 | **DS_CIDADE** | Varchar(100) | Sim | Armazena a cidade do colaborador. |
 | **DS_BAIRRO** | Varchar(100) | Sim | Armazena o bairro do colaborador. |
 | **DS_RUA** | Varchar(150) | Sim | Armazena a rua do colaborador. |
+| **NR_NUMERO** | Varchar(10) | Sim | Armazena o número do endereço do colaborador. |
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do colaborador. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do colaborador. |
 | **NR_NUMERO_TEL** | Varchar(14) | Sim | Armazena o número de telefone do colaborador. |
@@ -188,7 +189,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 
 `DS_EMAIL` armazena o e-mail do fornecedor. `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO_TEL`.
 
-`ENDERECO` é um atributo composto que reúne os dados de localização do fornecedor, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO_ENDERECO` e `DS_COMPLEMENTO`.
+`ENDERECO` é um atributo composto que reúne os dados de localização do fornecedor, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO` e `DS_COMPLEMENTO`.
 
 -
 
@@ -209,7 +210,7 @@ A entidade **FORNECEDOR** representa o fornecedor responsável pelo fornecimento
 | **NR_NUMERO_TEL** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
 | **DS_COMPLEMENTO** | Varchar(100) | Não | Armazena informações complementares do endereço do fornecedor. |
 | **CD_DDD** | Char(2) | Sim | Armazena o código de área do telefone do fornecedor. |
-| **NR_NUMERO_ENDERECO** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
+| **NR_NUMERO** | Varchar(10) | Sim | Armazena o número do endereço do fornecedor. |
 
 ### Índices
 
@@ -240,7 +241,7 @@ A entidade **PEDIDO** representa a separação de produtos e quantidades de iten
 | **ID_COLABORADOR** | Número inteiro | Sim (FK) | Vincula o pedido ao colaborador responsável. |
 | **DT_DATA_DO_PEDIDO** | Date | Sim | Informativo da data em que o pedido foi solicitado. |
 | **VL_VALOR_VENDA** | Decimal(18,2) | Sim | Valor de venda do pedido solicitado. |
-| **DS_TIPO_DE_FRETE** | Varchar(30) | Sim | Descreve a forma de frete se transportadora ou correios para entrega do produto.   |
+| **DS_TIPO_FRETE** | Varchar(30) | Sim | Descreve a forma de frete se transportadora ou correios para entrega do produto.   |
 | **DS_FORMA_DE_PAGAMENTO** | Varchar(50) | Sim  | Descreve a forma de pagamento que o cliente escolheu pagar pelo produto.    |
 | **VL_DESCONTO_APLICADO** | Decimal(8,2) | Sim | Valor da porcentagem de desconto aplicada no pedido.  |
 | **DS_STATUS_PEDIDO** | Varchar(30) | Sim | Descreve o status do pedido e em qual etapa do processo que o pedido está.|
@@ -335,26 +336,26 @@ A entidade **COMPRA_IMPORTACAO** representa o registro da compra ou importação
 `DS_STATUS` indica a situação atual da compra (ex: 'Aberta', 'Recebida', 'Concluída', 'Cancelada').
 `DS_OPERACAO` tipo da operação, por exemplo, 'Importação', 'Compra nacional'.
 `DT_COMPRA` data em que o pedido de compra foi realizado.
-`DT_PREVISTA_CHEGADA` data prevista em que os produtos iram chegar.
+`DT_PREVISTA_CHEGADA` data prevista em que as mercadorias irão chegar.
 `DT_RECEBIMENTO` data em que os produtos foram recebidos.
-`MOEDA` moeda utilizada na compra (ex: BRL, USD, EUR).
-`VLR_TOTAL` valor total da compra na moeda especificada.
+`CD_MOEDA` moeda utilizada na compra (ex: BRL, USD, EUR).
+`VL_TOTAL` valor total da compra na moeda especificada.
 `DS_INCOTERM` termo internacional de comércio aplicado na importação
 
 ### Atributos da Entidade COMPRA_IMPORTACAO
 | Atributo | Tipo Físico | Obrigatório | Significado e relevância |
 |---|---|---|---|
 | **ID_COMPRA**| Integer | Sim (PK) | Identifica de forma única e exclusiva cada compra/importação no sistema. |
-| **ID_FONECEDOR** | Integer | Sim (FK) | Referência ao fornecedor responsável pela compra/importação.|
-| **NR_COMPRA** | Vachar(50) | Sim  | Número ou código atribuído à compra/importação. |
+| **ID_FORNECEDOR** | Integer | Sim (FK) | Referência ao fornecedor responsável pela compra/importação.|
+| **NR_COMPRA** | Varchar(50) | Sim  | Número ou código atribuído à compra/importação. |
 | **DS_STATUS** | Varchar(20) | Sim  | Status atual da compra ('Aberta', 'Recebida', 'Concluída', etc.). |
-| **DS_OPERACAO** | Vachar(20) | Sim | Tipo da operação ('Importação', 'Compra nacional', etc.). | 
+| **DS_OPERACAO** | Varchar(20) | Sim | Tipo da operação ('Importação', 'Compra nacional', etc.). | 
 | **DT_COMPRA** | Data | Sim | Data em que foi efetuada a compra do pedido |
-| **DT__PREVISTA_CHEGADA** | Data | Sim | Data prevista em que os produtos iram chegar. |
-| **DT_RECEBIMENTO** | Data | Sim | Data em que os produtos foram recebidos. |
-| **MOEDA** | Char(3) | Sim | Código da moeda utilizada na compra (ex: BRL, USD, EUR). |
-| **VLR_TOTAL** | Varchar(18,2) | Sim | Valor total da compra na moeda especificada. |
-| **DS_INCOTERM** | Varchar(10) | Sim | Termo internacional de comércio aplicado na importação. |
+| **DT__PREVISTA_CHEGADA** | Data | Sim | Data prevista da chegada da mercadoria. |
+| **DT_RECEBIMENTO** | Data | Não | Data em que os produtos foram recebidos. |
+| **CD_MOEDA** | Char(3) | Sim | Código da moeda utilizada na compra (ex: BRL, USD, EUR). |
+| **VL_TOTAL** | Decimal(18,2) | Sim | Valor total da compra na moeda especificada. |
+| **DS_INCOTERM** | Varchar(10) | Não | Termo internacional de comércio aplicado na importação. |
 
 ### Índices
 
