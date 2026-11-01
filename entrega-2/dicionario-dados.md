@@ -326,15 +326,16 @@ A entidade **COMPRA_IMPORTACAO** representa o registro da compra ou importação
 
  ### Estrutura Formal
 
-**COMPRA_IMPORTACAO = @ID_COMPRA + ID_FORNECEDOR + NR_PEDIDO + DS_STATUS + DS_OPERACAO + DT_PEDIDO + DT_RECEBIMENTO + MOEDA + VLR_TOTAL + DS_INCOTERM**
+**COMPRA_IMPORTACAO = @ID_COMPRA + ID_FORNECEDOR + NR_COMPRA + DS_STATUS + DS_OPERACAO + DT_COMPRA + DT_PREVISTA _CHEGADA + DT_RECEBIMENTO + MOEDA + VLR_TOTAL + DS_INCOTERM**
 
 - ### Leitura da Estrutura 
 `@ID_COMPRA` chave primária exclusiva que identifica cada compra no sistema
 `ID_FORNECEDOR` referência ao fornecedor que realizou a venda/importação.
-`NR_PEDIDO` número ou código da compra/importação. 
+`NR_COMPRA` número ou código da compra/importação. 
 `DS_STATUS` indica a situação atual da compra (ex: 'Aberta', 'Recebida', 'Concluída', 'Cancelada').
 `DS_OPERACAO` tipo da operação, por exemplo, 'Importação', 'Compra nacional'.
-`DT_PEDIDO` data em que o pedido de compra foi realizado.
+`DT_COMPRA` data em que o pedido de compra foi realizado.
+`DT_PREVISTA_CHEGADA` data prevista em que os produtos iram chegar.
 `DT_RECEBIMENTO` data em que os produtos foram recebidos.
 `MOEDA` moeda utilizada na compra (ex: BRL, USD, EUR).
 `VLR_TOTAL` valor total da compra na moeda especificada.
@@ -345,10 +346,11 @@ A entidade **COMPRA_IMPORTACAO** representa o registro da compra ou importação
 |---|---|---|---|
 | **ID_COMPRA**| Integer | Sim (PK) | Identifica de forma única e exclusiva cada compra/importação no sistema. |
 | **ID_FONECEDOR** | Integer | Sim (FK) | Referência ao fornecedor responsável pela compra/importação.|
-| **NR_PEDIDO** | Vachar(50) | Sim  | Número ou código atribuído à compra/importação. |
+| **NR_COMPRA** | Vachar(50) | Sim  | Número ou código atribuído à compra/importação. |
 | **DS_STATUS** | Varchar(20) | Sim  | Status atual da compra ('Aberta', 'Recebida', 'Concluída', etc.). |
 | **DS_OPERACAO** | Vachar(20) | Sim | Tipo da operação ('Importação', 'Compra nacional', etc.). | 
-| **DT_PEDIDO** | Date | Não | Valor de imposto de importação, quando o produto faturado for de origem importada,(nem todo produto importado tem IPI, como tecido e Rattan) |
+| **DT_COMPRA** | Date | Sim | Data em que foi efetuada a compra do pedido |
+| **DT__PREVISTA_CHEGADA** | Date | Sim | data prevista em que os produtos iram chegar. |
 | **DT_RECEBIMENTO** | Date | Sim | Data em que os produtos foram recebidos. |
 | **MOEDA** | Char(3) | Sim | Código da moeda utilizada na compra (ex: BRL, USD, EUR). |
 | **VLR_TOTAL** | Varchar(18,2) | Sim | Valor total da compra na moeda especificada. |
@@ -356,5 +358,6 @@ A entidade **COMPRA_IMPORTACAO** representa o registro da compra ou importação
 
 ### Índices
 
-**Índices:** PK `ID_COMPRA` (clusterizado): Identificação única da compra; índice único composto `ID_FORNECEDOR` e `NR_PEDIDO`  Evita registro duplicado do mesmo número de pedido para o mesmo fornecedor; Índice secundário em `DS_STATUS`  Facilita consultas e filtros por situação da compra; Índice secundário em `DT_PEDIDO` Permite consultas por período e intervalos de datas.
+**Índices:** PK `ID_COMPRA` (clusterizado): Identificação única da compra; índice único composto `ID_FORNECEDOR` e `NR_COMPRA`  Evita registro duplicado do mesmo número de pedido para o mesmo fornecedor; Índice secundário em `DS_STATUS`  Facilita consultas e filtros por situação da compra; Índice secundário em `DT_COMPRA` Permite consultas por período e intervalos de datas.
+
 
