@@ -1,8 +1,6 @@
-# Entrega 1 — Modelo Conceitual (DER)
+# Modelagem e Implementação de Banco de Dados - RAFIMEX
 
-### Modelagem de um sistema de gestão de vendas, crédito e estoque para a Rafimex - Mesa Posta e Decorações
-
-
+> Desenvolvimento de um sistema de gestão de vendas, crédito e estoque para a **Rafimex — Mesa Posta e Decorações**, contemplando a modelagem conceitual e lógica, a implementação SQL e a apresentação final.
 ## Metadados
 
 | NOME | RGM |
