@@ -24,8 +24,8 @@
 
 | Data | Com quem | Forma | O que foi confirmado |
 | :---- | :---- | :---- | :---- |
-|  | Gabriel Gedanken | Visita presencial (Entrega 1) | Cadastro, crédito, desconto, estoque futuro e emissão de pedidos |
-| | 26/10/2026 | Gabriel Gedanken | presencial | Compras e importação, contas a pagar, cobrança, devolução e comissão (apontados na correção da Entrega 1) |
+| 23/09/2026 | Gabriel Gedanken | Visita presencial (Entrega 1) | Cadastro, crédito, desconto, estoque futuro e emissão de pedidos |
+| 26/10/2026 | Gabriel Gedanken | presencial | Compras e importação, contas a pagar, cobrança, devolução e comissão (apontados na correção da Entrega 1) |
 
 ---
 
