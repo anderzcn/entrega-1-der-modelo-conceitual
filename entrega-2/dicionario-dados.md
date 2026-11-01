@@ -1,8 +1,8 @@
 ## 5. Dicionário de Dados Conceitual
 
-O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR ,PEDIDO e NOTA FISCAL*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
+O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR ,PEDIDO, NOTA FISCAL e COMPRA/IMPORTAÇÃO*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
-**Controlo de Versão e Configuração:**
+**Controle de Versão e Configuração:**
 * **Versão do Dicionário:** 1.1
 * **Data de Atualização:** 26/10/2026
 * **SGBD Alvo:** MySQL 8.0
@@ -85,7 +85,7 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 
 ### Estrutura Formal
 
-**COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + DS_ENDERECO + DS_EMAIL + TELEFONE + DS_COMISSAO**
+**COLABORADOR = @ID_COLABORADOR + NM_COLABORADOR + NR_CPF + DT_DATA_DE_NASCIMENTO + ENDERECO + DS_EMAIL + TELEFONE + DS_COMISSAO**
 
 **ENDERECO = CD_CEP + CD_UF + DS_CIDADE + DS_BAIRRO + DS_RUA + NR_NUMERO + DS_COMPLEMENTO**
 
@@ -97,7 +97,7 @@ A entidade **COLABORADOR** representa a coleta de dados operacionais, contratuai
 `@ID_COLABORADOR` é a chave primária (**PK**) e identifica de forma única o colaborador no sistema.
 
 `NM_COLABORADOR` representa o nome completo do colaborador. `NR_CPF` armazena o número do CPF do colaborador. `DT_DATA_DE_NASCIMENTO` registra a data de nascimento do colaborador.
-`DS_EMAIL` armazena o e-mail do colaborador. `TELEFONE` é um atributo composto formado por `CD_DDD` e `NR_NUMERO_TEL`.
+`DS_EMAIL` armazena o e-mail do colaborador.
 
 `ENDERECO` é um atributo composto que reúne os dados de localização do colaborador, sendo decomposto em `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO` e `DS_COMPLEMENTO`.
 
