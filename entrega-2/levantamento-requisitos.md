@@ -140,7 +140,7 @@
 | O1 | o cadastro do cliente não tem nenhum campo de data de confirmação | tela do sistema  | Necessidade da coluna `DT_DATA_DE_ATUALIZACAO` e da trava de 90 dias (RN09) |
 | O2 | o pedido indica se o item sai do estoque ou é entrega programada | pedido impresso / tela | Coluna `DT_PREVISAO_CHEGADA` em ITEM_PEDIDO (RF07) |
 | O3 |  mercadoria devolvida volta para a expedição sem bloquear o cliente |  expedição | Colunas de devolução na NOTA_FISCAL e bloqueio do cliente (RN13) |
-|
+
 
 
 ### Diferenças entre o que foi dito e o que foi visto
