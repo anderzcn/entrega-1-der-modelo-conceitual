@@ -52,7 +52,64 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 - **Evidências da organização:**
   - Endereço: R. Barra do Tibagi, 537 — Bom Retiro, São Paulo/SP, CEP 01128-000.
   - Google Maps: [Rafimex no Google Maps](https://maps.app.goo.gl/PDXnt86jRLMjDYKF8)
-  - Perfil no Google Meu Negócio: ⚠️ PREENCHER (link do perfil da Rafimex, se houver)
-  - Fotos (no repositório): [fachada](entrega-1/IMAGEM_FACHADA_RAFIMEX.jpeg) e [visita técnica](entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg).
+   - Fotos (no repositório): [fachada](entrega-1/IMAGEM_FACHADA_RAFIMEX.jpeg) e [visita técnica](entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg).
 - **Responsável pela organização:** Gabriel Gedanken, diretor comercial. Telefone: (11) 99471-1531.
+
+- 
+#### Relato da entrevista
+
+- **Quem:** Gabriel Gedanken, diretor comercial da Rafimex. Participantes do grupo: LETICIA SOUZA SANTOS.
+- **Quando e onde:** 10.09.2026, na sede da Rafimex (R. Barra do Tibagi, 537 — Bom Retiro, São Paulo/SP).
+- **Comprovação:** [foto da visita técnica](entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg), com uma integrante e o entrevistado dentro da loja.
+- **Achados pela observação no local:** 
+  - O cadastro do cliente é preenchido à mão pelo representante, sem nenhuma data de validade.
+  - Quando uma mercadoria volta por endereço errado, a logística registra o retorno, mas nada impede um novo pedido para o mesmo endereço.
+  - O pedido mostra se o item sai do estoque ou chega por importação (entrega programada, com data prevista).
+- **Achados pelas respostas do entrevistado:**
+  - Desconto de até 4% é do representante; acima disso, só com aprovação da diretoria.
+  - Venda no boleto passa pela análise de crédito do financeiro (limite e Serasa).
+  - Cliente com pendência no Serasa só compra à vista ou no cartão.
+  - Cliente inadimplente com a Rafimex não tem venda liberada.
+  - A comissão é de 8% para o representante externo e 3% para o vendedor interno, e só é paga depois que o cliente quita o boleto.
+  - Compras são feitas de fornecedores homologados. A importação tem previsão de chegada e, ao chegar, gera o título no contas a pagar.
+- **O que mudou em relação à Entrega 1:** a correção mostrou que faltavam o ciclo de compras, a cobrança, a devolução e a comissão. Esses processos foram confirmados com a empresa e entraram no modelo (processos 2.2 e 2.4, regras RN10 a RN13). O levantamento completo está em [levantamento/levantamento.md](levantamento/levantamento.md).
+
+#### Processos de negócio
+
+**1. Cadastro e revalidação de clientes**
+- O representante cadastra a empresa cliente com:
+  - razão social, CNPJ (válido e único) e inscrição estadual (opcional);
+  - endereço completo: CEP, UF, cidade, bairro, rua, número e complemento;
+  - e-mail, DDD e telefone;
+  - representante responsável.
+- O financeiro define o limite de crédito, o código de consulta no Serasa e a situação de crédito (Ativo, Bloqueado Serasa ou Inadimplente).
+- Cada confirmação dos dados grava a **data de atualização**. Quando ela passa de 90 dias, o cliente fica bloqueado para novos pedidos até ser revalidado (P1).
+
+**2. Análise de crédito**
+- Todo pedido no boleto é comparado com o limite de crédito e com a situação do cliente.
+- Cliente inadimplente com a Rafimex: o pedido é bloqueado.
+- Cliente com restrição no Serasa: só pode pagar no PIX ou no cartão.
+
+**3. Orçamento e emissão do pedido**
+- O representante (ou o vendedor interno) registra no pedido:
+  - data, cliente e colaborador que emitiu;
+  - tipo de frete (transportadora ou retirada na empresa);
+  - forma de pagamento (boleto, PIX ou cartão);
+  - percentual de desconto e, se passar de 4%, o registro da aprovação da diretoria;
+  - para cada item: produto, quantidade, preço unitário praticado e se o item sai do estoque ou é entrega programada (com a data prevista de chegada).
+- O pedido nasce como *Pendente* e passa por *Em Separação*, *Faturado* ou *Cancelado*.
+
+**4. Faturamento e nota fiscal**
+- Com o crédito aprovado e a mercadoria disponível, o pedido é faturado. A nota fiscal guarda:
+  - número da NF, chave de acesso de 44 dígitos e data de emissão;
+  - imposto de importação (quando a nota tem produto importado), total de impostos e valor total;
+  - situação (*Emitida* ou *Cancelada*).
+
+**5. Separação e expedição**
+- A expedição separa o pedido e despacha pela transportadora, ou o cliente retira na empresa.
+
+**6. Cobrança e recebimento**
+- Cada nota gera um título a receber, com valor, vencimento e situação (*Aberto*, *Pago* ou *Cancelado*).
+- PIX e cartão são pagos na emissão. O boleto vence em 28 dias.
+- A baixa grava a data de pagamento. Boleto vencido e não pago leva o cliente à situação *Inadimplente* (P2).
 
