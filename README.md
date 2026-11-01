@@ -138,6 +138,10 @@ Princípios da lei aplicados diretamente no modelo:
   
 ## 5. Dicionário de Dados Conceitual
 
+O dicionário de dados completo, contendo a estrutura formal das entidades, atributos, tipos físicos, obrigatoriedade e descrições, está disponível no documento complementar abaixo.
+
+- [Acessar Dicionário de Dados](entrega-2/dicionario-dados.md)
+
 O dicionário de dados conceitual reúne a documentação das entidades que formam o modelo de dados do sistema: ***CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR ,PEDIDO e NOTA FISCAL*** cada uma descrita por meio de sua estrutura formal, da leitura dos atributos e de uma tabela com os respectivos tipos físicos, obrigatoriedade e significado.
 
 **Controlo de Versão e Configuração:**
