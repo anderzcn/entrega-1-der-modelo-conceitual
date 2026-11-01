@@ -274,6 +274,256 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 
 ### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
 
+**Ponto de partida:** o pedido de venda como ele aparece num único registro, com tudo junto:
+
+```
+PEDIDO_VENDA (nr_pedido, data, cnpj, razao_social, endereco, telefones, limite_credito, situacao_credito,
+              representante, tipo_representante, comissao, frete, forma_pagamento, desconto, status,
+              produtos, quantidades, precos, fornecedores_do_produto, nr_nf, chave_nf, vencimento_boleto, pago)
+```
+
+**1FN — um valor atômico por campo, sem grupos repetidos**
+- *Problema:*
+  - "endereco" e "telefones" juntam várias informações num campo só, o que impede filtrar clientes por cidade ou corrigir só o CEP;
+  - "produtos", "quantidades" e "precos" são listas;
+  - "fornecedores_do_produto" também é uma lista.
+- *Solução:*
+  - endereço → CEP, UF, cidade, bairro, rua, número e complemento; telefone → DDD e número;
+  - uma linha por produto vendido;
+  - fornecedores numa relação à parte.
+
+```
+PEDIDO_ITEM (nr_pedido, id_produto, data, cnpj, razao_social, cd_cep, ..., representante, tipo_representante,
+             comissao, frete, forma_pagamento, desconto, status, descricao_produto, preco_tabela, qt_vendida,
+             vl_unitario_vendido, nr_nf, chave_nf, vencimento_boleto, pago)
+FORNECEDOR_PRODUTO (id_fornecedor, id_produto)
+```
+
+**2FN — tudo depende da chave inteira**
+- *Problema:* a chave de PEDIDO_ITEM é (nr_pedido, id_produto). Mas:
+  - data, cliente, frete e desconto dependem só do pedido: repetiam em cada item, e mudar o frete exigia alterar várias linhas;
+  - descrição e preço de tabela dependem só do produto.
+- *Solução:* separar o que é do pedido (PEDIDO), o que é do produto (PRODUTO) e o que é dos dois (ITEM_PEDIDO). O mesmo vale para a compra (COMPRA_IMPORTACAO e ITEM_COMPRA).
+
+```
+PEDIDO      (id_pedido, data, cnpj, razao_social, ..., representante, tipo_representante, comissao, frete,
+             forma_pagamento, desconto, status, nr_nf, chave_nf, vencimento_boleto, pago)
+PRODUTO     (id_produto, sku, ncm, descricao, preco_custo, preco_unitario, estoque, ponto_pedido)
+ITEM_PEDIDO (id_pedido, id_produto, qt_vendida, vl_unitario_vendido, dt_previsao_chegada)
+```
+
+**3FN — nenhum atributo depende de outro atributo que não é chave**
+- *Problemas em PEDIDO:*
+  - razão social, endereço e limite dependem do CNPJ: dados do cliente repetidos em cada pedido. Esse é o próprio P1: atualizar um endereço exigia mexer em vários lugares;
+  - o tipo de representante depende do representante, e a comissão depende do tipo;
+  - os dados da nota e do boleto dependem da nota, não do pedido;
+  - frete, forma de pagamento e status eram texto livre repetido.
+- *Solução:*
+  - CLIENTE e COLABORADOR viraram tabelas próprias;
+  - o percentual de comissão foi para TIPO_COLABORADOR (RN12);
+  - NOTA_FISCAL e CONTAS_A_RECEBER viraram tabelas separadas;
+  - os textos viraram tabelas de domínio (TIPO_FRETE, FORMA_PAGAMENTO, STATUS_PEDIDO).
+
+```
+CLIENTE (id_cliente, id_colaborador, razao_social, cnpj, ..., limite_credito, situacao_credito, dt_atualizacao)
+COLABORADOR (id_colaborador, id_tipo_colaborador, nome, cpf, ...)     TIPO_COLABORADOR (id_tipo, descricao, perc_comissao)
+PEDIDO (id_pedido, id_cliente, id_colaborador, data, vl_valor_venda, id_tipo_frete, id_forma_pagamento,
+        desconto, aprovacao_diretoria, id_status_pedido)
+NOTA_FISCAL (id_nf, id_pedido, nr_nf, chave_acesso, ...)              CONTAS_A_RECEBER (id_conta, id_nf, vencimento, pagamento, status)
+```
+
+**Justificativa e decisões conscientes**
+- **`VL_UNITARIO_VENDIDO` em ITEM_PEDIDO não é repetição do preço do produto:** é o preço do dia da venda (RN07). A consulta A09 mostra vendas de agosto com o preço antigo, depois do reajuste.
+- **`VL_VALOR_VENDA` em PEDIDO poderia ser calculado pelos itens.** Ficou gravado porque é o valor fechado com o cliente no momento da venda e é a base da nota fiscal. A consulta A07 confere que a nota bate com o pedido.
+- **A situação "vencido" de títulos e contas não é gravada:** é calculada (em aberto e com vencimento antes de hoje). Guardar um status que muda sozinho com o tempo deixaria o dado desatualizado.
+
+### 1.5 Justificativas Técnicas das Decisões
+
+**Chaves primárias**
+- Todas as tabelas usam um número gerado pelo banco (`INT AUTO_INCREMENT`), e não o CNPJ ou o CPF:
+  - o CNPJ pode ser digitado errado e precisar de correção — e chave primária não deve mudar;
+  - o CPF do colaborador é dado pessoal (LGPD) e não deve se espalhar como FK por outras tabelas.
+- CNPJ e CPF continuam com `UNIQUE`.
+- Nas associativas, a PK é composta pelas duas FKs, o que impede o mesmo produto duas vezes no mesmo pedido.
+
+**Chaves estrangeiras**
+- `PEDIDO.ID_CLIENTE` e `PEDIDO.ID_COLABORADOR` são `NOT NULL` (RN05/RF03).
+- `CLIENTE.ID_COLABORADOR` registra o representante da carteira, que é diferente do colaborador que emitiu o pedido.
+- As FKs não têm `ON DELETE`, então o banco impede apagar cliente, produto ou pedido com histórico (RNF02).
+- As únicas exceções são ITEM_PEDIDO e ITEM_COMPRA, com `ON DELETE CASCADE`: o item não existe sem o pedido. Mesmo assim, um pedido com nota fiscal não pode ser apagado, porque a FK da nota impede.
+
+**Restrições**
+
+| Restrição | Onde | Regra |
+| :---- | :---- | :---- |
+| `CHECK` do formato `00.000.000/0000-00` e `UNIQUE` | CLIENTE.NR_CNPJ, FORNECEDOR.NR_CNPJ | RN01, RN10, RF01 |
+| `CHECK (VL_DESCONTO_APLICADO <= 4 OR IN_APROVACAO_DIRETORIA = TRUE)` | PEDIDO | RN06, RF04 |
+| `DT_PREVISAO_CHEGADA` opcional: vazia = estoque, preenchida = entrega programada | ITEM_PEDIDO | RN08, RF07 |
+| `CHECK` importação exige incoterm; recebida exige data de recebimento; moeda e tipo de operação de uma lista | COMPRA_IMPORTACAO | RN10, RN11 |
+| `CHECK (QT_ESTOQUE >= 0)`, preços `> 0` | PRODUTO | consistência do estoque |
+| `CHECK ST_SITUACAO_CREDITO IN ('Ativo','Bloqueado Serasa','Inadimplente')` | CLIENTE | RN03, RN04 |
+| `CHECK` status "Pago" exige data de pagamento (e vice-versa) | CONTAS_A_RECEBER, CONTAS_A_PAGAR | RN11, RN12 |
+| `CHECK` chave de acesso com 44 dígitos; impostos menores que o total | NOTA_FISCAL | validade fiscal |
+| Trigger `TRG_PEDIDO_VALIDA_CLIENTE` | PEDIDO | RN02, RN03, RN04, RN09, RN13 |
+| Trigger `TRG_ITEM_PEDIDO_PRECO_FIXO` | ITEM_PEDIDO | RN07, RF05 |
+| `UNIQUE` em NOTA_FISCAL.ID_PEDIDO | NOTA_FISCAL | RN14 |
+| FK `ID_TIPO_FRETE NOT NULL` | PEDIDO | RN15, RF06 |
+| `DEFAULT` em status, data de atualização e flags | várias | valores iniciais coerentes |
+
+As regras que dependem de outra tabela (situação do cliente, limite, devoluções) não cabem num `CHECK`, que só enxerga a própria linha. Por isso ficaram em trigger.
+
+**Decisões arquiteturais**
+- **MySQL 8 com InnoDB:** é o SGBD do laboratório, e o InnoDB garante as chaves estrangeiras e as transações.
+- **`utf8mb4_0900_ai_ci`:** aceita acentos e caracteres especiais em nomes e endereços. Também compara sem diferenciar maiúscula e acento, o que evita "São Paulo" e "SAO PAULO" contados como cidades diferentes.
+- **Índices:** além das PKs e dos UNIQUE, há índices em razão social, data de atualização (trava de 90 dias), data do pedido, data de emissão da NF e vencimento dos títulos. São as colunas usadas nos filtros das consultas (RNF03).
+- **Dinheiro em `DECIMAL`, nunca `FLOAT`:** evita erro de arredondamento em limite, preço e imposto.
+- **Os triggers só validam pedidos com data de hoje em diante:** a carga histórica representa pedidos que já foram aprovados quando foram feitos.
+
+**Alternativas avaliadas e descartadas** (mantidas desde a Entrega 1)
+- **Tabela separada de "histórico de atualizações" do cliente:** descartada. A trava de 90 dias só precisa da última confirmação, que fica em `CLIENTE.DT_DATA_DE_ATUALIZACAO`. Um histórico inflaria o banco com dados secundários, sem resolver melhor o P1.
+- **Tabela separada de "dados financeiros" do cliente:** descartada. O financeiro consulta limite e situação de crédito a cada pedido no boleto. Separar esses dados exigiria um JOIN em toda análise de crédito, sem ganho de normalização: os dados dependem só do cliente. O campo `IN_ATIVO` é diferente: diz apenas se o cadastro está ativo, não se há restrição de crédito.
+- **Relação N:N entre CLIENTE e PEDIDO** (para matriz e filial comprarem juntas): descartada. A nota fiscal e o boleto saem no nome de um único CNPJ, por isso cada pedido pertence a um só cliente (1:N).
+- **Nota fiscal como campos dentro de PEDIDO:** descartada. Os dados da nota (número, chave de acesso, situação) só existem depois do faturamento. Mantê-la separada evita colunas vazias no pedido e permite cancelar a nota sem perder o pedido (RN14).
+- **Status "vencido" ou "atrasado" gravado no título e na conta a pagar:** descartado na Entrega 2. Esse status muda sozinho com o passar dos dias; calculado pela data de vencimento, nunca fica desatualizado.
+
+### 1.6 Proposta de Arquitetura Analítica para BI e IA
+
+**Informações estratégicas**
+- Quais clientes precisam confirmar o cadastro esta semana, e com qual representante? (P1)
+- Quanto do faturamento no boleto não foi recebido, e de quem? (P2)
+- Quanto a Rafimex gasta com reentrega por endereço errado? (P3)
+- Quais produtos repor primeiro, e o que já está a caminho?
+- Quais clientes e representantes trazem mais faturamento?
+
+**Indicadores (KPIs)** 
+
+| KPI | Fórmula | Período | Meta proposta | Consulta |
+| :---- | :---- | :---- | :---- | :---- |
+| K1 — Faturamento e ticket médio | soma das NFs emitidas; faturamento ÷ número de notas | mês | crescer em relação ao mês anterior | G01 |
+| K2 — % da carteira com cadastro vencido | clientes ativos com atualização > 90 dias ÷ clientes ativos | semana | abaixo de 5% | G03 |
+| K3 — Taxa de inadimplência | valor de boletos vencidos não pagos ÷ valor dos boletos vencidos | mês de vencimento | abaixo de 3% | G04 |
+| K4 — Taxa de devolução e custo de reentrega | devoluções ÷ NFs emitidas; soma das taxas de reentrega | mês | zero devoluções por endereço | G05 |
+| K5 — Comissão liberada x retida | soma dos títulos pagos (ou em aberto) × percentual do tipo de colaborador | mês | — (controle financeiro) | G06 |
+| K6 — Taxa de cancelamento | pedidos cancelados ÷ total de pedidos | mês | abaixo de 5% | G09 |
+
+**Potencial para BI:** um painel no Power BI ou no Looker Studio, ligado ao MySQL, com:
+- cartões de faturamento, ticket médio e inadimplência do mês;
+- gráfico de faturamento mensal;
+- lista de "cadastros que vencem nos próximos 15 dias" por representante (G02);
+- mapa de clientes por UF;
+- tabela de reposição (G10).
+
+**Aplicações de IA**
+- **Previsão de inadimplência:** usa o histórico de pagamento dos títulos (CONTAS_A_RECEBER), a situação de crédito e o limite do cliente para estimar o risco antes de aprovar um boleto.
+- **Previsão de demanda para importação:** usa o histórico de ITEM_PEDIDO por produto e mês, mais o prazo de chegada dos pedidos de compra, para sugerir quando e quanto importar. A sazonalidade (por exemplo, a linha de Natal) aparece nos dados.
+- **Prioridade de revalidação cadastral:** cruza a data de atualização, as devoluções e o valor comprado para ordenar quais clientes o representante deve contatar primeiro.
+
+**Rastreabilidade**
+
+| Problema ou KPI | Tabelas envolvidas | Consulta no script |
+| :---- | :---- | :---- |
+| P1 — cadastro desatualizado sem aviso | CLIENTE, COLABORADOR | G02, G03, A01 |
+| P2 — boleto não recebido / inadimplência | CONTAS_A_RECEBER, NOTA_FISCAL, PEDIDO, CLIENTE | G04, A04 |
+| P3 — devolução e taxa de reentrega | DEVOLUCAO, NOTA_FISCAL, PEDIDO, CLIENTE | G05, A02 |
+| K1 — faturamento e ticket médio | NOTA_FISCAL | G01 |
+| K2 — % da carteira com cadastro vencido | CLIENTE, COLABORADOR | G03 |
+| K3 — taxa de inadimplência | CONTAS_A_RECEBER, NOTA_FISCAL, PEDIDO, FORMA_PAGAMENTO | G04 |
+| K4 — taxa de devolução e custo de reentrega | NOTA_FISCAL, DEVOLUCAO | G05 |
+| K5 — comissão liberada x retida | COLABORADOR, TIPO_COLABORADOR, PEDIDO, NOTA_FISCAL, CONTAS_A_RECEBER | G06 |
+| K6 — taxa de cancelamento | PEDIDO, STATUS_PEDIDO | G09 |
+
+---
+
+## 2. Modelo Lógico Relacional
+
+- **Software:** ⚠️ PREENCHER (brModelo Web ou MySQL Workbench → Database → Reverse Engineer).
+- **Imagem:** [diagramas/modelo-logico.png](diagramas/modelo-logico.png)
+
+![Modelo lógico](diagramas/modelo-logico.png)
+
+O diagrama mostra as 17 tabelas do item 1.3, com colunas, tipos, PK, FK e as cardinalidades convertidas. As demais restrições (`NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`) estão no [dicionário de dados](docs/dicionario-dados.md) e no script.
+
+---
+
+## 3. Script SQL Completo
+
+- **Arquivo:** [docs/script.sql](docs/script.sql)
+- **SGBD:** MySQL 8.0 (testado no 8.0.40). Não roda no MySQL 5.7 nem no MariaDB, por causa da collation `utf8mb4_0900_ai_ci`.
+- **Como executar:** abrir no MySQL Workbench e clicar no raio, sem selecionar nada. O script apaga e recria o banco `db_rafimex` do zero.
+
+**Estrutura do script, na ordem pedida**
+1. `CREATE DATABASE`
+2. e 3. `CREATE TABLE` com todas as constraints (PK, FK, `NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`) e os dois triggers de regra de negócio
+4. `INSERT` da massa de dados
+5. `SELECT` com `JOIN`: 5.1 a 5.5
+6. `UPDATE`: 6.1 a 6.7
+7. `DELETE`: 7.1 a 7.4
+8. Consultas gerenciais: G01 a G12
+9. Consultas de auditoria: A01 a A12
+10. Ao final, testes comentados que mostram cada regra bloqueando (RN02, RN03, RN04, RN06, RN07, RN09, RN13 e RNF02), para a demonstração ao vivo.
+
+| Código | Pergunta | Atende / Verifica |
+| :---- | :---- | :---- |
+| G01 | Faturamento por mês e ticket médio | K1 |
+| G02 | Cadastros que vencem nos próximos 15 dias | P1, RF09 |
+| G03 | % da carteira de cada representante com cadastro vencido | P1, K2 |
+| G04 | Taxa de inadimplência dos boletos por mês | P2, K3 |
+| G05 | Devoluções e custo de reentrega por mês | P3, K4 |
+| G06 | Comissão liberada e retida por colaborador | K5, RN12 |
+| G07 | 10 clientes que mais compraram | decisão comercial |
+| G08 | 10 produtos mais vendidos e margem bruta | decisão de compras |
+| G09 | Taxa de cancelamento por mês | K6 |
+| G10 | Produtos abaixo do ponto de pedido e o que está a caminho | RF08 |
+| G11 | Vendas por forma de pagamento | RN02 |
+| G12 | Atraso médio das compras e importações por fornecedor | RN08 |
+| A01 | Cadastros sem confirmação há mais de 90 dias | RN09, RF09 |
+| A02 | Clientes com devolução por endereço sem revalidação | RN13 |
+| A03 | Pedidos em aberto de clientes com restrição de crédito | RN03, RN04, RF02 |
+| A04 | Clientes "Ativo" com boleto vencido | RN04 |
+| A05 | Contas a pagar vencidas | RN11 |
+| A06 | Entregas programadas com data vencida | RN08, RF07 |
+| A07 | Faturamento inconsistente (pedido sem nota, nota divergente, nota sem título) | RN14, RNF02 |
+| A08 | Pedidos sem itens | RNF02 |
+| A09 | Vendas com preço diferente da tabela atual | RN07, RF05 |
+| A10 | Descontos acima de 4% | RN06, RF04 |
+| A11 | Boleto em aberto para cliente com Serasa ou acima do limite | RN02, RN03 |
+| A12 | Clientes ativos que nunca compraram | RNF01 |
+
+---
+
+## 4. Massa de Dados
+
+A massa está no próprio [docs/script.sql](docs/script.sql), no bloco 4. Ela é **fictícia**: nomes, CNPJs, CPFs e valores foram inventados. CNPJ, CPF e chave de acesso da NF-e têm dígito verificador válido, mas não pertencem a ninguém. Nenhum dado real de cliente da Rafimex foi usado.
+
+**Volume justificado pelo porte real.** A massa cobre um trimestre completo de operação (agosto a outubro de 2026):
+
+| Tabela | Registros | Justificativa |
+| :---- | ----: | :---- |
+| COLABORADOR | 22 | Igual ao real: 20 representantes externos e 2 vendedores internos |
+| CLIENTE | 50 | Amostra dos clientes mais ativos da carteira de 10.000, incluindo os casos especiais (Serasa, inadimplente, cadastro vencido, devolução, sem compra) |
+| PRODUTO | 60 | As linhas mais vendidas do catálogo de 1.550 itens |
+| FORNECEDOR | 10 | Fornecedores homologados desses produtos |
+| FORNECEDOR_PRODUTO | 64 | Produtos com um ou dois fornecedores |
+| PEDIDO | 460 | Cerca de 150 por mês, ou seja, 5 a 10 por dia útil, como na operação real |
+| ITEM_PEDIDO | 1.309 | Média de 2,8 itens por pedido |
+| NOTA_FISCAL | 387 | Uma por pedido faturado |
+| CONTAS_A_RECEBER | 387 | Um título por nota |
+| DEVOLUCAO | 8 | Cerca de 2% das entregas |
+| COMPRA_IMPORTACAO / ITEM_COMPRA / CONTAS_A_PAGAR | 18 / 56 / 17 | Compras nacionais e importações de junho a outubro |
+
+**Variedade incluída de propósito**, para as consultas terem o que mostrar:
+- pedidos cancelados e duas notas canceladas;
+- clientes que nunca compraram e clientes inativos;
+- clientes com restrição no Serasa, inadimplentes e com cadastro vencido;
+- devoluções por endereço (de clientes que revalidaram e de clientes ainda bloqueados);
+- produtos abaixo do ponto de pedido e sem estoque, vendidos como entrega programada;
+- uma importação atrasada;
+- boletos vencidos e uma conta a pagar vencida;
+- três formas de pagamento;
+- vendas antes e depois de um reajuste de preço (01/09).
+
+---
+
 
 
 
