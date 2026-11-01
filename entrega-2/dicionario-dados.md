@@ -349,9 +349,9 @@ A entidade **COMPRA_IMPORTACAO** representa o registro da compra ou importação
 | **NR_COMPRA** | Vachar(50) | Sim  | Número ou código atribuído à compra/importação. |
 | **DS_STATUS** | Varchar(20) | Sim  | Status atual da compra ('Aberta', 'Recebida', 'Concluída', etc.). |
 | **DS_OPERACAO** | Vachar(20) | Sim | Tipo da operação ('Importação', 'Compra nacional', etc.). | 
-| **DT_COMPRA** | Date | Sim | Data em que foi efetuada a compra do pedido |
-| **DT__PREVISTA_CHEGADA** | Date | Sim | data prevista em que os produtos iram chegar. |
-| **DT_RECEBIMENTO** | Date | Sim | Data em que os produtos foram recebidos. |
+| **DT_COMPRA** | Data | Sim | Data em que foi efetuada a compra do pedido |
+| **DT__PREVISTA_CHEGADA** | Data | Sim | Data prevista em que os produtos iram chegar. |
+| **DT_RECEBIMENTO** | Data | Sim | Data em que os produtos foram recebidos. |
 | **MOEDA** | Char(3) | Sim | Código da moeda utilizada na compra (ex: BRL, USD, EUR). |
 | **VLR_TOTAL** | Varchar(18,2) | Sim | Valor total da compra na moeda especificada. |
 | **DS_INCOTERM** | Varchar(10) | Sim | Termo internacional de comércio aplicado na importação. |
