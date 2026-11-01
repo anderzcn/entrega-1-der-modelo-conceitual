@@ -1,4 +1,4 @@
-Documentos complementares da Entrega 2 - Modelagem de Banco de Dados Rafimex.
+# Documentos complementares da Entrega 2 - Modelagem de Banco de Dados Rafimex.
 
 > Modelagem e Implementação de Banco de Dados para a Gestão de Vendas, Crédito e Estoque da Rafimex
 Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco de dados da Rafimex Comercial Importação e Exportação Ltda (Rafimex Mesa Posta e Decorações), atacadista B2B de artigos de mesa posta e decoração.
