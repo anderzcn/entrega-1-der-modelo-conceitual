@@ -544,7 +544,7 @@ slides/                        apresentacao.pdf
 
 **Entrega 1:** o registro do uso de IA na Entrega 1 (ChatGPT, Gemini e Claude) continua válido e está em [entrega-1/README.md](entrega-1/README.md). 
 
-**Entrega 2 — script SQL e massa de dados**
+**Entrega 2 —
 
 
 
