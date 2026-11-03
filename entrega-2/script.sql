@@ -7,8 +7,6 @@
 --        Ketlyn Nayara da Silva Cezar
 -- SGBD: MySQL 8.0 (InnoDB, utf8mb4)
 --
--- Como executar: abrir no MySQL Workbench e clicar no raio (sem
--- selecionar nada). O script apaga e recria o banco do zero.
 --
 -- Todos os dados são fictícios (nomes, CNPJs, CPFs e valores
 -- inventados). CNPJ, CPF e chave de acesso da NF-e têm dígitos
@@ -740,7 +738,7 @@ ORDER BY p.VL_DESCONTO_APLICADO DESC;
 
 
 -- ============================================================
--- TESTES DAS REGRAS (para a apresentação)
+-- TESTES DAS REGRAS 
 -- Cada comando abaixo DEVE dar erro. Estão comentados para o script
 -- rodar inteiro sem parar. Para testar, selecione uma linha (sem os
 -- dois traços) e execute só ela.
