@@ -72,7 +72,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
   - Cliente inadimplente com a Rafimex não tem venda liberada.
   - A comissão é de 8% para o representante externo e 3% para o vendedor interno, e só é paga depois que o cliente quita o boleto.
   - Compras são feitas de fornecedores homologados. A importação tem previsão de chegada e, ao chegar, gera o título no contas a pagar.
-- **O que mudou em relação à Entrega 1:** a correção mostrou que faltavam o ciclo de compras, a cobrança, a devolução e a comissão. Esses processos foram confirmados com a empresa e entraram no modelo (processos 2.2 e 2.4, regras RN10 a RN13). O levantamento completo está em [levantamento/levantamento.md](levantamento/levantamento.md).
+- **O que mudou em relação à Entrega 1:** a correção mostrou que faltavam o ciclo de compras, a cobrança, a devolução e a comissão. Esses processos foram confirmados com a empresa e entraram no modelo (processos 2.2 e 2.4, regras RN10 a RN13). O levantamento completo está em [levantamento-requisitos.md](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/levantamento-requisitos.md).
 
 #### Processos de negócio
 
