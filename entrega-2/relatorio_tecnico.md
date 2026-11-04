@@ -244,6 +244,45 @@ data da compra, previsão de chegada e data de recebimento;
 | COLABORADOR com atributo `comissao` | Percentual movido para TIPO_COLABORADOR (Interno 3%, Externo 8%) | A comissão depende só do tipo de vínculo (RN12); guardá-la em cada colaborador seria dependência transitiva |
 | Observação — integrante trabalha na Rafimex | Vínculo declarado na caracterização; a entrevista foi com o diretor comercial | Transparência sobre possível conflito de interesse |
 
+**Cobertura dos processos esperados na correção (Critério 5)**
+
+| Processo esperado | Situação na E1 | Onde está agora |
+| :---- | :---- | :---- |
+| Cadastro e revalidação de clientes | Parcial | Processo 1 |
+| Orçamento | Parcial | Processo 3 |
+| Emissão do pedido (representante, desconto, frete) | Coberto | Processo 3 |
+| Análise de crédito | Coberto | Processo 2 |
+| Faturamento e nota fiscal | Parcial | Processo 4 |
+| Separação e expedição | Parcial | Processo 5 |
+| Cobrança (boleto) e recebimento | Ausente | Processo 6 |
+| Devolução / reentrega | Ausente | Processo 7 |
+| Comissão dos representantes | Ausente | Processo 8 |
+| Cadastro de fornecedores | Ausente | Processo 9 |
+| Pedido de compra / importação | Ausente | Processo 10 |
+| Recebimento de mercadoria (entrega programada) | Parcial | Processo 11 |
+| Contas a pagar | Ausente | Processo 12 |
+| Controle de estoque (disponível × programado) | Coberto | Processo 13 |
+
+**Cobertura das regras esperadas na correção (Critério 8)**
+
+| Regra esperada | Situação na E1 | Onde está agora |
+| :---- | :---- | :---- |
+| Só clientes com CNPJ regular | Coberta | RN01 |
+| Revalidação cadastral a cada 90 dias | Coberta | RN09 |
+| Análise de crédito para boleto | Coberta | RN02 |
+| Restrição no Serasa limita a forma de pagamento | Coberta | RN03 |
+| Pendência interna bloqueia vendas | Coberta | RN04 |
+| Pedido com cliente e representante | Coberta | RN05 |
+| Alçada de desconto (4%) | Coberta | RN06 |
+| Preço praticado preservado | Coberta | RN07 |
+| Venda de estoque futuro com data prevista | Coberta | RN08 |
+| LGPD para dados de contatos e colaboradores | Coberta | Restrições legais (LGPD) |
+| Nota fiscal no faturamento | Parcial | RN14 |
+| Modalidade de entrega e frete | Parcial | RN15 |
+| Reserva de estoque ao pedir | Parcial | Justificada em "Regras típicas não incluídas" |
+| Comissão dos representantes | Ausente | RN12 |
+| Compra só de fornecedor cadastrado / regras de importação | Ausente | RN10, RN11 |
+
 
 ### 1.2 Conversão do Modelo Conceitual para o Modelo Lógico
 
