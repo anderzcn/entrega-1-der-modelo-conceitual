@@ -52,7 +52,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 - **Evidências da organização:**
   - Endereço: R. Barra do Tibagi, 537 — Bom Retiro, São Paulo/SP, CEP 01128-000.
   - Google Maps: [Rafimex no Google Maps](https://maps.app.goo.gl/PDXnt86jRLMjDYKF8)
-   - Fotos (no repositório): [fachada](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-1/IMAGEM_FACHADA_RAFIMEX.jpeg) e [visita técnica](entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg).
+   - Fotos (no repositório): [fachada](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-1/IMAGEM_FACHADA_RAFIMEX.jpeg) e [visita técnica](github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg).
 - **Responsável pela organização:** Gabriel Gedanken, diretor comercial. Telefone: (11) 99471-1531.
 
 - 
