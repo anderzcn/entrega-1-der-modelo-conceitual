@@ -502,7 +502,7 @@ As regras que dependem de outra tabela (situação do cliente, limite, devoluç�
 
 ![Modelo lógico](diagramas/modelo-logico.png)
 
-O diagrama mostra as 17 tabelas do item 1.3, com colunas, tipos, PK, FK e as cardinalidades convertidas. As demais restrições (`NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`) estão no [dicionário de dados](docs/dicionario-dados.md) e no script.
+O diagrama mostra as 16 tabelas do item 1.3, com colunas, tipos, PK, FK e as cardinalidades convertidas. As demais restrições (`NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`) estão no [dicionário de dados](docs/dicionario-dados.md) e no script.
 
 ---
 
@@ -520,9 +520,9 @@ O diagrama mostra as 17 tabelas do item 1.3, com colunas, tipos, PK, FK e as car
 6. `UPDATE`: 6.1 a 6.7
 7. `DELETE`: 7.1 a 7.4
 8. Consultas gerenciais: G01 a G12
-9. Consultas de auditoria: A01 a A12
-10. Ao final, testes comentados que mostram cada regra bloqueando (RN02, RN03, RN04, RN06, RN07, RN09, RN13 e RNF02), para a demonstração ao vivo.
-
+9. Consultas de auditoria: A01 a A14
+10. Ao final, testes comentados que mostram cada regra bloqueando (RN02, RN03, RN04, RN06, RN07, RN09, RN13, RN17, RN18 e RNF02), para a demonstração ao vivo.
+   
 | Código | Pergunta | Atende / Verifica |
 | :---- | :---- | :---- |
 | G01 | Faturamento por mês e ticket médio | K1 |
@@ -597,7 +597,7 @@ slides/                        apresentacao.pdf
 ```
 
 - **Dicionário de dados (turma GTI):** [docs/dicionario-dados.md](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/dicionario-dados.md). Tem uma entrada por tabela e coluna, com tipo, obrigatoriedade, unicidade, valores permitidos e valor padrão, igual ao script.
-- **Commits:** cada integrante fez commits com a própria conta ao longo do desenvolvimento.
+
 
 ---
 
@@ -606,22 +606,6 @@ slides/                        apresentacao.pdf
 **Entrega 1:** o registro do uso de IA na Entrega 1 (ChatGPT, Gemini e Claude) continua válido e está em [entrega-1/README.md](entrega-1/README.md). 
 
 **Entrega 2 —
-
-
-
-## 7. Apresentação Corporativa Final
-
-Pitch de 8 minutos: [slides/apresentacao.pdf](slides/apresentacao.pdf)
-
-| # | Conteúdo | Material |
-| :---- | :---- | :---- |
-| 1 | Problema: cadastro desatualizado gerando boleto perdido e reentrega | foto da fachada e P1–P3 |
-| 2 | Solução: trava de 90 dias, aviso antecipado, bloqueio por devolução e controle de crédito | Esquema do fluxo do pedido com as travas do banco: cadastro confirmado há até 90 dias (RN09) → sem devolução pendente (RN13) → crédito liberado (RN02–RN04) → pedido aceito |
-| 3 | Modelo lógico | `diagramas/modelo-logico.png` |
-| 4 | SQL rodando | `docs/script.sql` executado ao vivo no Workbench |
-| 5 | Consultas | G02 (aviso de cadastros), G04 (inadimplência) e A02 (bloqueio por devolução), mais um teste de trigger |
-| 6 | BI e IA | painel proposto e previsão de inadimplência e de demanda |
-| 7 | Benefícios | prevenção em vez de prejuízo; cobrança com contato certo; menos reentregas |
 
 ---
 
