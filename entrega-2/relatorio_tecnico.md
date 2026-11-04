@@ -447,7 +447,7 @@ O diagrama mostra as 17 tabelas do item 1.3, com colunas, tipos, PK, FK e as car
 
 ## 3. Script SQL Completo
 
-- **Arquivo:** [docs/script.sql](docs/script.sql)
+- **Arquivo:** [docs/script.sql](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/script.sql)
 - **SGBD:** MySQL 8.0 (testado no 8.0.40). Não roda no MySQL 5.7 nem no MariaDB, por causa da collation `utf8mb4_0900_ai_ci`.
 - **Como executar:** abrir no MySQL Workbench e clicar no raio, sem selecionar nada. O script apaga e recria o banco `db_rafimex` do zero.
 
@@ -493,7 +493,7 @@ O diagrama mostra as 17 tabelas do item 1.3, com colunas, tipos, PK, FK e as car
 
 ## 4. Massa de Dados
 
-A massa está no próprio [docs/script.sql](docs/script.sql), no bloco 4. Ela é **fictícia**: nomes, CNPJs, CPFs e valores foram inventados. CNPJ, CPF e chave de acesso da NF-e têm dígito verificador válido, mas não pertencem a ninguém. Nenhum dado real de cliente da Rafimex foi usado.
+A massa está no próprio [docs/script.sql](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/script.sql), no bloco 4. Ela é **fictícia**: nomes, CNPJs, CPFs e valores foram inventados. CNPJ, CPF e chave de acesso da NF-e têm dígito verificador válido, mas não pertencem a ninguém. Nenhum dado real de cliente da Rafimex foi usado.
 
 **Volume justificado pelo porte real.** A massa cobre um trimestre completo de operação (agosto a outubro de 2026):
 
@@ -535,8 +535,8 @@ docs/                          script.sql, dicionario-dados.md
 slides/                        apresentacao.pdf
 ```
 
-- **Dicionário de dados (turma GTI):** [docs/dicionario-dados.md](docs/dicionario-dados.md). Tem uma entrada por tabela e coluna, com tipo, obrigatoriedade, unicidade, valores permitidos e valor padrão, igual ao script.
-- **Commits:** cada integrante faz commits com a própria conta ao longo do desenvolvimento.
+- **Dicionário de dados (turma GTI):** [docs/dicionario-dados.md](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/dicionario-dados.md). Tem uma entrada por tabela e coluna, com tipo, obrigatoriedade, unicidade, valores permitidos e valor padrão, igual ao script.
+- **Commits:** cada integrante fez commits com a própria conta ao longo do desenvolvimento.
 
 ---
 
