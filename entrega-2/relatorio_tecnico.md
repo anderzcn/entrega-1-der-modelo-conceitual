@@ -286,7 +286,7 @@ data da compra, previsão de chegada e data de recebimento;
 
 ### 1.2 Conversão do Modelo Conceitual para o Modelo Lógico
 
-- **Entidades → tabelas:** cada entidade virou uma tabela com o mesmo nome em maiúsculas: CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR, PEDIDO, NOTA_FISCAL, PEDIDO_COMPRA. As associativas ITEM_PEDIDO e ITEM_PEDIDO_COMPRA também viraram tabelas.
+- **Entidades → tabelas:** cada entidade virou uma tabela com o mesmo nome em maiúsculas: CLIENTE, COLABORADOR, PRODUTO, FORNECEDOR, PEDIDO, NOTA_FISCAL, COMPRA_IMPORTACAO. As associativas ITEM_PEDIDO e ITEM_PEDIDO_COMPRA também viraram tabelas.
 - **Atributos → colunas:** cada atributo simples virou uma coluna com prefixo de tipo (`ID_`, `NM_`, `DT_`, `CD_`, `QT_`, `VL_`, `IN_`, `DS_`, `NR_`, `ST_`). Os atributos compostos foram quebrados em colunas atômicas:
   - endereço → `CD_CEP`, `CD_UF`, `DS_CIDADE`, `DS_BAIRRO`, `DS_RUA`, `NR_NUMERO`, `DS_COMPLEMENTO`;
   - telefone → `CD_DDD` e `NR_NUMERO_TEL`.
