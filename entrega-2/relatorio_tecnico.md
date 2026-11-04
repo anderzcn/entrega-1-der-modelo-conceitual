@@ -116,6 +116,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 
 - **7. Devolução e reentrega**
 - Quando a mercadoria volta, a logística registra a nota, a data, o motivo (endereço desatualizado, avaria no transporte ou recusa do cliente) e a taxa de reentrega.
+- Devolução por avaria ou recusa só é aceita até 7 dias depois da entrega (RN18). A devolução por endereço desatualizado não entra nesse prazo, porque a mercadoria nem chegou a ser entregue.
 - Devolução por endereço desatualizado bloqueia o cliente até o cadastro ser revalidado (P3).
 
 **8. Comissão dos colaboradores**
@@ -124,7 +125,10 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 
 **9. Compras e importação**
 - Quando um produto atinge o ponto de pedido, o setor de compras emite um pedido de compra para um fornecedor cadastrado.
-- O pedido de compra registra a data, a previsão de chegada, o valor total e a situação (*Pendente*, *Recebido* ou *Cancelado*). Para cada item: produto, quantidade e custo unitário.
+- O pedido de compra registra a data, a previsão de chegada e o valor total . Para cada item: produto, quantidade e custo unitário.
+data da compra, previsão de chegada e data de recebimento;
+  - valor total (em reais) e moeda da negociação (BRL E USD );
+  - incoterm (FOB, CIF etc.), obrigatório só na importação;
 
 **10. Recebimento de mercadoria**
 - A chegada da importação soma as quantidades ao estoque.
@@ -160,7 +164,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 - **RF08** — Listar os produtos com estoque igual ou abaixo do ponto de pedido, com a quantidade já a caminho e a próxima chegada.
 - **RF09** — Avisar quais cadastros vão vencer em até 15 dias e bloquear novos pedidos de cliente com data de atualização superior a 90 dias.
 - **RF10** — Registrar pedido de compra com fornecedor cadastrado, data, previsão de chegada, valor e itens (produto, quantidade e custo unitário). No recebimento, somar as quantidades ao estoque.
-- **RF11** — Gerar uma conta a pagar para cada pedido de compra não cancelado (valor, vencimento, pagamento e situação).
+- **RF11** — Gerar uma conta a pagar para cada pedido de compra  (valor, vencimento, pagamento e situação).
 - **RF12** — Gerar um título a receber para cada nota fiscal e registrar a baixa com a data de pagamento.
 - **RF13** — Registrar a devolução de mercadoria (nota, data, motivo e taxa de reentrega) e bloquear o cliente quando o motivo for endereço desatualizado.
 - **RF14** — Calcular a comissão de cada colaborador pelo percentual do tipo de vínculo, separando a comissão liberada (título pago) da retida (título em aberto).
@@ -187,15 +191,21 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 - **RN07** — O preço praticado em cada item fica gravado para sempre, mesmo que a tabela de preços mude depois.
 - **RN08** — Produto com chegada programada (importação) pode ser vendido, desde que a data prevista de chegada esteja no item do pedido.
 - **RN09** — É proibido emitir pedido para cliente cujos dados (endereço, telefone e contato financeiro) não foram confirmados nos últimos 90 dias.
-- **RN10** — Compra e importação só com fornecedor cadastrado com CNPJ válido.
-- **RN11** — Toda ordem de compra ou importação registra a previsão de chegada e, quando não é cancelada, gera uma conta a pagar.
+- **RN10** — Compra e importação só com fornecedor cadastrado com USCC (É o equivalente chinês ao CNPJ. É um código numérico de 18 dígitos que unifica o registro comercial, fiscal e de organização da empresa. Toda empresa legalizada possui esse número em sua Business License)
+- **RN11** — Toda ordem de compra ou importação registra a previsão de chegada e gera uma conta a pagar.
 - **RN12** — Comissão de 8% para representante externo e 3% para vendedor interno, liberada só depois que o cliente paga o título.
 - **RN13** — Devolução por endereço incorreto ou desatualizado bloqueia o cliente até a revalidação do cadastro, independentemente da trava de 90 dias da RN09.
+ **RN14** — Pedido só é considerado faturado com nota fiscal emitida. Cada pedido tem no máximo uma nota. A nota cancelada continua registrada e não apaga o pedido.
+- **RN15** — Todo pedido define a modalidade de entrega (transportadora ou retirada na empresa) antes do faturamento.
+- **RN16** — A venda no boleto pode ser parcelada em até 3 vezes (30, 60 e 90 dias). Cada parcela é um título com vencimento próprio, e a soma das parcelas é igual ao valor da nota. A comissão (RN12) é liberada à medida que cada parcela é paga.
+- **RN17** — Todo pedido tem valor mínimo de R$ 1.300,00, já com o desconto aplicado.
+- **RN18** — Devolução por avaria ou recusa do cliente só é aceita até 7 dias depois da entrega. A devolução por endereço desatualizado não segue esse prazo, porque a mercadoria não foi entregue.
+
 
 **Restrições legais (LGPD):** os dados de pessoa física (CPF, nascimento, endereço e contato dos colaboradores; contato do responsável em cada empresa cliente) só são acessados por quem precisa deles. Os papéis por operação, a base legal e a retenção estão no [dicionário de dados](docs/dicionario-dados.md).
 
 **Regras típicas não incluídas:** 
-- *Pedido mínimo por cliente:* Acima de R$1.500,00.
+- *Pedido mínimo por cliente:* Acima de R$1.300,00.
 - *Prazo máximo para devolução (direito de arrependimento):* 7 dias contando a partir da data de entrega.
 
 #### DER conceitual revisado
@@ -209,7 +219,18 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 
 | Apontamento da correção da E1 | O que mudou no trabalho | Por quê |
 | :---- | :---- | :---- |
-| Critério 5 — sem cobrança, expedição, devolução e comissão | Processos 5 a 8 descritos; criadas as entidades DEVOLUCAO e TIPO_COLABORADOR | Cobertura dos processos da empresa (P2, P3, RN12, RN13) |
+ Critério 10 — PEDIDO–CONTÉM–PRODUTO é N:N sem quantidade nem preço praticado | O relacionamento "contém" ganhou os atributos qtd_vendida, vlr_preco_praticado e data_prev_chegada (no modelo lógico, vira a tabela ITEM_PEDIDO) | Sem eles não há onde guardar o preço praticado (RF05/RN07) nem a entrega programada (RF07/RN08) |
+| Critério 10 — NOTA FISCAL com a chave estrangeira `id_pedido` no DER | Atributo removido; a ligação fica só no relacionamento "emite" | FK é decisão do modelo lógico, não do conceitual |
+| Critério 10 — PEDIDO não se liga a COLABORADOR | Criado o relacionamento COLABORADOR (1,1) registra (0,n) PEDIDO | RN05 exige um representante em cada pedido; quem registra o pedido pode não ser o representante da carteira |
+| Critério 10 — sem COMPRA / IMPORTAÇÃO | Criada a entidade COMPRA / IMPORTAÇÃO (numero_compra, tipo_operacao, status, data_compra, data_prev_chegada, data_recebimento, valor_total, moeda, incoterm e contas_pagar), ligada a FORNECEDOR por "pertence" e a PRODUTO por "inclui" (qnt_comprada e vlr_custo_uni) | Previsão de chegada (RF07/RN08), fornecedor cadastrado (RN10) e contas a pagar (RN11) |
+| Critério 10 — sem aprovação de desconto (sugestão) | Atributo aprov_diretoria em PEDIDO | RF04/RN06 exigem o registro da aprovação |
+| Critério 10 — sem TÍTULO / BOLETO (sugestão) | Atributo contas_receber na NOTA FISCAL, com as parcelas do boleto (no modelo lógico, vira a tabela TITULO_RECEBER) | O boleto é parcelado (RN16); sem as parcelas não há como medir a inadimplência (P2) nem liberar a comissão só depois do pagamento (RN12) |
+| Critério 10 — Seção 6 dizia ITEM_PEDIDO–PEDIDO (0,n)/(1,n) | Corrigido no "contém": um pedido tem 1 ou mais produtos; um produto está em 0 ou mais pedidos | Um item não pode pertencer a vários pedidos |
+| Cardinalidade PEDIDO–NOTA FISCAL era (1,1)/(1,1) | Corrigida para PEDIDO (1,1) emite (0,1) NOTA FISCAL | Pedido pendente ou cancelado ainda não tem nota |
+| Problema P3 sem representação no DER | Atributo devolucao na NOTA FISCAL (data, motivo e taxa de reentrega) | Registra a reentrega por endereço errado e sustenta o bloqueio da RN13 |
+| Prazo de devolução sem data de referência | Atributo data_entrega na NOTA FISCAL | Sustenta o prazo de 7 dias para devolução (RN18) |
+| Ponto de pedido sem representação no DER | Atributo qtd_ponto_pedido em PRODUTO | Sustenta o alerta de reposição (RF08) |
+| Critério 5 — sem cobrança, expedição, devolução e comissão | Processos 5 a 8 descritos; devolução registrada na NOTA FISCAL, parcelas do boleto como atributo da NOTA FISCAL e criada TIPO_COLABORADOR | Cobertura dos processos da empresa (P2, P3, RN12, RN13) |
 | Critério 5 — sem ciclo de compras (cadastro de fornecedores, pedido de importação, recebimento, contas a pagar) | Processos 9 a 12 descritos | O ciclo de compras existe na Rafimex e alimenta o estoque e o contas a pagar |
 | Critério 5 — cadastro de clientes, orçamento e faturamento só citados | Processos 1, 3 e 4 detalhados com os dados envolvidos | Cobertura completa do ciclo de vendas |
 | Critério 8 — faltavam regras de compras e de comissão | Incluídas RN10, RN11, RN12 e RN13 | Cobrem os processos que faltavam |
@@ -219,7 +240,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 | Critério 9 — FORNECEDOR com NR_NUMERO_TEL duas vezes e sem número de endereço | Corrigido: NR_NUMERO_TEL (telefone) e NR_NUMERO_ENDERECO (endereço) | Eram dois dados diferentes com o mesmo nome |
 | Critério 9 — tipo de frete, forma de pagamento e status como "Integer" | Viraram tabelas de domínio (TIPO_FRETE, FORMA_PAGAMENTO, STATUS_PEDIDO), referenciadas por chave | Elimina a repetição de texto e valores digitados errado (3FN) |
 | Critério 9 — PEDIDO sem ID_CLIENTE e ID_COLABORADOR no dicionário | Incluídos no dicionário como chaves estrangeiras | O modelo lógico precisa deles |
-| Critério 9 — sem entrada de ITEM_PEDIDO, log de acesso, papéis por operação (ler, inserir, atualizar, apagar), base legal, retenção, versão com data, justificativa da collation e os símbolos / / e * * na notação | Incluídos no [dicionário de dados](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/dicionario-dados.md); a justificativa da collation também está na seção 1.5 | Pedido explícito da correção |
+| Critério 9 — sem entrada de ITEM_PEDIDO, log de acesso, papéis por operação (ler, inserir, atualizar, apagar), base legal, retenção, versão com data, justificativa da collation e os símbolos / / e * * na notação | Incluídos no [dicionário de dados](entrega-2/dicionario-dados.md); a justificativa da collation também está na seção 1.5 | Pedido explícito da correção |
 | COLABORADOR com atributo `comissao` | Percentual movido para TIPO_COLABORADOR (Interno 3%, Externo 8%) | A comissão depende só do tipo de vínculo (RN12); guardá-la em cada colaborador seria dependência transitiva |
 | Observação — integrante trabalha na Rafimex | Vínculo declarado na caracterização; a entrevista foi com o diretor comercial | Transparência sobre possível conflito de interesse |
 
