@@ -191,7 +191,7 @@ data da compra, previsão de chegada e data de recebimento;
 - **RN07** — O preço praticado em cada item fica gravado para sempre, mesmo que a tabela de preços mude depois.
 - **RN08** — Produto com chegada programada (importação) pode ser vendido, desde que a data prevista de chegada esteja no item do pedido.
 - **RN09** — É proibido emitir pedido para cliente cujos dados (endereço, telefone e contato financeiro) não foram confirmados nos últimos 90 dias.
-- **RN10** — Compra e importação só com fornecedor cadastrado com USCC (É o equivalente chinês ao CNPJ. É um código numérico de 18 dígitos que unifica o registro comercial, fiscal e de organização da empresa. Toda empresa legalizada possui esse número em sua Business License)
+- **RN10** — Compra e importação só com fornecedor cadastrado.
 - **RN11** — Toda ordem de compra ou importação registra a previsão de chegada e gera uma conta a pagar.
 - **RN12** — Comissão de 8% para representante externo e 3% para vendedor interno, liberada só depois que o cliente paga o título.
 - **RN13** — Devolução por endereço incorreto ou desatualizado bloqueia o cliente até a revalidação do cadastro, independentemente da trava de 90 dias da RN09.
