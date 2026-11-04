@@ -92,6 +92,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 
 **3. Orçamento e emissão do pedido**
 - O representante (ou o vendedor interno) registra no pedido:
+- - O pedido tem valor mínimo de R$ 1.300,00
   - data, cliente e colaborador que emitiu;
   - tipo de frete (transportadora ou retirada na empresa);
   - forma de pagamento (boleto, PIX ou cartão);
