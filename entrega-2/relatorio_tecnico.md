@@ -60,7 +60,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 
 - **Quem:** Gabriel Gedanken, diretor comercial da Rafimex. Participantes do grupo: LETICIA SOUZA SANTOS.
 - **Quando e onde:** 10/09/2026, na sede da Rafimex (R. Barra do Tibagi, 537 — Bom Retiro, São Paulo/SP).
-- **Comprovação:** [foto da visita técnica](entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg), com uma integrante e o entrevistado dentro da loja.
+- **Comprovação:** [foto da visita técnica](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-1/IMAGEM_VISITACAO_RAFIMEX.jpeg), com uma integrante e o entrevistado dentro da loja.
 - **Achados pela observação no local:** 
   - O cadastro do cliente é preenchido à mão pelo representante, sem nenhuma data de validade.
   - Quando uma mercadoria volta por endereço errado, a logística registra o retorno, mas nada impede um novo pedido para o mesmo endereço.
