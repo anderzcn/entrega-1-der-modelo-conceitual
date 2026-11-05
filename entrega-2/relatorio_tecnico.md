@@ -585,23 +585,8 @@ A massa está no próprio [docs/script.sql](https://github.com/anderzcn/entrega-
 
 ---
 
-## 5. Repositório GitHub
 
-```
-README.md                      relatório técnico (este arquivo)
-levantamento/levantamento.md   levantamento completo da entrevista
-entrega-1/                     fotos da fachada e da visita técnica
-diagramas/                     der-revisado.png, modelo-logico.png
-docs/                          script.sql, dicionario-dados.md
-slides/                        apresentacao.pdf
-```
-
-- **Dicionário de dados (turma GTI):** [docs/dicionario-dados.md](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/dicionario-dados.md). Tem uma entrada por tabela e coluna, com tipo, obrigatoriedade, unicidade, valores permitidos e valor padrão, igual ao script.
-
-
----
-
-## 6. Uso de Inteligência Artificial
+## 5. Uso de Inteligência Artificial
 
 **Entrega 1:** o registro do uso de IA na Entrega 1 (ChatGPT, Gemini e Claude) continua válido e está em [entrega-1/README.md](entrega-1/README.md). 
 
