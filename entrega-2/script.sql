@@ -7,8 +7,6 @@
 --        Ketlyn Nayara da Silva Cezar
 -- SGBD: MySQL 8.0 (InnoDB, utf8mb4) - testado no MySQL 8.0.40
 --
--- Como executar: abrir no MySQL Workbench e clicar no raio (sem
--- selecionar nada). O script apaga e recria o banco do zero.
 --
 -- Todos os dados são fictícios (nomes, CNPJs, CPFs e valores
 -- inventados). CNPJ, CPF e chave de acesso da NF-e têm dígitos
