@@ -18,7 +18,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 | Relatório técnico | este `README.md` |
 | Levantamento | [levantamento/levantamento.md](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/levantamento-requisitos.md) |
 | DER conceitual revisado | [diagramas/der-revisado.png](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/der_atualizado_entrega2.png) |
-| Modelo lógico | [diagramas/modelo-logico.png](diagramas/modelo-logico.png) |
+| Modelo lógico | [diagramas/modelo-logico.png](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/modelo-logico.png) |
 | Dicionário de dados | [docs/dicionario-dados.md](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/dicionario-dados.md) |
 | Script SQL completo (com a massa de dados) | [docs/script.sql](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/script.sql) |
 | Slides | [slides/apresentacao.pdf](slides/apresentacao.pdf) |
