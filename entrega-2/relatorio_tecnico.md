@@ -21,7 +21,7 @@ Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final. Banco 
 | Modelo lógico | [diagramas/modelo-logico.png](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/modelo-logico.png) |
 | Dicionário de dados | [docs/dicionario-dados.md](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/dicionario-dados.md) |
 | Script SQL completo (com a massa de dados) | [docs/script.sql](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/script.sql) |
-| Slides | [slides/apresentacao.pdf](slides/apresentacao.pdf) |
+| Slides | [slides/apresentacao.pdf](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/apresentacao_slides.pptx) |
 
 ---
 
