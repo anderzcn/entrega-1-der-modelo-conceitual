@@ -211,9 +211,9 @@ data da compra, previsão de chegada e data de recebimento;
 #### DER conceitual revisado
 
 - **Software:** brModelo Web (<https://app.brmodeloweb.com>).
-- **Imagem:** [diagramas/der-revisado.png](diagramas/der-revisado.png)
+- **Imagem:** [diagramas/der-revisado.png](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/der_atualizado_entrega2.png)
 
-![DER conceitual revisado](diagramas/der-revisado.png)
+![DER conceitual revisado](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/der_atualizado_entrega2.png)
 
 **Revisão a partir da correção da Entrega 1 (Caso A — mesma organização)**
 
