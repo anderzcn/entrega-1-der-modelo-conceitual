@@ -605,7 +605,26 @@ slides/                        apresentacao.pdf
 
 **Entrega 1:** o registro do uso de IA na Entrega 1 (ChatGPT, Gemini e Claude) continua válido e está em [entrega-1/README.md](entrega-1/README.md). 
 
-**Entrega 2 —
+Durante o desenvolvimento da Entrega 2, foram utilizadas ferramentas de
+Inteligência Artificial (ChatGPT, Claude e Gemini) como apoio à
+compreensão do esqueleto proposto pelo professor, elaboração do script
+SQL, validação técnica e revisão dos artefatos produzidos. O uso teve
+caráter auxiliar, servindo de suporte ao desenvolvimento do trabalho,
+sem substituir a análise crítica e as decisões técnicas, que
+permaneceram sob responsabilidade dos integrantes do grupo.
+
+Abaixo, estão detalhadas as ferramentas utilizadas, as etapas em que
+foram aplicadas e sua contribuição para a Entrega 2.
+
+| Critério | Detalhamento |
+|------|------------------|
+| **Ferramentas e etapa** | Foram utilizadas as ferramentas ChatGPT, Gemini Claude para consultar e compreender o esqueleto de entrega do professor, apoiar a elaboração do script SQL, revisar sua estrutura e verificar possíveis inconsistências.|
+| **Motivação** | Compreender as exigências da Entrega 2, auxiliar na implementação do banco de dados e identificar possíveis erros ou ajustes necessários no script, considerando o modelo lógico e as regras de negócio definidas pelo grupo. |
+| **Prompt(s) utilizados** | "Analise o esqueleto da Entrega 2 fornecido pelo professor e explique os requisitos necessários para a implementação do banco de dados, destacando os pontos de atenção." "Com base no modelo lógico e nas regras de negócio levantadas pelo grupo, auxilie na elaboração do script SQL, verificando a estrutura das tabelas, os tipos de dados, as chaves e as restrições." "Revise o script SQL e identifique possíveis inconsistências, erros de implementação e pontos que precisam de correção, considerando as orientações do professor e as regras de negócio do projeto." |
+| **Resposta recebida** | As ferramentas apresentaram orientações sobre a estrutura do script, comandos SQL, criação e relacionamento das tabelas, definição de chaves e restrições, além de apontamentos sobre possíveis inconsistências. As respostas serviram como referência para análise e revisão, não sendo aplicadas automaticamente. |
+| **Trechos rejeitados ou corrigidos** | Durante as revisões, algumas sugestões das ferramentas de IA foram analisadas e ajustadas por não corresponderem integralmente à estrutura do projeto ou às regras de negócio levantadas. O grupo não adotou automaticamente as respostas recebidas, realizando verificações e correções conforme o modelo lógico, as orientações do professor e as necessidades identificadas na Rafimex. |
+| **Justificativa da escolha final** | O grupo adotou como critério considerar as sugestões da IA somente quando apresentavam coerência com os requisitos do professor, o modelo lógico e as regras de negócio levantadas. As decisões relacionadas ao funcionamento do sistema foram definidas pelos integrantes, com base nas discussões em grupo, na vivência de uma integrante na empresa e na visita técnica realizada. Dessa forma, a IA foi utilizada principalmente como apoio à elaboração, revisão e validação do script SQL, enquanto as decisões técnicas e funcionais permaneceram sob responsabilidade do grupo. |
+| **Reflexão crítica** | Assim como na Entrega 1, o uso da IA demonstrou ser útil como ferramenta de apoio, principalmente para validações, esclarecimento de dúvidas e identificação de possíveis correções. Entretanto, suas respostas podem apresentar inconsistências, interpretações equivocadas ou sugestões tecnicamente inadequadas que, quando não submetidas a uma análise crítica, podem levar à implementação de soluções incorretas. Por isso, foi fundamental avaliar cada sugestão antes de sua aplicação. A construção do script e suas regras de negócio dependeram das decisões do grupo, fundamentadas no levantamento realizado e nas discussões entre os integrantes. Dessa forma, a IA contribuiu para aprimorar a implementação, mas não substituiu a análise, a validação e a responsabilidade técnica do grupo.|
 
 ---
 
