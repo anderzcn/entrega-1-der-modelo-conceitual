@@ -202,7 +202,7 @@ data da compra, previsão de chegada e data de recebimento;
 - **RN18** — Devolução por avaria ou recusa do cliente só é aceita até 7 dias depois da entrega. A devolução por endereço desatualizado não segue esse prazo, porque a mercadoria não foi entregue.
 
 
-**Restrições legais (LGPD):** os dados de pessoa física (CPF, nascimento, endereço e contato dos colaboradores; contato do responsável em cada empresa cliente) só são acessados por quem precisa deles. Os papéis por operação, a base legal e a retenção estão no [dicionário de dados](docs/dicionario-dados.md).
+**Restrições legais (LGPD):** os dados de pessoa física (CPF, nascimento, endereço e contato dos colaboradores; contato do responsável em cada empresa cliente) só são acessados por quem precisa deles. Os papéis por operação, a base legal e a retenção estão no [dicionário de dados](https://github.com/anderzcn/entrega-1-der-modelo-conceitual/blob/main/entrega-2/dicionario-dados.md).
 
 **Regras típicas não incluídas:** 
 - *Pedido mínimo por cliente:* Acima de R$1.300,00.
